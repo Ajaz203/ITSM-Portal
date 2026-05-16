@@ -1,0 +1,46 @@
+.table-wrapper {
+  background: white;
+  border-radius: 18px;
+  padding: 20px;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.06);
+  overflow-x: auto;
+}
+
+table {
+  margin: 0;
+}
+
+th {
+  font-weight: 700;
+  padding: 16px;
+  border-bottom: 1px solid #e5e7eb;
+}
+
+td {
+  padding: 16px;
+  vertical-align: middle;
+}
+
+/* STATUS */
+
+.status {
+  padding: 8px 14px;
+  border-radius: 30px;
+  font-size: 13px;
+  font-weight: 600;
+}
+
+.Open {
+  background: #fef3c7;
+  color: #92400e;
+}
+
+.Resolved {
+  background: #d1fae5;
+  color: #065f46;
+}
+
+.Critical {
+  background: #fee2e2;
+  color: #991b1b;
+}

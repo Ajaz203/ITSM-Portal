@@ -1,0 +1,227 @@
+<div class="table-card">
+
+  <table class="table">
+
+    <thead>
+
+      <tr>
+
+        <th>Ticket ID</th>
+
+        <th>Title</th>
+
+        <th>Category</th>
+
+        <th>Priority</th>
+
+        <th>Status</th>
+
+        <th>SLA</th>
+        <th>Assigned To</th>
+
+        <th>Created At</th>
+
+        <th>Actions</th>
+
+      </tr>
+
+    </thead>
+
+    <tbody>
+
+      @for(
+      item of
+      incidentService.paginatedIncidents();
+      track item.id
+      ) {
+
+      <tr>
+
+        <td class="ticket-id clickable" (click)="
+    incidentService
+      .openIncidentDetails(item)
+  ">
+
+          {{ item.ticketId }}
+
+        </td>
+
+        <td>
+
+          {{ item.title }}
+
+        </td>
+
+        <td>
+
+          {{ item.category }}
+
+        </td>
+
+        <td>
+
+          <app-incident-priority-badge [priority]="item.priority" />
+
+        </td>
+
+        <td>
+
+          <app-incident-status-badge [status]="item.status" />
+
+        </td>
+        <td>
+
+          <div class="sla-badge" [class.warning]="
+      item.slaStatus === 'warning'
+    " [class.breached]="
+      item.slaStatus === 'breached'
+    ">
+
+            <i class="bi bi-clock"></i>
+
+            {{ item.slaHours }}h
+
+          </div>
+
+        </td>
+        <td>
+
+          {{ item.assignedTo }}
+
+        </td>
+
+        <td>
+
+          {{ item.createdAt }}
+
+        </td>
+
+        <td class="action-cell">
+
+          <div class="action-wrapper">
+
+            <button class="action-btn" (click)="toggleMenu(item.id)">
+
+              <i class="bi bi-three-dots-vertical"></i>
+
+            </button>
+
+            @if(activeMenu() === item.id) {
+
+            <div class="dropdown-menu">
+
+              <button>
+
+                <i class="bi bi-eye"></i>
+
+                View
+
+              </button>
+
+              @if(
+              auth.canEdit()
+              ) {
+
+              <button (click)="
+      incidentService
+        .openEditModal(item)
+    ">
+
+                <i class="bi bi-pencil"></i>
+
+                Edit
+
+              </button>
+
+              }
+              @if(
+              auth.canDelete()
+              ) {
+
+              <button class="delete-btn" (click)="
+      incidentService
+        .openDeleteModal(item)
+    ">
+
+                <i class="bi bi-trash"></i>
+
+                Delete
+
+              </button>
+
+              }
+
+            </div>
+
+            }
+
+          </div>
+
+        </td>
+
+      </tr>
+
+      }
+
+    </tbody>
+
+  </table>
+  <!-- PAGINATION -->
+
+  <div class="pagination-wrapper">
+
+    <button class="page-btn" [disabled]="
+      incidentService.selectedPage() === 1
+    " (click)="
+      incidentService.selectedPage.set(
+        incidentService.selectedPage() - 1
+      )
+    ">
+
+      Previous
+
+    </button>
+
+    <div class="page-numbers">
+
+      @for(
+      page of
+      [].constructor(
+      incidentService.totalPages()
+      );
+
+      track $index
+      ) {
+
+      <button class="page-number" [class.active]="
+          incidentService.selectedPage()
+          === $index + 1
+        " (click)="
+          incidentService.selectedPage.set(
+            $index + 1
+          )
+        ">
+
+        {{ $index + 1 }}
+
+      </button>
+
+      }
+
+    </div>
+
+    <button class="page-btn" [disabled]="
+      incidentService.selectedPage()
+      === incidentService.totalPages()
+    " (click)="
+      incidentService.selectedPage.set(
+        incidentService.selectedPage() + 1
+      )
+    ">
+
+      Next
+
+    </button>
+
+  </div>
+</div>

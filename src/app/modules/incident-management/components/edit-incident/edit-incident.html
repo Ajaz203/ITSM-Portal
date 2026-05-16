@@ -1,0 +1,204 @@
+<div class="modal-overlay">
+
+    <div class="modal-container">
+
+        <!-- HEADER -->
+
+        <div class="modal-header">
+
+            <div>
+
+                <h3>Edit Incident</h3>
+
+                <p>
+                    Update incident details
+                </p>
+
+            </div>
+
+            <button class="close-btn" (click)="closeModal()">
+
+                <i class="bi bi-x-lg"></i>
+
+            </button>
+
+        </div>
+
+        <!-- FORM -->
+
+        <form [formGroup]="form" class="incident-form">
+
+            <!-- GRID -->
+
+            <div class="form-grid">
+
+                <!-- TITLE -->
+
+                <div class="form-group full-width">
+
+                    <label>
+                        Incident Title
+                    </label>
+
+                    <input type="text" formControlName="title" placeholder="Enter title" />
+
+                </div>
+
+                <!-- CATEGORY -->
+
+                <div class="form-group">
+
+                    <label>
+                        Category
+                    </label>
+
+                    <select formControlName="category">
+
+                        <option value="">
+                            Select Category
+                        </option>
+
+                        <option>
+                            Infrastructure
+                        </option>
+
+                        <option>
+                            Database
+                        </option>
+
+                        <option>
+                            Application
+                        </option>
+
+                    </select>
+
+                </div>
+
+                <!-- PRIORITY -->
+
+                <div class="form-group">
+
+                    <label>
+                        Priority
+                    </label>
+
+                    <select formControlName="priority">
+
+                        <option value="">
+                            Select Priority
+                        </option>
+
+                        @for(
+                        item of priorities;
+                        track item
+                        ) {
+
+                        <option [value]="item">
+
+                            {{ item }}
+
+                        </option>
+
+                        }
+
+                    </select>
+
+                </div>
+                <div class="form-group">
+
+                    <label>
+                        Status
+                    </label>
+
+                    <select
+  formControlName="status"
+>
+
+  @for(
+    status of statuses;
+    track status
+  ) {
+
+    <option
+
+      [value]="status"
+
+      [disabled]="
+
+        !incidentService
+          .canChangeStatus(
+
+            incidentService
+              .editingIncident()
+              ?.status || '',
+
+            status
+
+          )
+
+          &&
+
+        incidentService
+          .editingIncident()
+          ?.status !== status
+      "
+    >
+
+      {{ status }}
+
+    </option>
+
+  }
+
+</select>
+
+                </div>
+                <!-- ASSIGNED -->
+
+                <div class="form-group full-width">
+
+                    <label>
+                        Assigned To
+                    </label>
+
+                    <input type="text" formControlName="assignedTo" placeholder="Assign user" />
+
+                </div>
+
+                <!-- DESCRIPTION -->
+
+                <div class="form-group full-width">
+
+                    <label>
+                        Description
+                    </label>
+
+                    <textarea rows="3" formControlName="description" placeholder="Describe issue"></textarea>
+
+                </div>
+
+            </div>
+
+            <!-- FOOTER -->
+
+            <div class="modal-footer">
+
+                <button type="button" class="cancel-btn" (click)="closeModal()">
+
+                    Cancel
+
+                </button>
+
+                <button type="button" class="submit-btn" (click)="updateIncident()">
+
+                    Update Incident
+
+                </button>
+
+            </div>
+
+        </form>
+
+    </div>
+
+</div>

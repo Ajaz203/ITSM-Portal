@@ -1,0 +1,78 @@
+<div class="header">
+
+  <!-- LEFT -->
+
+<div class="left-section">
+
+  <button
+    class="menu-btn"
+    (click)="layoutService.toggleSidebar()"
+  >
+
+    <i class="bi bi-list"></i>
+
+  </button>
+
+  <h3>
+    Enterprise ITSM Dashboard
+  </h3>
+
+</div>
+
+  <!-- RIGHT -->
+
+  <div class="right-section">
+
+  
+
+    <div class="search-box">
+
+      <i class="bi bi-search"></i>
+
+      <input
+        type="text"
+        placeholder="Search..."
+      />
+
+    </div>
+
+    <!-- NOTIFICATION -->
+
+    <div class="notification">
+
+      <i class="bi bi-bell"></i>
+
+      <span>
+        {{ notifications }}
+      </span>
+
+    </div>
+
+    <!-- PROFILE -->
+
+    <div class="profile">
+
+      <div class="avatar">
+        A
+      </div>
+
+      <div>
+
+        <h5>Admin User</h5>
+
+        <p>Super Admin</p>
+
+      </div>
+
+    </div>
+ <button
+  class="logout-btn"
+  (click)="logout()"
+>
+
+  Logout
+
+</button>
+  </div>
+
+</div>

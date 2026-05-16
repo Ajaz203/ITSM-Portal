@@ -1,0 +1,226 @@
+.table-card {
+
+    background: white;
+
+    border-radius: 18px;
+
+    padding: 18px;
+
+    border: 1px solid #e5e7eb;
+
+}
+
+.table {
+    width: 100%;
+}
+
+.table th {
+
+    font-size: 13px;
+    font-weight: 700;
+
+    color: #64748b;
+
+    padding: 16px;
+
+    border-bottom:
+        1px solid #e5e7eb;
+
+}
+
+.table td {
+
+    padding: 16px;
+
+    font-size: 14px;
+
+    border-bottom:
+        1px solid #f1f5f9;
+
+}
+
+.table tbody tr {
+    transition: 0.2s;
+}
+
+.table tbody tr:hover {
+    background: #f8fafc;
+}
+
+.ticket-id {
+
+    color: #2563eb;
+
+    font-weight: 600;
+
+}
+
+.action-btn {
+
+    width: 34px;
+    height: 34px;
+
+    border-radius: 10px;
+
+    border: none;
+
+    background: #f1f5f9;
+
+}
+
+/* ACTION */
+
+.action-cell {
+    position: relative;
+}
+
+.action-wrapper {
+    position: relative;
+}
+
+.dropdown-menu {
+
+    position: absolute;
+
+    top: 40px;
+    right: 0;
+
+    width: 150px;
+
+    background: white;
+
+    border-radius: 14px;
+
+    border: 1px solid #e5e7eb;
+
+    padding: 8px;
+
+    display: flex;
+    flex-direction: column;
+
+    gap: 4px;
+
+    z-index: 20;
+
+    box-shadow:
+        0 10px 20px rgba(0, 0, 0, 0.08);
+
+}
+
+.dropdown-menu button {
+
+    height: 38px;
+
+    border: none;
+
+    background: transparent;
+
+    border-radius: 10px;
+
+    display: flex;
+    align-items: center;
+
+    gap: 10px;
+
+    padding: 0 12px;
+
+    font-size: 13px;
+
+}
+
+.dropdown-menu button:hover {
+    background: #f8fafc;
+}
+
+.delete-btn {
+    color: #dc2626;
+}
+
+/* PAGINATION */
+
+.pagination-wrapper {
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    margin-top: 20px;
+
+}
+
+.page-btn,
+.page-number {
+
+    height: 36px;
+
+    min-width: 36px;
+
+    border-radius: 10px;
+
+    border: 1px solid #e5e7eb;
+
+    background: white;
+
+    padding: 0 14px;
+
+    font-size: 13px;
+    font-weight: 600;
+
+}
+
+.page-btn:disabled {
+    opacity: 0.5;
+}
+
+.page-numbers {
+    display: flex;
+    gap: 8px;
+}
+
+.page-number.active {
+
+    background: #2563eb;
+    color: white;
+
+    border-color: #2563eb;
+
+}
+/* SLA */
+
+.sla-badge {
+
+  height: 30px;
+
+  padding: 0 12px;
+
+  border-radius: 30px;
+
+  display: inline-flex;
+  align-items: center;
+
+  gap: 8px;
+
+  background: #dcfce7;
+
+  color: #15803d;
+
+  font-size: 12px;
+  font-weight: 600;
+
+}
+
+.sla-badge.warning {
+
+  background: #fef3c7;
+
+  color: #ca8a04;
+
+}
+
+.sla-badge.breached {
+
+  background: #fee2e2;
+
+  color: #dc2626;
+
+}

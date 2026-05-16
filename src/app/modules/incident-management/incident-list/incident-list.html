@@ -1,0 +1,72 @@
+<div class="incident-page">
+
+  <div class="page-header">
+
+    <div>
+
+      <h2>
+        Incident Management
+      </h2>
+
+      <p>
+        Manage and monitor all incidents
+      </p>
+
+    </div>
+
+    @if(
+    authService.canCreate()
+    ) {
+
+    <button class="create-btn" (click)="
+      incidentService
+        .showCreateModal
+        .set(true)
+    ">
+
+      <i class="bi bi-plus-lg"></i>
+
+      Create Incident
+
+    </button>
+
+    }
+
+  </div>
+
+  <!-- FILTERS -->
+
+  <app-incident-filters />
+
+  <!-- TABLE -->
+
+  <app-incident-table />
+  @if(
+  incidentService.showCreateModal()
+  ) {
+
+  <app-create-incident />
+
+  }
+  @if(
+  incidentService.showDetailsDrawer()
+  ) {
+
+  <app-incident-details-drawer />
+
+  }
+  @if(
+  incidentService.showEditModal()
+  ) {
+
+  <app-edit-incident />
+
+  }
+  @if(
+  incidentService.showDeleteModal()
+  ) {
+
+  <app-delete-incident-modal />
+
+  }
+</div>

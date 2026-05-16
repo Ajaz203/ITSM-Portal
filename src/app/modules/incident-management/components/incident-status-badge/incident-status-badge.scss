@@ -1,0 +1,44 @@
+.status-badge {
+
+  height: 28px;
+
+  padding: 0 12px;
+
+  border-radius: 30px;
+
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  font-size: 12px;
+  font-weight: 600;
+
+}
+
+/* OPEN */
+
+.open {
+  background: #fef3c7;
+  color: #ca8a04;
+}
+
+/* IN PROGRESS */
+
+.in-progress {
+  background: #dbeafe;
+  color: #2563eb;
+}
+
+/* RESOLVED */
+
+.resolved {
+  background: #dcfce7;
+  color: #15803d;
+}
+
+/* CLOSED */
+
+.closed {
+  background: #e5e7eb;
+  color: #374151;
+}

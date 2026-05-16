@@ -1,0 +1,53 @@
+<div class="filters-wrapper">
+
+  <!-- SEARCH -->
+
+  <div class="search-box">
+
+    <i class="bi bi-search"></i>
+
+    <input
+      type="text"
+      placeholder="Search incidents..."
+      [ngModel]="incidentService.search()"
+      (ngModelChange)="
+        incidentService.search.set($event)
+      "
+    />
+
+  </div>
+
+  <!-- STATUS -->
+
+  <div class="status-tabs">
+
+    @for(
+      status of statuses;
+      track status
+    ) {
+
+      <button
+
+        class="status-btn"
+
+        [class.active]="
+          incidentService.selectedStatus()
+          === status
+        "
+
+        (click)="
+          incidentService.selectedStatus.set(
+            status
+          )
+        "
+      >
+
+        {{ status }}
+
+      </button>
+
+    }
+
+  </div>
+
+</div>

@@ -1,0 +1,64 @@
+<div class="modal-overlay">
+
+  <div class="delete-modal">
+
+    <!-- ICON -->
+
+    <div class="warning-icon">
+
+      <i class="bi bi-trash"></i>
+
+    </div>
+
+    <!-- CONTENT -->
+
+    <h3>
+      Delete Incident
+    </h3>
+
+    <p>
+
+      Are you sure you want to
+      delete
+
+      <strong>
+
+        {{
+          incidentService
+            .deletingIncident()
+            ?.ticketId
+        }}
+
+      </strong>
+
+      ?
+
+    </p>
+
+    <!-- ACTIONS -->
+
+    <div class="modal-actions">
+
+      <button
+        class="cancel-btn"
+        (click)="closeModal()"
+      >
+
+        Cancel
+
+      </button>
+
+      <button
+        class="delete-btn"
+        (click)="deleteIncident()"
+      >
+
+        Delete Incident
+
+      </button>
+
+    </div>
+
+  </div>
+
+</div>

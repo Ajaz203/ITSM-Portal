@@ -1,0 +1,364 @@
+<div class="dashboard-wrapper">
+
+  <!-- TOP BAR -->
+
+  <div class="top-section">
+
+    <div>
+      <h2>Welcome back, Admin! 👋</h2>
+      <p>
+        Here's what's happening with your IT services today.
+      </p>
+    </div>
+
+    <div class="top-actions">
+
+      <button class="date-btn">
+        <i class="bi bi-calendar3"></i>
+        May 1, 2024 - May 31, 2024
+      </button>
+
+      <button class="create-btn">
+        <i class="bi bi-plus-lg"></i>
+        Create Ticket
+      </button>
+
+    </div>
+
+  </div>
+
+  <!-- STATS -->
+
+  <div class="stats-grid">
+
+    <div class="stat-card blue-card">
+
+      <div class="stat-icon blue">
+        <i class="bi bi-ticket"></i>
+      </div>
+
+      <div>
+        <h3>124</h3>
+        <p>Total Tickets</p>
+        <span class="growth positive">
+          ↑ 12% from last month
+        </span>
+      </div>
+
+    </div>
+
+    <div class="stat-card red-card">
+
+      <div class="stat-icon red">
+        <i class="bi bi-exclamation-circle"></i>
+      </div>
+
+      <div>
+        <h3>18</h3>
+        <p>Open Incidents</p>
+        <span class="growth positive">
+          ↑ 8% from last month
+        </span>
+      </div>
+
+    </div>
+
+    <div class="stat-card green-card">
+
+      <div class="stat-icon green">
+        <i class="bi bi-check-circle"></i>
+      </div>
+
+      <div>
+        <h3>96</h3>
+        <p>Resolved</p>
+        <span class="growth positive">
+          ↑ 15% from last month
+        </span>
+      </div>
+
+    </div>
+
+    <div class="stat-card yellow-card">
+
+      <div class="stat-icon yellow">
+        <i class="bi bi-clock-history"></i>
+      </div>
+
+      <div>
+        <h3>10</h3>
+        <p>SLA Breached</p>
+        <span class="growth negative">
+          ↓ 5% from last month
+        </span>
+      </div>
+
+    </div>
+
+  </div>
+
+  <!-- CHART GRID -->
+
+  <div class="chart-grid">
+
+    <!-- DONUT -->
+
+    <div class="chart-card">
+
+      <div class="card-header">
+        <h4>Tickets Overview</h4>
+
+        <button>
+          This Month
+        </button>
+      </div>
+
+      <div class="donut-wrapper">
+
+        <div class="fake-donut">
+          <div class="center-text">
+            <h2>124</h2>
+            <p>Total</p>
+          </div>
+        </div>
+
+        <div class="legend-list">
+
+          <div class="legend-item">
+            <span class="dot red-dot"></span>
+            Open
+            <strong>18 (14.5%)</strong>
+          </div>
+
+          <div class="legend-item">
+            <span class="dot blue-dot"></span>
+            In Progress
+            <strong>42 (33.9%)</strong>
+          </div>
+
+          <div class="legend-item">
+            <span class="dot green-dot"></span>
+            Resolved
+            <strong>96 (77.4%)</strong>
+          </div>
+
+          <div class="legend-item">
+            <span class="dot yellow-dot"></span>
+            Closed
+            <strong>28 (22.6%)</strong>
+          </div>
+
+        </div>
+
+      </div>
+
+    </div>
+
+    <!-- TREND -->
+
+    <div class="chart-card">
+
+      <div class="card-header">
+        <h4>Tickets Trend</h4>
+
+        <button>
+          This Month
+        </button>
+      </div>
+
+      <div class="line-chart">
+
+        <div class="line"></div>
+
+        <div class="chart-points">
+
+          <div class="point p1">12</div>
+          <div class="point p2">19</div>
+          <div class="point p3">28</div>
+          <div class="point p4">24</div>
+          <div class="point p5">41</div>
+
+        </div>
+
+      </div>
+
+    </div>
+
+    <!-- SLA -->
+
+    <div class="chart-card small-card">
+
+      <div class="card-header">
+        <h4>SLA Breach Summary</h4>
+        <a>View All</a>
+      </div>
+
+      <div class="sla-item">
+        <div>
+          <h5>INC001234</h5>
+          <p>Email Server Down</p>
+        </div>
+
+        <span class="sla red-sla">
+          2h 32m
+        </span>
+      </div>
+
+      <div class="sla-item">
+        <div>
+          <h5>INC001235</h5>
+          <p>VPN Connection Issue</p>
+        </div>
+
+        <span class="sla orange-sla">
+          1h 15m
+        </span>
+      </div>
+
+      <div class="sla-item">
+        <div>
+          <h5>INC001236</h5>
+          <p>Database Performance</p>
+        </div>
+
+        <span class="sla yellow-sla">
+          45m
+        </span>
+      </div>
+
+    </div>
+
+  </div>
+
+  <!-- BOTTOM GRID -->
+
+  <div class="bottom-grid">
+
+    <!-- TABLE -->
+
+    <div class="table-card">
+
+      <div class="card-header">
+        <h4>Recent Incidents</h4>
+        <a>View All</a>
+      </div>
+
+      <table class="table align-middle">
+
+        <thead>
+          <tr>
+            <th>Ticket ID</th>
+            <th>Title</th>
+            <th>Priority</th>
+            <th>Status</th>
+            <th>Created On</th>
+          </tr>
+        </thead>
+
+        <tbody>
+
+          <tr>
+            <td>INC001234</td>
+            <td>Email Server Down</td>
+            <td>
+              <span class="badge critical">
+                Critical
+              </span>
+            </td>
+            <td>
+              <span class="badge open">
+                Open
+              </span>
+            </td>
+            <td>May 31, 2024</td>
+          </tr>
+
+          <tr>
+            <td>INC001235</td>
+            <td>VPN Connection Issue</td>
+            <td>
+              <span class="badge medium">
+                Medium
+              </span>
+            </td>
+            <td>
+              <span class="badge progress">
+                In Progress
+              </span>
+            </td>
+            <td>May 30, 2024</td>
+          </tr>
+
+          <tr>
+            <td>INC001236</td>
+            <td>Database Performance</td>
+            <td>
+              <span class="badge high">
+                High
+              </span>
+            </td>
+            <td>
+              <span class="badge resolved">
+                Resolved
+              </span>
+            </td>
+            <td>May 29, 2024</td>
+          </tr>
+
+        </tbody>
+
+      </table>
+
+    </div>
+
+    <!-- RIGHT WIDGETS -->
+
+    <div class="right-widgets">
+
+      <div class="chart-card">
+
+        <div class="card-header">
+          <h4>Tickets by Priority</h4>
+        </div>
+
+        <div class="priority-chart"></div>
+
+      </div>
+
+      <div class="chart-card">
+
+        <div class="card-header">
+          <h4>Quick Actions</h4>
+        </div>
+
+        <div class="quick-actions">
+
+          <div class="quick-card blue-bg">
+            <i class="bi bi-ticket"></i>
+            <p>Create Ticket</p>
+          </div>
+
+          <div class="quick-card green-bg">
+            <i class="bi bi-list-task"></i>
+            <p>My Tickets</p>
+          </div>
+
+          <div class="quick-card purple-bg">
+            <i class="bi bi-bar-chart"></i>
+            <p>Reports</p>
+          </div>
+
+          <div class="quick-card yellow-bg">
+            <i class="bi bi-clock-history"></i>
+            <p>SLA Monitor</p>
+          </div>
+
+        </div>
+
+      </div>
+
+    </div>
+
+  </div>
+
+</div>

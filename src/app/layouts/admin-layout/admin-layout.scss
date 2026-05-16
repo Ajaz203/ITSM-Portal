@@ -1,0 +1,28 @@
+.layout {
+  display: flex;
+}
+
+.main-content {
+  margin-left: 265px;
+  width: calc(100% - 265px);
+
+  min-height: 100vh;
+
+  background:
+    linear-gradient(
+      180deg,
+      #f8fafc 0%,
+      #eef2ff 100%
+    );
+
+  transition: 0.3s;
+}
+
+.main-content.expanded {
+  margin-left: 90px;
+  width: calc(100% - 90px);
+}
+
+.page-content {
+  padding: 28px;
+}

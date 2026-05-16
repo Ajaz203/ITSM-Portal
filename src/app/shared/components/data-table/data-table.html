@@ -1,0 +1,62 @@
+<div class="table-wrapper">
+
+  <table class="table align-middle">
+
+    <thead>
+
+      <tr>
+
+        <th
+          *ngFor="let column of columns"
+        >
+          {{ column.label }}
+        </th>
+
+      </tr>
+
+    </thead>
+
+    <tbody>
+
+      <tr
+        *ngFor="let row of data"
+      >
+
+        <td
+          *ngFor="let column of columns"
+        >
+
+          <!-- STATUS -->
+
+          <ng-container
+            *ngIf="column.key === 'status'; else normalData"
+          >
+
+            <span
+              class="status"
+              [ngClass]="row[column.key]"
+            >
+
+              {{ row[column.key] }}
+
+            </span>
+
+          </ng-container>
+
+          <!-- NORMAL -->
+
+          <ng-template #normalData>
+
+            {{ row[column.key] }}
+
+          </ng-template>
+
+        </td>
+
+      </tr>
+
+    </tbody>
+
+  </table>
+
+</div>

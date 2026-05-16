@@ -1,0 +1,193 @@
+.sidebar {
+  width: 265px;
+  height: 100vh;
+
+  background:
+    linear-gradient(
+      180deg,
+      #003b70 0%,
+      #002a50 100%
+    );
+
+  color: white;
+
+  position: fixed;
+  left: 0;
+  top: 0;
+
+  padding: 18px 16px;
+
+  overflow-y: auto;
+
+  transition: 0.3s;
+
+  border-right:
+    1px solid rgba(255,255,255,0.05);
+}
+
+/* LOGO */
+
+.logo {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+
+  padding-bottom: 22px;
+
+  border-bottom:
+    1px solid rgba(255,255,255,0.08);
+
+  margin-bottom: 22px;
+}
+
+.logo-box {
+  width: 52px;
+  height: 52px;
+
+  border-radius: 14px;
+
+  background: white;
+
+  color: #003b70;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  font-size: 20px;
+  font-weight: 700;
+
+  flex-shrink: 0;
+}
+
+.logo-content h4 {
+  margin: 0;
+
+  font-size: 17px;
+  font-weight: 700;
+}
+
+.logo-content p {
+  margin: 0;
+
+  font-size: 12px;
+
+  opacity: 0.7;
+}
+
+/* SECTION */
+
+.menu-section {
+  margin-bottom: 24px;
+}
+
+.menu-title {
+  font-size: 11px;
+  font-weight: 700;
+
+  letter-spacing: 1px;
+
+  opacity: 0.55;
+
+  margin-bottom: 12px;
+
+  padding-left: 12px;
+}
+
+/* MENU */
+
+ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+li {
+  height: 46px;
+
+  display: flex;
+  align-items: center;
+  gap: 14px;
+
+  padding: 0 14px;
+
+  border-radius: 14px;
+
+  cursor: pointer;
+
+  transition: 0.3s;
+
+  margin-bottom: 6px;
+
+  font-size: 14px;
+  font-weight: 500;
+}
+
+li:hover {
+  background:
+    rgba(255,255,255,0.06);
+}
+
+li.active {
+  background:
+    linear-gradient(
+      90deg,
+      #2563eb,
+      #1d4ed8
+    );
+
+  box-shadow:
+    0 10px 20px rgba(37,99,235,0.25);
+}
+
+li i {
+  font-size: 16px;
+}
+
+/* FOOTER */
+
+.sidebar-footer {
+  position: absolute;
+  bottom: 20px;
+
+  left: 16px;
+  right: 16px;
+
+  height: 46px;
+
+  border-radius: 14px;
+
+  display: flex;
+  align-items: center;
+  gap: 12px;
+
+  padding: 0 14px;
+
+  background:
+    rgba(255,255,255,0.05);
+
+  font-size: 14px;
+
+  cursor: pointer;
+}
+
+/* COLLAPSED */
+
+.sidebar.collapsed {
+  width: 90px;
+}
+
+.sidebar.collapsed span,
+.sidebar.collapsed .menu-title,
+.sidebar.collapsed h4,
+.sidebar.collapsed p {
+  display: none;
+}
+
+.sidebar.collapsed .logo {
+  justify-content: center;
+}
+
+.sidebar.collapsed .sidebar-footer {
+  justify-content: center;
+}

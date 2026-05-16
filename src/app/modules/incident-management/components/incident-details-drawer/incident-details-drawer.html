@@ -1,0 +1,445 @@
+<div class="drawer-overlay">
+
+    <div class="drawer-container">
+
+        <!-- HEADER -->
+
+        <div class="drawer-header">
+
+            <div>
+
+                <h3>
+
+                    {{
+                    incidentService
+                    .selectedIncident()
+                    ?.ticketId
+                    }}
+
+                </h3>
+
+                <p>
+                    Incident Details
+                </p>
+
+            </div>
+
+            <button class="close-btn" (click)="closeDrawer()">
+
+                <i class="bi bi-x-lg"></i>
+
+            </button>
+
+        </div>
+
+        <!-- BODY -->
+
+        @if(
+        incidentService.selectedIncident();
+        as incident
+        ) {
+
+        <div class="drawer-body">
+
+            <!-- INFO -->
+
+            <div class="info-card">
+
+                <h4>
+                    {{ incident.title }}
+                </h4>
+
+                <p>
+                    {{ incident.description }}
+                </p>
+
+            </div>
+
+            <!-- META -->
+
+            <div class="meta-grid">
+
+                <div class="meta-item">
+
+                    <label>
+                        Category
+                    </label>
+
+                    <span>
+                        {{ incident.category }}
+                    </span>
+
+                </div>
+                <div class="meta-item">
+
+                    <label>
+                        SLA
+                    </label>
+
+                    <div class="sla-badge" [class.warning]="
+      incident.slaStatus === 'warning'
+    " [class.breached]="
+      incident.slaStatus === 'breached'
+    ">
+
+                        <i class="bi bi-clock"></i>
+
+                        {{ incident.slaHours }} Hours
+
+                    </div>
+
+                </div>
+                <div class="meta-item">
+
+                    <label>
+                        Assigned To
+                    </label>
+
+                    <span>
+                        {{ incident.assignedTo }}
+                    </span>
+
+                </div>
+
+                <div class="meta-item">
+
+                    <label>
+                        Priority
+                    </label>
+
+                    <app-incident-priority-badge [priority]="
+                incident.priority
+              " />
+
+                </div>
+
+                <div class="meta-item">
+
+                    <label>
+                        Status
+                    </label>
+
+                    <app-incident-status-badge [status]="
+                incident.status
+              " />
+
+                </div>
+
+            </div>
+
+            <!-- TIMELINE -->
+
+            <div class="timeline-card">
+
+                <h4>
+                    Activity Timeline
+                </h4>
+
+                <div class="timeline-item">
+
+                    <div class="dot"></div>
+
+                    <div>
+
+                        <h5>
+                            Incident Created
+                        </h5>
+
+                        <p>
+                            Ticket created by Admin
+                        </p>
+
+                    </div>
+
+                </div>
+
+                <div class="timeline-item">
+
+                    <div class="dot blue"></div>
+
+                    <div>
+
+                        <h5>
+                            Assigned
+                        </h5>
+
+                        <p>
+                            Assigned to IT Team
+                        </p>
+
+                    </div>
+
+                </div>
+
+                <div class="timeline-item">
+
+                    <div class="dot green"></div>
+
+                    <div>
+
+                        <h5>
+                            Status Updated
+                        </h5>
+
+                        <p>
+                            Incident moved to progress
+                        </p>
+
+                    </div>
+
+                </div>
+
+            </div>
+            <!-- ACTIVITY -->
+
+            <div class="activity-card">
+
+                <h4>
+                    Audit Logs
+                </h4>
+
+                <div class="activity-list">
+
+                    @for(
+                    activity of
+                    incident.activities || [];
+
+                    track $index
+                    ) {
+
+                    <div class="activity-item">
+
+                        <div class="activity-dot"></div>
+
+                        <div>
+
+                            <h5>
+
+                                {{ activity.user }}
+
+                            </h5>
+
+                            <p>
+
+                                {{ activity.action }}
+
+                            </p>
+
+                            <span>
+
+                                {{ activity.createdAt }}
+
+                            </span>
+
+                        </div>
+
+                    </div>
+
+                    }
+
+                </div>
+
+            </div>
+            <!-- COMMENTS -->
+
+            <div class="comments-card">
+
+                <div class="comments-header">
+
+                    <h4>
+                        Comments & Notes
+                    </h4>
+
+                </div>
+
+                <!-- LIST -->
+
+                <div class="comments-list">
+
+                    @for(
+                    comment of
+                    incident.comments || [];
+
+                    track $index
+                    ) {
+
+                    <div class="comment-item">
+
+                        <!-- AVATAR -->
+
+                        <div class="avatar">
+
+                            {{
+                            comment.user.charAt(0)
+                            }}
+
+                        </div>
+
+                        <!-- CONTENT -->
+
+                        <div class="comment-content">
+
+                            <div class="comment-top">
+
+                                <h5>
+                                    {{ comment.user }}
+                                </h5>
+
+                                <span>
+
+                                    {{ comment.createdAt }}
+
+                                </span>
+
+                            </div>
+
+                            <div class="comment-badge" [class.note]="
+              comment.type === 'note'
+            ">
+
+                                {{
+                                comment.type
+                                }}
+
+                            </div>
+
+                            <p>
+                                {{ comment.message }}
+                            </p>
+
+                        </div>
+
+                    </div>
+
+                    }
+
+                </div>
+
+                <!-- INPUT -->
+
+                <div class="comment-box">
+
+                    <textarea rows="3" placeholder="Add comment..." [value]="
+        incidentService.commentText()
+      " (input)="
+        incidentService.commentText.set(
+          $any($event.target).value
+        )
+      "></textarea>
+
+                    <div class="comment-actions">
+
+                        <button class="note-btn" (click)="
+          incidentService
+            .addComment('note')
+        ">
+
+                            Add Note
+
+                        </button>
+
+                        <button class="comment-btn" (click)="
+          incidentService
+            .addComment('comment')
+        ">
+
+                            Add Comment
+
+                        </button>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+            <!-- ATTACHMENTS -->
+
+            <div class="attachments-card">
+
+                <div class="attachments-header">
+
+                    <h4>
+                        Attachments
+                    </h4>
+
+                    <label class="upload-btn">
+
+                        <i class="bi bi-upload"></i>
+
+                        Upload
+
+                        <input type="file" hidden (change)="
+          incidentService
+            .uploadAttachment($event)
+        " />
+
+                    </label>
+
+                </div>
+
+                <!-- LIST -->
+
+                <div class="attachment-list">
+
+                    @for(
+                    attachment of
+                    incident.attachments || [];
+
+                    track $index
+                    ) {
+
+                    <div class="attachment-item">
+
+                        <!-- LEFT -->
+
+                        <div class="attachment-left">
+
+                            <div class="file-icon">
+
+                                <i class="bi bi-file-earmark"></i>
+
+                            </div>
+
+                            <div>
+
+                                <h5>
+                                    {{ attachment.name }}
+                                </h5>
+
+                                <p>
+
+                                    {{ attachment.size }}
+
+                                </p>
+
+                            </div>
+
+                        </div>
+
+                        <!-- REMOVE -->
+
+                        <button class="remove-btn" (click)="
+            incidentService
+              .removeAttachment($index)
+          ">
+
+                            <i class="bi bi-trash"></i>
+
+                        </button>
+
+                    </div>
+
+                    }
+
+                </div>
+
+            </div>
+
+        </div>
+
+        }
+
+    </div>
+
+</div>

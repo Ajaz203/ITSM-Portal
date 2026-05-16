@@ -1,0 +1,58 @@
+<div
+  class="sidebar"
+  [class.collapsed]="layoutService.sidebarCollapsed()"
+>
+
+  <!-- LOGO -->
+
+  <div class="logo">
+
+    <div class="logo-box">
+      IT
+    </div>
+
+    <div class="logo-content">
+      <h4>ITSM Portal</h4>
+      <p>Enterprise Suite</p>
+    </div>
+
+  </div>
+
+  <!-- MENU -->
+
+  <div
+    class="menu-section"
+    *ngFor="let section of menus()"
+  >
+
+    <h5 class="menu-title">
+
+      {{ section.section }}
+
+    </h5>
+
+    <ul>
+
+      <li
+        *ngFor="let menu of section.menus"
+        routerLinkActive="active"
+        [routerLink]="menu.route"
+      >
+
+        <i [class]="menu.icon"></i>
+
+        <span>
+
+          {{ menu.title }}
+
+        </span>
+
+      </li>
+
+    </ul>
+
+  </div>
+
+
+
+</div>
