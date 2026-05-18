@@ -1,0 +1,48 @@
+<div class="modal-overlay">
+
+  <div class="delete-card">
+
+    <div class="icon-box">
+
+      <i class="bi bi-trash3"></i>
+
+    </div>
+
+    <h3>
+      Delete Asset
+    </h3>
+
+    <p>
+
+      Are you sure you want
+      to delete this asset?
+
+    </p>
+
+    <div class="actions">
+
+      <button
+        class="cancel-btn"
+
+        (click)="closeModal()"
+      >
+
+        Cancel
+
+      </button>
+
+      <button
+        class="delete-btn"
+
+        (click)="deleteAsset()"
+      >
+
+        Delete
+
+      </button>
+
+    </div>
+
+  </div>
+
+</div>

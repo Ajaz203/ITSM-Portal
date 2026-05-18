@@ -110,20 +110,14 @@
                         Status
                     </label>
 
-                    <select
-  formControlName="status"
->
+                    <select formControlName="status">
 
-  @for(
-    status of statuses;
-    track status
-  ) {
+                        @for(
+                        status of statuses;
+                        track status
+                        ) {
 
-    <option
-
-      [value]="status"
-
-      [disabled]="
+                        <option [value]="status" [disabled]="
 
         !incidentService
           .canChangeStatus(
@@ -141,16 +135,15 @@
         incidentService
           .editingIncident()
           ?.status !== status
-      "
-    >
+      ">
 
-      {{ status }}
+                            {{ status }}
 
-    </option>
+                        </option>
 
-  }
+                        }
 
-</select>
+                    </select>
 
                 </div>
                 <!-- ASSIGNED -->
@@ -161,8 +154,22 @@
                         Assigned To
                     </label>
 
-                    <input type="text" formControlName="assignedTo" placeholder="Assign user" />
+                    <select formControlName="assignedTo">
 
+                        @for(
+                        agent of agents;
+                        track agent
+                        ) {
+
+                        <option [value]="agent">
+
+                            {{ agent }}
+
+                        </option>
+
+                        }
+
+                    </select>
                 </div>
 
                 <!-- DESCRIPTION -->

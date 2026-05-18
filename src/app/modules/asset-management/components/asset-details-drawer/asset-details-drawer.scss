@@ -1,0 +1,105 @@
+.drawer-overlay {
+
+  position: fixed;
+
+  inset: 0;
+
+  background:
+    rgba(15,23,42,0.45);
+
+  display: flex;
+
+  justify-content: flex-end;
+
+  z-index: 2000;
+
+}
+
+.drawer {
+
+  width: 520px;
+
+  height: 100vh;
+
+  background: white;
+
+  padding: 24px;
+
+  overflow-y: auto;
+
+}
+
+.drawer-header {
+
+  display: flex;
+
+  justify-content: space-between;
+
+  align-items: center;
+
+  margin-bottom: 24px;
+
+}
+
+.close-btn {
+
+  width: 42px;
+
+  height: 42px;
+
+  border: none;
+
+  border-radius: 12px;
+
+  background: #f1f5f9;
+
+}
+
+.detail-card {
+
+  background: #f8fafc;
+
+  border-radius: 20px;
+
+  padding: 20px;
+
+  margin-bottom: 24px;
+
+}
+
+.detail-grid {
+
+  display: grid;
+
+  grid-template-columns:
+    repeat(2,1fr);
+
+  gap: 18px;
+
+}
+
+.info-card {
+
+  background: #fff;
+
+  border: 1px solid #e2e8f0;
+
+  border-radius: 18px;
+
+  padding: 18px;
+
+}
+
+.info-card span {
+
+  font-size: 13px;
+
+  color: #64748b;
+
+}
+
+.info-card h4 {
+
+  margin-top: 8px;
+
+}

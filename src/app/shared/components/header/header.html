@@ -36,17 +36,147 @@
 
     </div>
 
-    <!-- NOTIFICATION -->
+<!-- NOTIFICATIONS -->
 
-    <div class="notification">
+<div class="notification-wrapper">
 
-      <i class="bi bi-bell"></i>
+  <!-- BELL -->
 
-      <span>
-        {{ notifications }}
+  <button
+
+    class="notification-btn"
+
+    (click)="
+      notification
+        .toggleNotifications()
+    "
+  >
+
+    <i class="bi bi-bell"></i>
+
+    @if(
+      notification
+        .unreadCount() > 0
+    ) {
+
+      <span class="notification-count">
+
+        {{
+          notification
+            .unreadCount()
+        }}
+
       </span>
 
+    }
+
+  </button>
+
+  <!-- DROPDOWN -->
+
+  @if(
+    notification
+      .showNotifications()
+  ) {
+
+    <div class="notification-dropdown">
+
+      <!-- HEADER -->
+
+      <div class="dropdown-header">
+
+        <h4>
+          Notifications
+        </h4>
+
+      </div>
+
+      <!-- LIST -->
+
+      <div class="notification-list">
+
+        @for(
+
+          item of
+
+          notification
+            .notifications();
+
+          track item.id
+
+        ) {
+
+          <div
+
+            class="notification-item"
+
+            [class.unread]="
+              !item.read
+            "
+
+            (click)="
+              notification
+                .markAsRead(item.id)
+            "
+          >
+
+            <!-- ICON -->
+
+            <div
+              class="notification-icon"
+
+              [class.warning]="
+                item.type === 'warning'
+              "
+
+              [class.success]="
+                item.type === 'success'
+              "
+
+              [class.danger]="
+                item.type === 'danger'
+              "
+            >
+
+              <i class="bi bi-bell"></i>
+
+            </div>
+
+            <!-- CONTENT -->
+
+            <div class="notification-content">
+
+              <h5>
+
+                {{ item.title }}
+
+              </h5>
+
+              <p>
+
+                {{ item.message }}
+
+              </p>
+
+              <span>
+
+                {{ item.createdAt }}
+
+              </span>
+
+            </div>
+
+          </div>
+
+        }
+
+      </div>
+
     </div>
+
+  }
+
+</div>
 
     <!-- PROFILE -->
 

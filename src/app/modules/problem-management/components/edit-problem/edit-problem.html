@@ -1,0 +1,184 @@
+<div class="modal-overlay">
+
+  <div class="modal-container">
+
+    <!-- HEADER -->
+
+    <div class="modal-header">
+
+      <div>
+
+        <h3>
+          Edit Problem
+        </h3>
+
+        <p>
+          Update problem workflow
+        </p>
+
+      </div>
+
+      <button
+        class="close-btn"
+        (click)="closeModal()"
+      >
+
+        <i class="bi bi-x-lg"></i>
+
+      </button>
+
+    </div>
+
+    <!-- FORM -->
+
+    <form
+      [formGroup]="form"
+    >
+
+      <div class="form-grid">
+
+        <div class="form-group full-width">
+
+          <label>
+            Problem Title
+          </label>
+
+          <input
+            type="text"
+            formControlName="title"
+          />
+
+        </div>
+
+        <div class="form-group">
+
+          <label>
+            Priority
+          </label>
+
+          <select
+            formControlName="priority"
+          >
+
+            <option>
+              Low
+            </option>
+
+            <option>
+              Medium
+            </option>
+
+            <option>
+              High
+            </option>
+
+            <option>
+              Critical
+            </option>
+
+          </select>
+
+        </div>
+
+        <div class="form-group">
+
+          <label>
+            Status
+          </label>
+
+          <select
+            formControlName="status"
+          >
+
+            <option>
+              Open
+            </option>
+
+            <option>
+              Root Cause Analysis
+            </option>
+
+            <option>
+              Known Error
+            </option>
+
+            <option>
+              Resolved
+            </option>
+
+          </select>
+
+        </div>
+
+        <div class="form-group full-width">
+
+          <label>
+            Root Cause
+          </label>
+
+          <textarea
+            rows="2"
+            formControlName="rootCause"
+          ></textarea>
+
+        </div>
+
+        <div class="form-group full-width">
+
+          <label>
+            Workaround
+          </label>
+
+          <textarea
+            rows="2"
+            formControlName="workaround"
+          ></textarea>
+
+        </div>
+
+        <div class="form-group full-width">
+
+          <label>
+            Permanent Fix
+          </label>
+
+          <textarea
+            rows="2"
+            formControlName="permanentFix"
+          ></textarea>
+
+        </div>
+
+      </div>
+
+      <!-- FOOTER -->
+
+      <div class="modal-footer">
+
+        <button
+          type="button"
+          class="cancel-btn"
+          (click)="closeModal()"
+        >
+
+          Cancel
+
+        </button>
+
+        <button
+          type="button"
+          class="submit-btn"
+          (click)="updateProblem()"
+        >
+
+          Update Problem
+
+        </button>
+
+      </div>
+
+    </form>
+
+  </div>
+
+</div>

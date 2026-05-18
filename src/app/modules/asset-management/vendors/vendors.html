@@ -1,0 +1,156 @@
+<div class="page-container">
+
+  <div class="vendors-page">
+
+    <!-- HEADER -->
+
+    <div class="page-header">
+
+      <div>
+
+        <h2>
+          Vendor Management
+        </h2>
+
+        <p>
+          Manage enterprise vendors
+        </p>
+
+      </div>
+
+      <button class="create-btn">
+
+        <i class="bi bi-plus-lg"></i>
+
+        Add Vendor
+
+      </button>
+
+    </div>
+
+    <!-- SEARCH -->
+
+    <div class="search-box">
+
+      <i class="bi bi-search"></i>
+
+      <input
+
+        type="text"
+
+        placeholder="Search vendors..."
+
+        [ngModel]="
+          vendorService.search()
+        "
+
+        (ngModelChange)="
+          vendorService
+            .search
+            .set($event)
+        "
+      >
+
+    </div>
+
+    <!-- TABLE -->
+
+    <div class="table-card">
+
+      <table class="table">
+
+        <thead>
+
+          <tr>
+
+            <th>Name</th>
+
+            <th>Company</th>
+
+            <th>Contact Person</th>
+
+            <th>Email</th>
+
+            <th>Phone</th>
+
+            <th>Status</th>
+
+          </tr>
+
+        </thead>
+
+        <tbody>
+
+          @for(
+
+            vendor of
+            vendorService
+              .filteredVendors();
+
+            track vendor.id
+
+          ) {
+
+            <tr>
+
+              <td>
+
+                {{ vendor.name }}
+
+              </td>
+
+              <td>
+
+                {{ vendor.company }}
+
+              </td>
+
+              <td>
+
+                {{ vendor.contactPerson }}
+
+              </td>
+
+              <td>
+
+                {{ vendor.email }}
+
+              </td>
+
+              <td>
+
+                {{ vendor.phone }}
+
+              </td>
+
+              <td>
+
+                <span
+
+                  class="status-badge"
+
+                  [class.active]="
+                    vendor.status
+                    === 'Active'
+                  "
+                >
+
+                  {{ vendor.status }}
+
+                </span>
+
+              </td>
+
+            </tr>
+
+          }
+
+        </tbody>
+
+      </table>
+
+    </div>
+
+  </div>
+
+</div>

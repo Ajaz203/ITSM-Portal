@@ -5,7 +5,7 @@ import {
 } from '@angular/core';
 
 import { CommonModule }
-from '@angular/common';
+  from '@angular/common';
 
 import {
   FormBuilder,
@@ -14,16 +14,21 @@ import {
 } from '@angular/forms';
 
 import { IncidentService }
-from '../../services/incident.service';
+  from '../../services/incident.service';
 
 import { INCIDENT_PRIORITY }
-from '../../constants/incident-priority';
+  from '../../constants/incident-priority';
 
 import { ToastService }
-from '../../../../core/services/toast';
+  from '../../../../core/services/toast';
 import {
   INCIDENT_STATUS
 } from '../../constants/incident-status';
+import {
+  INCIDENT_AGENTS
+} from '../../constants/incident-agents';
+
+import { Notification } from '../../../../core/services/notification';
 @Component({
   selector: 'app-edit-incident',
 
@@ -41,8 +46,8 @@ import {
     './edit-incident.scss',
 })
 export class EditIncident {
-statuses =
-  INCIDENT_STATUS;
+  statuses =
+    INCIDENT_STATUS;
   fb = inject(FormBuilder);
 
   incidentService =
@@ -50,6 +55,11 @@ statuses =
 
   toast =
     inject(ToastService);
+  agents =
+    INCIDENT_AGENTS;
+
+  notification =
+    inject(Notification);
 
   priorities =
     INCIDENT_PRIORITY;
@@ -154,6 +164,12 @@ statuses =
 
     if (!incident) return;
 
+    const previousAssignee =
+      incident.assignedTo;
+
+    const newAssignee =
+      this.form.value
+        .assignedTo || '';
     // UPDATE DATA
 
     const updated =
@@ -200,14 +216,63 @@ statuses =
     this.incidentService
       .incidents
       .set(updated);
-this.incidentService
-  .addActivity(
 
-    incident.id,
+      if (
+  previousAssignee !==
+  newAssignee
+) {
 
-    'Incident updated'
+  // ACTIVITY
+
+  this.incidentService
+    .addActivity(
+
+      incident.id,
+
+      `Incident reassigned to ${newAssignee}`
+
+    );
+
+  // NOTIFICATION
+
+  this.notification
+    .addNotification({
+
+      id: Date.now(),
+
+      title:
+        'Incident Assigned',
+
+      message:
+        `${incident.ticketId} assigned to ${newAssignee}`,
+
+      type: 'info',
+
+      createdAt:
+        'Just now',
+
+      read: false
+
+    });
+
+  // TOAST
+
+  this.toast.success(
+
+    `Assigned to ${newAssignee}`
 
   );
+
+}
+
+    this.incidentService
+      .addActivity(
+
+        incident.id,
+
+        'Incident updated'
+
+      );
     // SUCCESS TOAST
 
     this.toast.success(

@@ -1,0 +1,157 @@
+@if(
+  assetService.selectedAsset();
+  as asset
+) {
+
+<div class="drawer-overlay">
+
+  <div class="drawer">
+
+    <!-- HEADER -->
+
+    <div class="drawer-header">
+
+      <div>
+
+        <h2>
+
+          {{ asset.assetId }}
+
+        </h2>
+
+        <p>
+          Asset Details
+        </p>
+
+      </div>
+
+      <button
+        class="close-btn"
+
+        (click)="
+          assetService
+            .closeDrawer()
+        "
+      >
+
+        <i class="bi bi-x-lg"></i>
+
+      </button>
+
+    </div>
+
+    <!-- BODY -->
+
+    <div class="drawer-body">
+
+      <div class="detail-card">
+
+        <h3>
+
+          {{ asset.name }}
+
+        </h3>
+
+        <p>
+
+          {{ asset.category }}
+
+        </p>
+
+      </div>
+
+      <div class="detail-grid">
+
+        <div class="info-card">
+
+          <span>
+            Vendor
+          </span>
+
+          <h4>
+
+            {{ asset.vendor }}
+
+          </h4>
+
+        </div>
+
+        <div class="info-card">
+
+          <span>
+            Assigned To
+          </span>
+
+          <h4>
+
+            {{ asset.assignedTo }}
+
+          </h4>
+
+        </div>
+
+        <div class="info-card">
+
+          <span>
+            Status
+          </span>
+
+          <h4>
+
+            {{ asset.status }}
+
+          </h4>
+
+        </div>
+
+        <div class="info-card">
+
+          <span>
+            Location
+          </span>
+
+          <h4>
+
+            {{ asset.location }}
+
+          </h4>
+
+        </div>
+
+        <div class="info-card">
+
+          <span>
+            Purchase Date
+          </span>
+
+          <h4>
+
+            {{ asset.purchaseDate }}
+
+          </h4>
+
+        </div>
+
+        <div class="info-card">
+
+          <span>
+            Warranty Expiry
+          </span>
+
+          <h4>
+
+            {{ asset.warrantyExpiry }}
+
+          </h4>
+
+        </div>
+
+      </div>
+
+    </div>
+
+  </div>
+
+</div>
+
+}

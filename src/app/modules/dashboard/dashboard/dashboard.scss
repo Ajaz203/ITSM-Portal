@@ -482,7 +482,7 @@ table {
   gap: 18px;
 }
 .right-widgets .chart-card:first-child {
-  height: 270px;
+  height: 300px;
 }
 
 .right-widgets .chart-card:last-child {
@@ -549,24 +549,6 @@ table {
 .resolved {
   background: #d1fae5;
   color: #059669;
-}
-
-/* PRIORITY CHART */
-
-.priority-chart {
-  width: 150px;
-  height: 150px;
-
-  margin: 10px auto 0;
-  border-radius: 50%;
-
-  background:
-    conic-gradient(
-      #ef4444 0% 18%,
-      #f97316 18% 40%,
-      #2563eb 40% 80%,
-      #10b981 80% 100%
-    );
 }
 
 .quick-actions {

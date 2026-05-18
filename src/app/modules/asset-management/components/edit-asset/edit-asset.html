@@ -1,0 +1,128 @@
+<div class="modal-overlay">
+
+  <div class="modal-card">
+
+    <div class="modal-header">
+
+      <div>
+
+        <h3>
+          Edit Asset
+        </h3>
+
+        <p>
+          Update asset details
+        </p>
+
+      </div>
+
+      <button
+        class="close-btn"
+
+        (click)="closeModal()"
+      >
+
+        <i class="bi bi-x-lg"></i>
+
+      </button>
+
+    </div>
+
+    <form
+      [formGroup]="form"
+      (ngSubmit)="updateAsset()"
+    >
+
+      <div class="grid">
+
+        <input
+          type="text"
+          placeholder="Asset Name"
+          formControlName="name"
+        >
+
+        <select
+          formControlName="category"
+        >
+
+          @for(
+            item of categories;
+            track item
+          ) {
+
+            <option
+              [value]="item"
+            >
+              {{ item }}
+            </option>
+
+          }
+
+        </select>
+
+        <input
+          type="text"
+          placeholder="Vendor"
+          formControlName="vendor"
+        >
+
+        <input
+          type="text"
+          placeholder="Assigned To"
+          formControlName="assignedTo"
+        >
+
+        <select
+          formControlName="status"
+        >
+
+          @for(
+            item of statuses;
+            track item
+          ) {
+
+            <option
+              [value]="item"
+            >
+              {{ item }}
+            </option>
+
+          }
+
+        </select>
+
+        <input
+          type="date"
+          formControlName="purchaseDate"
+        >
+
+        <input
+          type="date"
+          formControlName="warrantyExpiry"
+        >
+
+        <input
+          type="text"
+          placeholder="Location"
+          formControlName="location"
+        >
+
+      </div>
+
+      <div class="form-actions">
+
+  <button
+    class="submit-btn"
+    type="submit"
+  >
+
+    Update Asset
+
+  </button>
+
+</div>
+    </form>
+
+  </div>
+
+</div>

@@ -1,6 +1,12 @@
 <div class="layout">
 
-  <app-sidebar></app-sidebar>
+ <app-sidebar
+  [class.collapsed]="
+    layoutService
+      .sidebarCollapsed()
+  "
+>
+</app-sidebar>
 
   <div
     class="main-content"

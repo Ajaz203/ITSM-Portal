@@ -1,7 +1,8 @@
 import { CommonModule } from '@angular/common';
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { Layout } from '../../../core/services/layout';
 import {Auth} from "../../../core/services/auth";
+import { Notification } from '../../../core/services/notification';
 @Component({
   selector: 'app-header',
   standalone: true,
@@ -20,4 +21,6 @@ export class Header {
   this.authService.logout();
 
 }
+  notification =
+  inject(Notification);
 }

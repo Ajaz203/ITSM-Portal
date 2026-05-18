@@ -1,0 +1,234 @@
+<div class="page-container">
+
+    <div class="problem-page">
+
+        <!-- HEADER -->
+
+        <div class="page-header">
+
+            <div>
+
+                <h2>
+                    Problem Management
+                </h2>
+
+                <p>
+                    Manage recurring issues
+                    and root causes
+                </p>
+
+            </div>
+
+            <button class="create-btn" (click)="
+    problemService
+      .showCreateModal
+      .set(true)
+  ">
+
+                <i class="bi bi-plus-lg"></i>
+
+                Create Problem
+
+            </button>
+
+        </div>
+
+        <!-- SEARCH -->
+
+        <div class="search-box">
+
+            <i class="bi bi-search"></i>
+
+            <input type="text" placeholder="Search problems..." [ngModel]="
+          problemService.search()
+        " (ngModelChange)="
+          problemService
+            .search
+            .set($event)
+        ">
+
+        </div>
+
+        <!-- TABLE -->
+
+        <div class="table-card">
+
+            <table class="table">
+
+                <thead>
+
+                    <tr>
+
+                        <th>
+                            Problem ID
+                        </th>
+
+                        <th>
+                            Title
+                        </th>
+
+                        <th>
+                            Priority
+                        </th>
+
+                        <th>
+                            Status
+                        </th>
+
+                        <th>
+                            Assigned To
+                        </th>
+
+                        <th>
+                            Linked Incidents
+                        </th>
+
+                        <th>
+                            Actions
+                        </th>
+
+                    </tr>
+
+                </thead>
+
+                <tbody>
+
+                    @for(
+
+                    item of
+                    problemService
+                    .filteredProblems();
+
+                    track item.id
+
+                    ) {
+
+                    <tr (click)="
+        problemService
+          .openProblemDetails(item)
+      ">
+
+                        <td>
+                            {{ item.problemId }}
+                        </td>
+
+                        <td>
+                            {{ item.title }}
+                        </td>
+
+                        <td>
+                            {{ item.priority }}
+                        </td>
+
+                        <td>
+
+                            <span class="status-badge" [class.status-open]="
+            item.status === 'Open'
+          " [class.status-rca]="
+            item.status === 'Root Cause Analysis'
+          " [class.status-known]="
+            item.status === 'Known Error'
+          " [class.status-resolved]="
+            item.status === 'Resolved'
+          ">
+
+                                {{ item.status }}
+
+                            </span>
+
+                        </td>
+
+                        <td>
+                            {{ item.assignedTo }}
+                        </td>
+
+                        <td>
+
+                            {{
+                            item
+                            .linkedIncidents
+                            ?.join(', ')
+                            }}
+
+                        </td>
+
+                       <td class="action-cell">
+
+    <button
+
+      class="edit-btn"
+
+      (click)="
+        $event.stopPropagation();
+
+        problemService
+          .openEditModal(item)
+      "
+    >
+
+      <i class="bi bi-pencil-square"></i>
+
+    </button>
+
+    <button
+
+      class="delete-btn"
+
+      (click)="
+        $event.stopPropagation();
+
+        problemService
+          .openDeleteModal(item)
+      "
+    >
+
+      <i class="bi bi-trash"></i>
+
+    </button>
+
+</td>
+
+                    </tr>
+
+                    }
+
+                </tbody>
+
+            </table>
+
+        </div>
+
+    </div>
+    @if(
+    problemService
+    .showCreateModal()
+    ) {
+
+    <app-create-problem />
+
+    }
+    @if(
+  problemService
+    .showDetailsDrawer()
+) {
+
+  <app-problem-details-drawer />
+
+}
+@if(
+  problemService
+    .showEditModal()
+) {
+
+  <app-edit-problem />
+
+}
+@if(
+  problemService
+    .showDeleteModal()
+) {
+
+  <app-delete-problem-modal />
+
+}
+</div>

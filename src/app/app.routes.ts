@@ -51,8 +51,39 @@ export const routes: Routes = [
             .then((m) => m.IncidentList)
       },
 
-      // REPORTS
+      {
+        path: 'assets-management',
 
+        loadComponent: () =>
+          import(
+            './modules/asset-management/asset-list/asset-list'
+          ).then(m => m.AssetList)
+      },
+      {
+        path: 'assets/add',
+
+        loadComponent: () =>
+          import(
+            './modules/asset-management/add-asset/add-asset'
+          ).then(m => m.AddAsset)
+      },
+      {
+        path: 'vendors',
+
+        loadComponent: () =>
+          import(
+            './modules/asset-management/vendors/vendors'
+          ).then(m => m.Vendors)
+      },
+      {
+        path: 'problem-management',
+
+        loadComponent: () =>
+
+          import(
+            './modules/problem-management/problem-list/problem-list'
+          ).then(m => m.ProblemList)
+      },
       {
         path: 'reports',
         loadComponent: () =>

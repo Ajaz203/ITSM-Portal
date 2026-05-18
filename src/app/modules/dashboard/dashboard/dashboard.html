@@ -38,7 +38,14 @@
       </div>
 
       <div>
-        <h3>124</h3>
+        <h3>
+
+          {{
+          analytics
+          .totalIncidents()
+          }}
+
+        </h3>
         <p>Total Tickets</p>
         <span class="growth positive">
           ↑ 12% from last month
@@ -54,7 +61,14 @@
       </div>
 
       <div>
-        <h3>18</h3>
+        <h3>
+
+          {{
+          analytics
+          .openIncidents()
+          }}
+
+        </h3>
         <p>Open Incidents</p>
         <span class="growth positive">
           ↑ 8% from last month
@@ -70,7 +84,14 @@
       </div>
 
       <div>
-        <h3>96</h3>
+        <h3>
+
+          {{
+          analytics
+          .resolvedIncidents()
+          }}
+
+        </h3>
         <p>Resolved</p>
         <span class="growth positive">
           ↑ 15% from last month
@@ -86,7 +107,14 @@
       </div>
 
       <div>
-        <h3>10</h3>
+        <h3>
+
+          {{
+          analytics
+          .slaBreaches()
+          }}
+
+        </h3>
         <p>SLA Breached</p>
         <span class="growth negative">
           ↓ 5% from last month
@@ -113,44 +141,14 @@
         </button>
       </div>
 
-      <div class="donut-wrapper">
-
-        <div class="fake-donut">
-          <div class="center-text">
-            <h2>124</h2>
-            <p>Total</p>
-          </div>
-        </div>
-
-        <div class="legend-list">
-
-          <div class="legend-item">
-            <span class="dot red-dot"></span>
-            Open
-            <strong>18 (14.5%)</strong>
-          </div>
-
-          <div class="legend-item">
-            <span class="dot blue-dot"></span>
-            In Progress
-            <strong>42 (33.9%)</strong>
-          </div>
-
-          <div class="legend-item">
-            <span class="dot green-dot"></span>
-            Resolved
-            <strong>96 (77.4%)</strong>
-          </div>
-
-          <div class="legend-item">
-            <span class="dot yellow-dot"></span>
-            Closed
-            <strong>28 (22.6%)</strong>
-          </div>
-
-        </div>
-
-      </div>
+      <apx-chart [series]="
+    priorityChart.series
+  " [chart]="
+    priorityChart.chart
+  " [labels]="
+    priorityChart.labels
+  ">
+      </apx-chart>
 
     </div>
 
@@ -166,21 +164,14 @@
         </button>
       </div>
 
-      <div class="line-chart">
-
-        <div class="line"></div>
-
-        <div class="chart-points">
-
-          <div class="point p1">12</div>
-          <div class="point p2">19</div>
-          <div class="point p3">28</div>
-          <div class="point p4">24</div>
-          <div class="point p5">41</div>
-
-        </div>
-
-      </div>
+      <apx-chart [series]="
+    statusChart.series
+  " [chart]="
+    statusChart.chart
+  " [xaxis]="
+    statusChart.xaxis
+  ">
+      </apx-chart>
 
     </div>
 
@@ -317,13 +308,31 @@
 
       <div class="chart-card">
 
-        <div class="card-header">
-          <h4>Tickets by Priority</h4>
-        </div>
+  <div class="card-header">
 
-        <div class="priority-chart"></div>
+    <h4>
+      Assets by Category
+    </h4>
 
-      </div>
+  </div>
+
+  <apx-chart
+
+    [series]="
+      assetChart.series
+    "
+
+    [chart]="
+      assetChart.chart
+    "
+
+    [labels]="
+      assetChart.labels
+    "
+
+  ></apx-chart>
+
+</div>
 
       <div class="chart-card">
 

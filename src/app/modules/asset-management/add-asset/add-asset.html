@@ -1,0 +1,196 @@
+<div class="asset-form-page">
+
+  <div class="page-header">
+
+    <div>
+
+      <h2>
+        Add Asset
+      </h2>
+
+      <p>
+        Create enterprise IT asset
+      </p>
+
+    </div>
+
+  </div>
+
+  <form
+    [formGroup]="form"
+    (ngSubmit)="submit()"
+    class="asset-form"
+  >
+
+    <div class="grid">
+
+      <!-- NAME -->
+
+      <div class="form-group">
+
+        <label>
+          Asset Name
+        </label>
+
+        <input
+          type="text"
+          formControlName="name"
+        >
+
+      </div>
+
+      <!-- CATEGORY -->
+
+      <div class="form-group">
+
+        <label>
+          Category
+        </label>
+
+        <select
+          formControlName="category"
+        >
+
+          <option value="">
+            Select Category
+          </option>
+
+          @for(
+            item of categories;
+            track item
+          ) {
+
+            <option
+              [value]="item"
+            >
+              {{ item }}
+            </option>
+
+          }
+
+        </select>
+
+      </div>
+
+      <!-- VENDOR -->
+
+      <div class="form-group">
+
+        <label>
+          Vendor
+        </label>
+
+        <input
+          type="text"
+          formControlName="vendor"
+        >
+
+      </div>
+
+      <!-- ASSIGNED -->
+
+      <div class="form-group">
+
+        <label>
+          Assigned To
+        </label>
+
+        <input
+          type="text"
+          formControlName="assignedTo"
+        >
+
+      </div>
+
+      <!-- STATUS -->
+
+      <div class="form-group">
+
+        <label>
+          Status
+        </label>
+
+        <select
+          formControlName="status"
+        >
+
+          <option value="">
+            Select Status
+          </option>
+
+          @for(
+            item of statuses;
+            track item
+          ) {
+
+            <option
+              [value]="item"
+            >
+              {{ item }}
+            </option>
+
+          }
+
+        </select>
+
+      </div>
+
+      <!-- PURCHASE DATE -->
+
+      <div class="form-group">
+
+        <label>
+          Purchase Date
+        </label>
+
+        <input
+          type="date"
+          formControlName="purchaseDate"
+        >
+
+      </div>
+
+      <!-- WARRANTY -->
+
+      <div class="form-group">
+
+        <label>
+          Warranty Expiry
+        </label>
+
+        <input
+          type="date"
+          formControlName="warrantyExpiry"
+        >
+
+      </div>
+
+      <!-- LOCATION -->
+
+      <div class="form-group">
+
+        <label>
+          Location
+        </label>
+
+        <input
+          type="text"
+          formControlName="location"
+        >
+
+      </div>
+
+    </div>
+
+    <button
+      class="submit-btn"
+      type="submit"
+    >
+
+      Add Asset
+
+    </button>
+
+  </form>
+
+</div>

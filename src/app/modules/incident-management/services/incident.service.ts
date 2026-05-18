@@ -19,7 +19,8 @@ export class IncidentService {
 
   showDetailsDrawer =
     signal(false);
-
+  approvalComment =
+    signal('');
   incidents = signal<Incident[]>([
 
     {
@@ -30,7 +31,7 @@ export class IncidentService {
       category: 'Infrastructure',
       priority: 'Critical',
       status: 'Open',
-      assignedTo: 'John Doe',
+      assignedTo: 'Ajaz Ahamad',
       slaHours: 2,
 
       slaStatus: 'healthy',
@@ -55,19 +56,28 @@ export class IncidentService {
       attachments: [],
       activities: [
 
-    {
+        {
 
-      user: 'Admin',
+          user: 'Admin',
 
-      action:
-        'Incident created',
+          action:
+            'Incident created',
 
-      createdAt:
-        '2026-05-15 10:30 AM'
+          createdAt:
+            '2026-05-15 10:30 AM'
 
-    }
+        }
 
-  ]
+      ],
+      approval: {
+
+        status:
+          'Pending' as const,
+
+        createdAt:
+          '2026-05-15 10:30 AM'
+
+      }
     },
 
     {
@@ -78,7 +88,7 @@ export class IncidentService {
       category: 'Network',
       priority: 'Medium',
       status: 'In Progress',
-      assignedTo: 'Admin User',
+      assignedTo: 'Mohd Hasan',
       slaHours: 2,
 
       slaStatus: 'healthy',
@@ -103,19 +113,28 @@ export class IncidentService {
       attachments: [],
       activities: [
 
-    {
+        {
 
-      user: 'Admin',
+          user: 'Admin',
 
-      action:
-        'Incident created',
+          action:
+            'Incident created',
 
-      createdAt:
-        '2026-05-15 10:30 AM'
+          createdAt:
+            '2026-05-15 10:30 AM'
 
-    }
+        }
 
-  ]
+      ],
+      approval: {
+
+        status:
+          'Pending' as const,
+
+        createdAt:
+          '2026-05-15 10:30 AM'
+
+      }
     },
 
     {
@@ -126,7 +145,7 @@ export class IncidentService {
       category: 'Database',
       priority: 'High',
       status: 'Resolved',
-      assignedTo: 'David',
+      assignedTo: 'Aayush Sharma',
       slaHours: 2,
 
       slaStatus: 'healthy',
@@ -151,19 +170,28 @@ export class IncidentService {
       attachments: [],
       activities: [
 
-    {
+        {
 
-      user: 'Admin',
+          user: 'Admin',
 
-      action:
-        'Incident created',
+          action:
+            'Incident created',
 
-      createdAt:
-        '2026-05-15 10:30 AM'
+          createdAt:
+            '2026-05-15 10:30 AM'
 
-    }
+        }
 
-  ]
+      ],
+      approval: {
+
+        status:
+          'Pending' as const,
+
+        createdAt:
+          '2026-05-15 10:30 AM'
+
+      }
 
 
     }
@@ -373,17 +401,17 @@ export class IncidentService {
     this.selectedIncident.set(
       latest || null
     );
-this.addActivity(
+    this.addActivity(
 
-  incident.id,
+      incident.id,
 
-  type === 'note'
+      type === 'note'
 
-    ? 'Added internal note'
+        ? 'Added internal note'
 
-    : 'Added comment'
+        : 'Added comment'
 
-);
+    );
     // RESET
 
     this.commentText.set('');
@@ -461,13 +489,13 @@ this.addActivity(
     this.selectedIncident.set(
       latest || null
     );
-this.addActivity(
+    this.addActivity(
 
-  incident.id,
+      incident.id,
 
-  'Uploaded attachment'
+      'Uploaded attachment'
 
-);
+    );
   }
   removeAttachment(
     index: number
@@ -524,75 +552,142 @@ this.addActivity(
     );
 
   }
-getSlaByPriority(
-  priority: string
-) {
+  getSlaByPriority(
+    priority: string
+  ) {
 
-  switch(priority) {
+    switch (priority) {
 
-    case 'Critical':
-      return 2;
+      case 'Critical':
+        return 2;
 
-    case 'High':
-      return 4;
+      case 'High':
+        return 4;
 
-    case 'Medium':
-      return 8;
+      case 'Medium':
+        return 8;
 
-    default:
-      return 24;
+      default:
+        return 24;
+
+    }
 
   }
 
-}
+  canChangeStatus(
 
-canChangeStatus(
+    current: string,
 
-  current: string,
+    next: string
 
-  next: string
+  ): boolean {
 
-): boolean {
+    const allowed: string[] =
 
-  const allowed: string[] =
-
-    STATUS_WORKFLOW[
+      STATUS_WORKFLOW[
       current as keyof
       typeof STATUS_WORKFLOW
-    ] || [];
+      ] || [];
 
-  return allowed.includes(next);
+    return allowed.includes(next);
 
-}
-addActivity(
+  }
+  addActivity(
 
-  incidentId: number,
+    incidentId: number,
 
-  action: string
+    action: string
 
-) {
+  ) {
 
-  const updated =
-    this.incidents()
-      .map(item => {
+    const updated =
+      this.incidents()
+        .map(item => {
 
-        if (
+          if (
+            item.id === incidentId
+          ) {
+
+            return {
+
+              ...item,
+
+              activities: [
+
+                ...(item.activities || []),
+
+                {
+
+                  user: 'Admin',
+
+                  action,
+
+                  createdAt:
+                    new Date()
+                      .toLocaleString()
+
+                }
+
+              ]
+
+            };
+
+          }
+
+          return item;
+
+        });
+
+    this.incidents.set(updated);
+
+    // UPDATE SELECTED
+
+    const latest =
+      updated.find(
+
+        item =>
           item.id === incidentId
-        ) {
 
-          return {
+      );
 
-            ...item,
+    this.selectedIncident.set(
+      latest || null
+    );
 
-            activities: [
+  }
 
-              ...(item.activities || []),
+  approveIncident(
+    incidentId: number
+  ) {
 
-              {
+    const updated =
+      this.incidents()
+        .map(item => {
 
-                user: 'Admin',
+          if (
+            item.id === incidentId
+          ) {
 
-                action,
+            return {
+
+              ...item,
+
+              approval: {
+
+                approvedBy:
+                  'Manager',
+
+                status:
+                  'Approved' as const,
+
+                comment:
+
+                  this
+                    .approvalComment()
+
+                  ||
+
+                  'Approved',
 
                 createdAt:
                   new Date()
@@ -600,31 +695,113 @@ addActivity(
 
               }
 
-            ]
+            };
 
-          };
+          }
 
-        }
+          return item;
 
-        return item;
+        });
 
-      });
+    this.incidents.set(updated);
 
-  this.incidents.set(updated);
+    // UPDATE SELECTED
 
-  // UPDATE SELECTED
+    const latest =
+      updated.find(
 
-  const latest =
-    updated.find(
+        item =>
+          item.id === incidentId
 
-      item =>
-        item.id === incidentId
+      );
+
+    this.selectedIncident.set(
+      latest || null
+    );
+    this.approvalComment.set('');
+    // ACTIVITY
+
+    this.addActivity(
+
+      incidentId,
+
+      'Incident approved'
 
     );
 
-  this.selectedIncident.set(
-    latest || null
-  );
+  }
+  rejectIncident(
+    incidentId: number
+  ) {
 
-}
+    const updated =
+      this.incidents()
+        .map(item => {
+
+          if (
+            item.id === incidentId
+          ) {
+
+            return {
+
+              ...item,
+
+              approval: {
+
+                approvedBy:
+                  'Manager',
+
+                status:
+                  'Rejected' as const,
+
+                comment:
+
+                  this
+                    .approvalComment()
+
+                  ||
+
+                  'Rejected',
+
+                createdAt:
+                  new Date()
+                    .toLocaleString()
+
+              }
+
+            };
+
+          }
+
+          return item;
+
+        });
+
+    this.incidents.set(updated);
+
+    // UPDATE SELECTED
+
+    const latest =
+      updated.find(
+
+        item =>
+          item.id === incidentId
+
+      );
+
+    this.selectedIncident.set(
+      latest || null
+    );
+    this.approvalComment.set('');
+    // ACTIVITY
+
+    this.addActivity(
+
+      incidentId,
+
+      'Incident rejected'
+
+    );
+
+  }
 }

@@ -1,0 +1,108 @@
+.modal-overlay {
+
+  position: fixed;
+
+  inset: 0;
+
+  background:
+    rgba(15,23,42,0.45);
+
+  display: flex;
+
+  align-items: center;
+
+  justify-content: center;
+
+  z-index: 4000;
+
+}
+
+.delete-card {
+
+  width: 420px;
+
+  background: white;
+
+  border-radius: 28px;
+
+  padding: 32px;
+
+  text-align: center;
+
+}
+
+.icon-box {
+
+  width: 80px;
+
+  height: 80px;
+
+  margin: 0 auto 20px;
+
+  border-radius: 50%;
+
+  background: #fee2e2;
+
+  color: #dc2626;
+
+  display: flex;
+
+  align-items: center;
+
+  justify-content: center;
+
+  font-size: 32px;
+
+}
+
+.delete-card h3 {
+
+  font-size: 28px;
+
+  margin-bottom: 12px;
+
+}
+
+.delete-card p {
+
+  color: #64748b;
+
+}
+
+.actions {
+
+  display: flex;
+
+  gap: 16px;
+
+  margin-top: 28px;
+
+}
+
+.actions button {
+
+  flex: 1;
+
+  height: 50px;
+
+  border: none;
+
+  border-radius: 14px;
+
+  font-weight: 600;
+
+}
+
+.cancel-btn {
+
+  background: #f1f5f9;
+
+}
+
+.delete-btn {
+
+  background: #dc2626;
+
+  color: white;
+
+}

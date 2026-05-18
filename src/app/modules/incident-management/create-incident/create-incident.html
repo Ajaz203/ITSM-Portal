@@ -16,10 +16,7 @@
 
       </div>
 
-      <button
-        class="close-btn"
-        (click)="closeModal()"
-      >
+      <button class="close-btn" (click)="closeModal()">
 
         <i class="bi bi-x-lg"></i>
 
@@ -29,10 +26,7 @@
 
     <!-- FORM -->
 
-    <form
-      [formGroup]="form"
-      class="incident-form"
-    >
+    <form [formGroup]="form" class="incident-form">
 
       <!-- GRID -->
 
@@ -46,11 +40,7 @@
             Incident Title
           </label>
 
-          <input
-            type="text"
-            formControlName="title"
-            placeholder="Enter title"
-          />
+          <input type="text" formControlName="title" placeholder="Enter title" />
 
         </div>
 
@@ -62,9 +52,7 @@
             Category
           </label>
 
-          <select
-            formControlName="category"
-          >
+          <select formControlName="category">
 
             <option value="">
               Select Category
@@ -94,46 +82,70 @@
             Priority
           </label>
 
-          <select
-            formControlName="priority"
-          >
+          <select formControlName="priority">
 
             <option value="">
               Select Priority
             </option>
 
             @for(
-              item of priorities;
-              track item
+            item of priorities;
+            track item
             ) {
 
-              <option
-                [value]="item"
-              >
+            <option [value]="item">
 
-                {{ item }}
+              {{ item }}
 
-              </option>
+            </option>
 
             }
 
           </select>
 
         </div>
+        <div class="form-group">
 
+          <label>
+            Affected Asset
+          </label>
+
+          <select formControlName="assetId">
+
+            <option value="">
+              Select Asset
+            </option>
+
+            @for(
+
+            asset of
+            assetService
+            .assets();
+
+            track asset.id
+
+            ) {
+
+            <option [value]="asset.assetId">
+
+              {{ asset.name }}
+
+            </option>
+
+            }
+
+          </select>
+
+        </div>
         <!-- ASSIGNED -->
 
-        <div class="form-group full-width">
+        <div class="form-group">
 
           <label>
             Assigned To
           </label>
 
-          <input
-            type="text"
-            formControlName="assignedTo"
-            placeholder="Assign user"
-          />
+          <input type="text" formControlName="assignedTo" placeholder="Assign user" />
 
         </div>
 
@@ -145,15 +157,7 @@
             Description
           </label>
 
-          <textarea
-
-            rows="3"
-
-            formControlName="description"
-
-            placeholder="Describe issue"
-
-          ></textarea>
+          <textarea rows="3" formControlName="description" placeholder="Describe issue"></textarea>
 
         </div>
 
@@ -163,21 +167,13 @@
 
       <div class="modal-footer">
 
-        <button
-          type="button"
-          class="cancel-btn"
-          (click)="closeModal()"
-        >
+        <button type="button" class="cancel-btn" (click)="closeModal()">
 
           Cancel
 
         </button>
 
-        <button
-          type="button"
-          class="submit-btn"
-          (click)="submit()"
-        >
+        <button type="button" class="submit-btn" (click)="submit()">
 
           Create Incident
 

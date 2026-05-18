@@ -20,6 +20,8 @@ import { INCIDENT_PRIORITY }
 
 import { ToastService }
   from '../../../core/services/toast';
+  import { Asset }
+from '../../asset-management/services/asset';
 
 @Component({
   selector: 'app-create-incident',
@@ -47,6 +49,8 @@ export class CreateIncident {
   toast =
     inject(ToastService);
 
+assetService =
+  inject(Asset);
   priorities =
     INCIDENT_PRIORITY;
 
@@ -75,7 +79,8 @@ export class CreateIncident {
     description: [
       '',
       Validators.required
-    ]
+    ],
+    assetId: ['']
 
   });
 
@@ -106,69 +111,92 @@ export class CreateIncident {
     const current =
       this.incidentService
         .incidents();
+const selectedAsset =
 
+  this.assetService
+    .assets()
+    .find(asset =>
+
+      asset.assetId ===
+      this.form.value.assetId
+
+    );
     // ADD INCIDENT
 
     this.incidentService
       .incidents
       .set([
 
-        {
+     {
 
-          id:
-            current.length + 1,
+  id:
+    current.length + 1,
 
-          ticketId:
-            'INC00' +
-            (current.length + 1),
+  ticketId:
+    'INC00' +
+    (current.length + 1),
 
-          status: 'Open',
-          slaHours:
-            this.incidentService
-              .getSlaByPriority(
+  title:
+    this.form.value.title || '',
 
-                this.form.value.priority || ''
+  category:
+    this.form.value.category || '',
 
-              ),
+  priority:
+    this.form.value.priority || '',
 
-          slaStatus: 'healthy',
+  assignedTo:
+    this.form.value.assignedTo || '',
 
-          createdAt:
-            new Date()
-              .toISOString()
-              .split('T')[0],
-          activities: [
+  description:
+    this.form.value.description || '',
 
-            {
+  assetId:
+    this.form.value.assetId || '',
 
-              user: 'Admin',
+  assetName:
+    selectedAsset
+      ? selectedAsset.name
+      : '',
 
-              action:
-                'Incident created',
+  status:
+    'Open',
 
-              createdAt:
-                new Date()
-                  .toLocaleString()
+  slaHours:
+    this.incidentService
+      .getSlaByPriority(
 
-            }
+        this.form.value.priority || ''
 
-          ],
-          title:
-            this.form.value.title || '',
+      ),
 
-          category:
-            this.form.value.category || '',
+  slaStatus:
+    'healthy',
 
-          priority:
-            this.form.value.priority || '',
+  createdAt:
+    new Date()
+      .toISOString()
+      .split('T')[0],
 
-          assignedTo:
-            this.form.value.assignedTo || '',
+  activities: [
 
-          description:
-            this.form.value.description || ''
+    {
 
-        },
+      user:
+        'Admin',
+
+      action:
+        'Incident created',
+
+      createdAt:
+        new Date()
+          .toLocaleString()
+
+    }
+
+  ]
+
+},
 
         ...current
 

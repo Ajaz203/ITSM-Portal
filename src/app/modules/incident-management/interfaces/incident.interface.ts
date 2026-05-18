@@ -38,25 +38,48 @@ export interface Incident {
 
   assignedTo: string;
 
+  assetId?: string;
+
+  assetName?: string;
+
   createdAt: string;
 
   comments?: IncidentComment[];
 
-attachments?: IncidentAttachment[];
+  attachments?: IncidentAttachment[];
 
-activities?: IncidentActivity[];
+  activities?: IncidentActivity[];
 
-slaHours?: number;
+  approval?: IncidentApproval;
 
-  slaStatus?: 'healthy'
-  | 'warning'
-  | 'breached';
+  slaHours?: number;
+
+  slaStatus?:
+    | 'healthy'
+    | 'warning'
+    | 'breached';
+
 }
 export interface IncidentActivity {
 
   user: string;
 
   action: string;
+
+  createdAt: string;
+
+}
+
+export interface IncidentApproval {
+
+  approvedBy?: string;
+
+  status:
+  | 'Pending'
+  | 'Approved'
+  | 'Rejected';
+
+  comment?: string;
 
   createdAt: string;
 

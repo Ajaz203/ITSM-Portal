@@ -6,7 +6,7 @@ import {
 import { Auth }
 from './core/services/auth';
 import { RouterOutlet } from '@angular/router';
-
+import {RealtimeService} from './core/services/realtime';
 @Component({
   selector: 'app-root',
     standalone: true,
@@ -17,7 +17,8 @@ import { RouterOutlet } from '@angular/router';
 export class App {
 auth =
   inject(Auth);
-
+realtime =
+  inject(RealtimeService);
 constructor() {
 
   this.auth.loadUser();

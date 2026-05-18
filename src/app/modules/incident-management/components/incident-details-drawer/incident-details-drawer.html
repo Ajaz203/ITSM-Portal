@@ -54,7 +54,19 @@
                 </p>
 
             </div>
+<div class="info-card">
 
+  <span>
+    Affected Asset
+  </span>
+
+  <h4>
+
+    {{ incident.assetName || '-' }}
+
+  </h4>
+
+</div>
             <!-- META -->
 
             <div class="meta-grid">
@@ -126,7 +138,122 @@
                 </div>
 
             </div>
+            <!-- APPROVAL -->
 
+            <div class="approval-card">
+
+                <div class="approval-header">
+
+                    <h4>
+                        Approval Status
+                    </h4>
+
+                    <div class="approval-badge" [class.approved]="
+        incident.approval &&
+        incident.approval.status
+        === 'Approved'
+      " [class.rejected]="
+        incident.approval &&
+        incident.approval.status
+        === 'Rejected'
+      ">
+
+                        {{
+
+                        incident.approval?.status
+                        || 'Pending'
+
+                        }}
+
+                    </div>
+
+                </div>
+
+                <!-- DETAILS -->
+
+                <div class="approval-details">
+                    <textarea class="approval-comment" rows="4" placeholder="Add approval comment..." [value]="
+    incidentService
+      .approvalComment()
+  " (input)="
+    incidentService
+      .approvalComment
+      .set(
+        $any($event.target).value
+      )
+  "></textarea>
+                    <p>
+
+                        <strong>
+                            Approved By:
+                        </strong>
+
+                        {{
+
+                        incident.approval
+                        ?.approvedBy || '-'
+
+                        }}
+
+                    </p>
+
+                    <p>
+
+                        <strong>
+                            Comment:
+                        </strong>
+
+                        {{
+
+                        incident.approval
+                        ?.comment || '-'
+
+                        }}
+
+                    </p>
+
+                </div>
+
+                <!-- ACTIONS -->
+
+                @if(
+
+                incident.approval &&
+
+                incident.approval.status
+                === 'Pending'
+
+                ) {
+
+                <div class="approval-actions">
+
+                    <button class="approve-btn" (click)="
+          incidentService
+            .approveIncident(
+              incident.id
+            )
+        ">
+
+                        Approve
+
+                    </button>
+
+                    <button class="reject-btn" (click)="
+          incidentService
+            .rejectIncident(
+              incident.id
+            )
+        ">
+
+                        Reject
+
+                    </button>
+
+                </div>
+
+                }
+
+            </div>
             <!-- TIMELINE -->
 
             <div class="timeline-card">

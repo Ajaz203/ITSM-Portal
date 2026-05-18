@@ -1,0 +1,134 @@
+<div class="drawer-overlay">
+
+  <div class="drawer-container">
+
+    @if(
+      problemService
+        .selectedProblem();
+      as problem
+    ) {
+
+      <!-- HEADER -->
+
+      <div class="drawer-header">
+
+        <div>
+
+          <h3>
+            {{ problem.title }}
+          </h3>
+
+          <p>
+            {{ problem.problemId }}
+          </p>
+
+        </div>
+
+        <button
+          class="close-btn"
+
+          (click)="
+            problemService
+              .showDetailsDrawer
+              .set(false)
+          "
+        >
+
+          <i class="bi bi-x-lg"></i>
+
+        </button>
+
+      </div>
+
+      <!-- CONTENT -->
+
+      <div class="drawer-content">
+
+        <div class="info-card">
+
+          <span>
+            Description
+          </span>
+
+          <p>
+            {{ problem.description }}
+          </p>
+
+        </div>
+
+        <div class="info-card">
+
+          <span>
+            Root Cause
+          </span>
+
+          <p>
+
+            {{
+              problem.rootCause
+              || '-'
+            }}
+
+          </p>
+
+        </div>
+
+        <div class="info-card">
+
+          <span>
+            Workaround
+          </span>
+
+          <p>
+
+            {{
+              problem.workaround
+              || '-'
+            }}
+
+          </p>
+
+        </div>
+
+        <div class="info-card">
+
+          <span>
+            Permanent Fix
+          </span>
+
+          <p>
+
+            {{
+              problem.permanentFix
+              || '-'
+            }}
+
+          </p>
+
+        </div>
+
+        <div class="info-card">
+
+          <span>
+            Linked Incidents
+          </span>
+
+          <p>
+
+            {{
+              problem
+                .linkedIncidents
+                ?.join(', ')
+            }}
+
+          </p>
+
+        </div>
+
+      </div>
+
+    }
+
+  </div>
+
+</div>

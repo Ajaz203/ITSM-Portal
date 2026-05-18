@@ -15,7 +15,9 @@
         <th>Priority</th>
 
         <th>Status</th>
-
+        <th>
+          Affected Asset
+        </th>
         <th>SLA</th>
         <th>Assigned To</th>
 
@@ -71,6 +73,11 @@
         </td>
         <td>
 
+          {{ item.assetName || '-' }}
+
+        </td>
+        <td>
+
           <div class="sla-badge" [class.warning]="
       item.slaStatus === 'warning'
     " [class.breached]="
@@ -110,7 +117,10 @@
 
             <div class="dropdown-menu">
 
-              <button>
+              <button (click)="
+    incidentService
+      .openIncidentDetails(item)
+  ">
 
                 <i class="bi bi-eye"></i>
 

@@ -58,7 +58,38 @@ export const sidebarMenu = [
         ]
 
       },
+      {
 
+        title:
+          'Asset Management',
+
+        icon:
+          'bi bi-pc-display',
+
+        route:
+          '/assets-management',
+
+        roles: [
+
+          'Admin',
+
+          'Agent'
+
+        ]
+
+      },
+      {
+        title: 'Vendors',
+
+        icon: 'bi bi-buildings',
+
+        route: '/vendors',
+
+        roles: [
+          'Admin'
+        ]
+
+      },
       {
 
         title:

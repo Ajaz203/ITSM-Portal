@@ -1,0 +1,225 @@
+<div class="page-container">
+
+    <div class="asset-page">
+
+        <!-- HEADER -->
+
+        <div class="page-header">
+
+            <div>
+
+                <h2>
+                    Asset Management
+                </h2>
+
+                <p>
+                    Manage enterprise IT assets
+                </p>
+
+            </div>
+
+            <button class="create-btn" routerLink="/assets/add">
+
+                <i class="bi bi-plus-lg"></i>
+
+                Add Asset
+
+            </button>
+
+        </div>
+
+        <!-- SEARCH -->
+
+        <div class="search-box">
+
+            <i class="bi bi-search"></i>
+
+            <input type="text" placeholder="Search assets..." [ngModel]="
+        assetService.search()
+      " (ngModelChange)="
+        assetService.search.set($event)
+      ">
+
+        </div>
+
+        <!-- TABLE -->
+
+        <div class="table-card">
+
+            <table class="table">
+
+                <thead>
+
+                    <tr>
+
+                        <th>Asset ID</th>
+
+                        <th>Name</th>
+
+                        <th>Category</th>
+
+                        <th>Vendor</th>
+
+                        <th>Assigned To</th>
+
+                        <th>Status</th>
+
+                        <th>Warranty</th>
+
+                        <th>Location</th>
+                        <th>Action</th>
+
+                    </tr>
+
+                </thead>
+
+                <tbody>
+
+                    @for(
+
+                    asset of
+                    assetService
+                    .filteredAssets();
+
+                    track asset.id
+
+                    ) {
+
+                    <tr>
+
+                        <td class="clickable" (click)="
+    assetService
+      .openAssetDetails(asset)
+  ">
+
+                            {{ asset.assetId }}
+
+                        </td>
+
+                        <td>
+
+                            {{ asset.name }}
+
+                        </td>
+
+                        <td>
+
+                            {{ asset.category }}
+
+                        </td>
+
+                        <td>
+
+                            {{ asset.vendor }}
+
+                        </td>
+
+                        <td>
+
+                            {{ asset.assignedTo }}
+
+                        </td>
+
+                        <td>
+
+                            <span class="status-badge" [class.active]="
+                  asset.status
+                  === 'Active'
+                " [class.maintenance]="
+                  asset.status
+                  === 'Maintenance'
+                " [class.retired]="
+                  asset.status
+                  === 'Retired'
+                ">
+
+                                {{ asset.status }}
+
+                            </span>
+
+                        </td>
+
+                        <td>
+
+                            {{ asset.warrantyExpiry }}
+
+                        </td>
+
+                        <td>
+
+                            {{ asset.location }}
+
+                        </td>
+                        <td>
+
+    <div class="action-buttons">
+
+        <button
+
+            class="edit-btn"
+
+            (click)="
+              assetService
+                .openEditModal(asset)
+            "
+        >
+
+            <i class="bi bi-pencil-square"></i>
+
+        </button>
+
+        <button
+
+            class="delete-action-btn"
+
+            (click)="
+              assetService
+                .openDeleteModal(asset)
+            "
+        >
+
+            <i class="bi bi-trash"></i>
+
+        </button>
+
+    </div>
+
+</td>
+                    </tr>
+
+                    }
+
+                </tbody>
+
+            </table>
+
+        </div>
+
+
+
+        @if(
+        assetService
+        .showDetailsDrawer()
+        ) {
+
+        <app-asset-details-drawer />
+
+        }
+        @if(
+        assetService
+        .showEditModal()
+        ) {
+
+        <app-edit-asset />
+
+        }
+        @if(
+        assetService
+        .showDeleteModal()
+        ) {
+
+        <app-delete-asset-modal />
+
+        }
+    </div>
+</div>
