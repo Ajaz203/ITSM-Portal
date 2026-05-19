@@ -1,0 +1,136 @@
+<div class="audit-page">
+
+  <!-- HEADER -->
+
+  <div class="page-header">
+
+    <div>
+
+      <h2>
+        Audit Logs
+      </h2>
+
+      <p>
+        Enterprise governance and compliance tracking
+      </p>
+
+    </div>
+
+  </div>
+
+  <!-- KPI GRID -->
+
+  <div class="kpi-grid">
+
+    <!-- TOTAL -->
+
+    <div class="kpi-card primary">
+
+      <span>
+        Total Logs
+      </span>
+
+      <h3>
+
+        {{
+          auditLogs
+            .logs()
+            .length
+        }}
+
+      </h3>
+
+    </div>
+
+    <!-- HIGH -->
+
+    <div class="kpi-card danger">
+
+      <span>
+        High Severity
+      </span>
+
+      <h3>
+
+        {{
+
+          auditLogs
+            .logs()
+            .filter(item =>
+
+              item.severity
+              === 'High'
+
+            ).length
+
+        }}
+
+      </h3>
+
+    </div>
+
+    <!-- MEDIUM -->
+
+    <div class="kpi-card warning">
+
+      <span>
+        Medium Severity
+      </span>
+
+      <h3>
+
+        {{
+
+          auditLogs
+            .logs()
+            .filter(item =>
+
+              item.severity
+              === 'Medium'
+
+            ).length
+
+        }}
+
+      </h3>
+
+    </div>
+
+    <!-- LOW -->
+
+    <div class="kpi-card success">
+
+      <span>
+        Low Severity
+      </span>
+
+      <h3>
+
+        {{
+
+          auditLogs
+            .logs()
+            .filter(item =>
+
+              item.severity
+              === 'Low'
+
+            ).length
+
+        }}
+
+      </h3>
+
+    </div>
+
+  </div>
+
+  <!-- FILTERS -->
+
+  <app-audit-log-filters />
+
+  <!-- TABLE -->
+
+  <app-audit-log-table />
+
+</div>

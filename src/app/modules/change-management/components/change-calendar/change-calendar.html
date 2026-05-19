@@ -1,0 +1,172 @@
+<div class="calendar-page">
+
+  <!-- HEADER -->
+
+  <div class="page-header">
+
+    <div>
+
+      <h2>
+        Change Calendar
+      </h2>
+
+      <p>
+        Scheduled maintenance
+        and deployment windows
+      </p>
+
+    </div>
+
+  </div>
+
+  <!-- CALENDAR LIST -->
+
+  <div class="calendar-list">
+
+    @for(
+
+      item of
+      changeService
+        .changes();
+
+      track item.id
+
+    ) {
+
+      <div class="calendar-card">
+
+        <!-- TOP -->
+
+        <div class="calendar-top">
+
+          <div>
+
+            <h3>
+              {{ item.title }}
+            </h3>
+
+            <p>
+              {{ item.changeId }}
+            </p>
+
+          </div>
+
+          <span
+            class="risk-badge"
+
+            [class.low]="
+              item.risk ===
+              'Low'
+            "
+
+            [class.medium]="
+              item.risk ===
+              'Medium'
+            "
+
+            [class.high]="
+              item.risk ===
+              'High'
+            "
+          >
+
+            {{ item.risk }}
+
+          </span>
+
+        </div>
+
+        <!-- BODY -->
+
+        <div class="calendar-grid">
+
+          <div>
+
+            <span>
+              Planned Start
+            </span>
+
+            <p>
+              {{ item.plannedStart }}
+            </p>
+
+          </div>
+
+          <div>
+
+            <span>
+              Planned End
+            </span>
+
+            <p>
+              {{ item.plannedEnd }}
+            </p>
+
+          </div>
+
+          <div>
+
+            <span>
+              Assigned To
+            </span>
+
+            <p>
+              {{ item.assignedTo }}
+            </p>
+
+          </div>
+
+          <div>
+
+            <span>
+              Status
+            </span>
+
+            <p>
+              {{ item.status }}
+            </p>
+
+          </div>
+
+        </div>
+
+        <!-- ACTIONS -->
+
+        <div class="calendar-actions">
+
+          <button
+
+            class="reschedule-btn"
+
+            (click)="
+              changeService
+                .openEditModal(item)
+            "
+          >
+
+            <i class="bi bi-calendar-event"></i>
+
+            Reschedule
+
+          </button>
+
+        </div>
+
+      </div>
+
+    }
+
+  </div>
+
+  <!-- EDIT MODAL -->
+
+  @if(
+    changeService
+      .showEditModal()
+  ) {
+
+    <app-edit-change />
+
+  }
+
+</div>

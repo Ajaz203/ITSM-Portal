@@ -1,0 +1,245 @@
+<div class="drawer-overlay">
+
+  <div class="drawer-container">
+
+    @if(
+      changeService
+        .selectedChange();
+      as change
+    ) {
+
+      <!-- HEADER -->
+
+      <div class="drawer-header">
+
+        <div>
+
+          <h3>
+            {{ change.title }}
+          </h3>
+
+          <p>
+            {{ change.changeId }}
+          </p>
+
+        </div>
+
+        <button
+          class="close-btn"
+
+          (click)="
+            changeService
+              .showDetailsDrawer
+              .set(false)
+          "
+        >
+
+          <i class="bi bi-x-lg"></i>
+
+        </button>
+
+      </div>
+
+      <!-- CONTENT -->
+
+      <div class="drawer-content">
+
+        <!-- TOP GRID -->
+
+        <div class="top-grid">
+
+          <div class="info-card">
+
+            <span>
+              Type
+            </span>
+
+            <p>
+              {{ change.type }}
+            </p>
+
+          </div>
+
+          <div class="info-card">
+
+            <span>
+              Risk
+            </span>
+
+            <p>
+              {{ change.risk }}
+            </p>
+
+          </div>
+
+          <div class="info-card">
+
+            <span>
+              Status
+            </span>
+
+            <p>
+              {{ change.status }}
+            </p>
+
+          </div>
+
+          <div class="info-card">
+
+            <span>
+              Assigned To
+            </span>
+
+            <p>
+              {{ change.assignedTo }}
+            </p>
+
+          </div>
+
+        </div>
+
+        <!-- DESCRIPTION -->
+
+        <div class="info-card">
+
+          <span>
+            Description
+          </span>
+
+          <p>
+            {{ change.description }}
+          </p>
+
+        </div>
+
+        <!-- IMPLEMENTATION -->
+
+        <div class="info-card">
+
+          <span>
+            Implementation Plan
+          </span>
+
+          <p>
+
+            {{
+              change
+                .implementationPlan
+              || '-'
+            }}
+
+          </p>
+
+        </div>
+
+        <!-- ROLLBACK -->
+
+        <div class="info-card">
+
+          <span>
+            Rollback Plan
+          </span>
+
+          <p>
+
+            {{
+              change
+                .rollbackPlan
+              || '-'
+            }}
+
+          </p>
+
+        </div>
+
+        <!-- WINDOW -->
+
+        <div class="info-card">
+
+          <span>
+            Planned Window
+          </span>
+
+          <p>
+
+            {{
+              change.plannedStart
+            }}
+
+            →
+
+            {{
+              change.plannedEnd
+            }}
+
+          </p>
+
+        </div>
+
+        <!-- APPROVAL -->
+
+        <div class="info-card">
+
+          <span>
+            Approval Status
+          </span>
+
+          <p>
+
+            {{
+              change
+                .approvalStatus
+              || '-'
+            }}
+
+          </p>
+
+        </div>
+
+        <!-- APPROVED BY -->
+
+        <div class="info-card">
+
+          <span>
+            Approved By
+          </span>
+
+          <p>
+
+            {{
+              change
+                .approvedBy
+              || '-'
+            }}
+
+          </p>
+
+        </div>
+
+        <!-- COMMENT -->
+
+        <div class="info-card">
+
+          <span>
+            Approval Comment
+          </span>
+
+          <p>
+
+            {{
+              change
+                .approvalComment
+              || '-'
+            }}
+
+          </p>
+
+        </div>
+
+      </div>
+
+    }
+
+  </div>
+
+</div>

@@ -1,0 +1,231 @@
+<div class="reports-page">
+
+  <!-- HEADER -->
+
+  <div class="page-header">
+
+    <div>
+
+      <h2>
+        Reports Dashboard
+      </h2>
+
+      <p>
+        Executive operational insights
+      </p>
+
+    </div>
+
+  </div>
+
+  <!-- KPI GRID -->
+
+  <div class="kpi-grid">
+
+    <!-- TOTAL INCIDENTS -->
+
+    <div class="kpi-card primary">
+
+      <div class="kpi-icon">
+
+        <i class="bi bi-exclamation-circle"></i>
+
+      </div>
+
+      <div>
+
+        <span>
+          Total Incidents
+        </span>
+
+        <h3>
+
+          {{
+            reportsService
+              .totalIncidents()
+          }}
+
+        </h3>
+
+      </div>
+
+    </div>
+
+    <!-- OPEN -->
+
+    <div class="kpi-card warning">
+
+      <div class="kpi-icon">
+
+        <i class="bi bi-clock-history"></i>
+
+      </div>
+
+      <div>
+
+        <span>
+          Open Incidents
+        </span>
+
+        <h3>
+
+          {{
+            reportsService
+              .openIncidents()
+          }}
+
+        </h3>
+
+      </div>
+
+    </div>
+
+    <!-- RESOLVED -->
+
+    <div class="kpi-card success">
+
+      <div class="kpi-icon">
+
+        <i class="bi bi-check-circle"></i>
+
+      </div>
+
+      <div>
+
+        <span>
+          Resolved Incidents
+        </span>
+
+        <h3>
+
+          {{
+            reportsService
+              .resolvedIncidents()
+          }}
+
+        </h3>
+
+      </div>
+
+    </div>
+
+    <!-- SLA -->
+
+    <div class="kpi-card danger">
+
+      <div class="kpi-icon">
+
+        <i class="bi bi-exclamation-triangle"></i>
+
+      </div>
+
+      <div>
+
+        <span>
+          SLA Breached
+        </span>
+
+        <h3>
+
+          {{
+            reportsService
+              .breachedSla()
+          }}
+
+        </h3>
+
+      </div>
+
+    </div>
+
+    <!-- CHANGES -->
+
+    <div class="kpi-card info">
+
+      <div class="kpi-icon">
+
+        <i class="bi bi-arrow-repeat"></i>
+
+      </div>
+
+      <div>
+
+        <span>
+          Total Changes
+        </span>
+
+        <h3>
+
+          {{
+            reportsService
+              .totalChanges()
+          }}
+
+        </h3>
+
+      </div>
+
+    </div>
+
+    <!-- APPROVED -->
+
+    <div class="kpi-card success">
+
+      <div class="kpi-icon">
+
+        <i class="bi bi-check2-square"></i>
+
+      </div>
+
+      <div>
+
+        <span>
+          Approved Changes
+        </span>
+
+        <h3>
+
+          {{
+            reportsService
+              .approvedChanges()
+          }}
+
+        </h3>
+
+      </div>
+
+    </div>
+
+    <!-- EMERGENCY -->
+
+    <div class="kpi-card warning">
+
+      <div class="kpi-icon">
+
+        <i class="bi bi-lightning"></i>
+
+      </div>
+
+      <div>
+
+        <span>
+          Emergency Changes
+        </span>
+
+        <h3>
+
+          {{
+            reportsService
+              .emergencyChanges()
+          }}
+
+        </h3>
+
+      </div>
+
+    </div>
+
+  </div>
+
+</div>
+<app-report-charts />

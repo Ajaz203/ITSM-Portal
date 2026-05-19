@@ -50,7 +50,72 @@ export const routes: Routes = [
           import('./modules/incident-management/incident-list/incident-list')
             .then((m) => m.IncidentList)
       },
+      {
 
+        path:
+          'change-management',
+
+        loadComponent: () =>
+
+          import(
+            './modules/change-management/change-list/change-list'
+          ).then(
+
+            m => m.ChangeList
+
+          )
+
+      },
+
+      {
+
+        path:
+          'change-approval-board',
+
+        loadComponent: () =>
+
+          import(
+            './modules/change-management/components/change-approval-panel/change-approval-panel'
+          ).then(
+
+            m => m.ChangeApprovalPanel
+
+          )
+
+      },
+
+      {
+
+        path:
+          'change-calendar',
+
+        loadComponent: () =>
+
+          import(
+            './modules/change-management/components/change-calendar/change-calendar'
+          ).then(
+
+            m => m.ChangeCalendar
+
+          )
+
+      },
+      {
+
+        path:
+          'change-analytics',
+
+        loadComponent: () =>
+
+          import(
+            './modules/change-management/components/change-analytics/change-analytics'
+          ).then(
+
+            m => m.ChangeAnalytics
+
+          )
+
+      },
       {
         path: 'assets-management',
 
@@ -85,11 +150,85 @@ export const routes: Routes = [
           ).then(m => m.ProblemList)
       },
       {
-        path: 'reports',
+
+        path:
+          'reports-dashboard',
+
         loadComponent: () =>
-          import('./modules/reports/incident-reports/incident-reports')
-            .then((m) => m.IncidentReports)
-      }
+
+          import(
+            './modules/reports/reports-dashboard/reports-dashboard'
+          ).then(
+
+            m => m.ReportsDashboard
+
+          )
+
+      },
+
+
+      {
+        path: 'cmdb',
+
+        loadComponent: () =>
+          import('./modules/cmdb/cmdb-list/cmdb-list')
+            .then((m) => m.CmdbList)
+      },
+      {
+
+        path:
+          'relationship-map',
+
+        loadComponent: () =>
+
+          import(
+            './modules/cmdb/components/relationship-map/relationship-map'
+          ).then(
+
+            m => m.RelationshipMap
+
+          )
+
+      },
+      {
+
+        path:
+          'export-center',
+
+        loadComponent: () =>
+
+          import(
+            './modules/reports/components/export-center/export-center'
+          ).then(
+
+            m => m.ExportCenter
+
+          )
+
+      },
+      {
+        path:
+          'sla-reports',
+        loadComponent: () =>
+          import('./modules/reports/components/sla-reports/sla-reports')
+            .then((m) => m.SlaReports)
+      },
+      {
+
+  path:
+    'audit-logs',
+
+  loadComponent: () =>
+
+    import(
+      './modules/audit-logs/audit-logs-dashboard/audit-logs-dashboard'
+    ).then(
+
+      m => m.AuditLogsDashboard
+
+    )
+
+}
 
     ]
   }

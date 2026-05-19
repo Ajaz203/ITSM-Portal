@@ -16,6 +16,9 @@
 
         <th>Status</th>
         <th>
+  Approval
+</th>
+        <th>
           Affected Asset
         </th>
         <th>SLA</th>
@@ -71,6 +74,38 @@
           <app-incident-status-badge [status]="item.status" />
 
         </td>
+        <td>
+
+  <div
+
+    class="approval-badge"
+
+    [class.approved]="
+      item.approval?.status
+      === 'Approved'
+    "
+
+    [class.rejected]="
+      item.approval?.status
+      === 'Rejected'
+    "
+
+    [class.pending]="
+      item.approval?.status
+      === 'Pending'
+    "
+  >
+
+    {{
+
+      item.approval?.status
+      || 'Pending'
+
+    }}
+
+  </div>
+
+</td>
         <td>
 
           {{ item.assetName || '-' }}

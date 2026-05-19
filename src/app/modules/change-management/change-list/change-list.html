@@ -1,1 +1,265 @@
-<p>change-list works!</p>
+<div class="page-container">
+
+  <div class="change-page">
+
+    <!-- HEADER -->
+
+    <div class="page-header">
+
+      <div>
+
+        <h2>
+          Change Management
+        </h2>
+
+        <p>
+          Manage infrastructure
+          and deployment changes
+        </p>
+
+      </div>
+
+      <button
+
+        class="create-btn"
+
+        (click)="
+          changeService
+            .showCreateModal
+            .set(true)
+        "
+      >
+
+        <i class="bi bi-plus-lg"></i>
+
+        Create Change
+
+      </button>
+
+    </div>
+
+    <!-- SEARCH -->
+
+    <div class="search-box">
+
+      <i class="bi bi-search"></i>
+
+      <input
+
+        type="text"
+
+        placeholder="Search changes..."
+
+        [ngModel]="
+          changeService.search()
+        "
+
+        (ngModelChange)="
+          changeService
+            .search
+            .set($event)
+        "
+      >
+
+    </div>
+
+    <!-- TABLE -->
+
+    <div class="table-card">
+
+      <table class="table">
+
+        <thead>
+
+          <tr>
+
+            <th>
+              Change ID
+            </th>
+
+            <th>
+              Title
+            </th>
+
+            <th>
+              Type
+            </th>
+
+            <th>
+              Risk
+            </th>
+
+            <th>
+              Status
+            </th>
+
+            <th>
+              Assigned To
+            </th>
+
+            <th>
+              Actions
+            </th>
+
+          </tr>
+
+        </thead>
+
+        <tbody>
+
+          @for(
+
+            item of
+            changeService
+              .filteredChanges();
+
+            track item.id
+
+          ) {
+
+            <tr
+              (click)="
+                changeService
+                  .openDetails(item)
+              "
+            >
+
+              <td>
+                {{ item.changeId }}
+              </td>
+
+              <td>
+                {{ item.title }}
+              </td>
+
+              <td>
+                {{ item.type }}
+              </td>
+
+              <td>
+
+                <span
+
+                  class="risk-badge"
+
+                  [class.low]="
+                    item.risk ===
+                    'Low'
+                  "
+
+                  [class.medium]="
+                    item.risk ===
+                    'Medium'
+                  "
+
+                  [class.high]="
+                    item.risk ===
+                    'High'
+                  "
+                >
+
+                  {{ item.risk }}
+
+                </span>
+
+              </td>
+
+              <td>
+                {{ item.status }}
+              </td>
+
+              <td>
+                {{ item.assignedTo }}
+              </td>
+
+              <td class="action-cell">
+
+                <!-- EDIT -->
+
+                <button
+
+                  class="edit-btn"
+
+                  (click)="
+                    $event.stopPropagation();
+
+                    changeService
+                      .openEditModal(item)
+                  "
+                >
+
+                  <i class="bi bi-pencil-square"></i>
+
+                </button>
+
+                <!-- DELETE -->
+
+                <button
+
+                  class="delete-btn"
+
+                  (click)="
+                    $event.stopPropagation();
+
+                    changeService
+                      .openDeleteModal(item)
+                  "
+                >
+
+                  <i class="bi bi-trash"></i>
+
+                </button>
+
+              </td>
+
+            </tr>
+
+          }
+
+        </tbody>
+
+      </table>
+
+    </div>
+
+  </div>
+
+  <!-- MODALS -->
+
+  @if(
+    changeService
+      .showCreateModal()
+  ) {
+
+    <app-create-change />
+
+  }
+
+  @if(
+    changeService
+      .showEditModal()
+  ) {
+
+    <app-edit-change />
+
+  }
+
+  @if(
+    changeService
+      .showDeleteModal()
+  ) {
+
+    <app-delete-change-modal />
+
+  }
+
+  @if(
+    changeService
+      .showDetailsDrawer()
+  ) {
+
+    <app-change-details-drawer />
+
+  }
+
+</div>

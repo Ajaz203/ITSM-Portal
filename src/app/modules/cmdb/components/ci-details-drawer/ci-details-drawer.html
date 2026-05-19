@@ -1,0 +1,269 @@
+<div class="drawer-overlay">
+
+  <div class="drawer-container">
+
+    @if(
+      cmdbService
+        .selectedCI();
+      as ci
+    ) {
+
+      <!-- HEADER -->
+
+      <div class="drawer-header">
+
+        <div>
+
+          <h3>
+            {{ ci.name }}
+          </h3>
+
+          <p>
+            {{ ci.ciId }}
+          </p>
+
+        </div>
+
+        <button
+          class="close-btn"
+
+          (click)="
+            cmdbService
+              .showDetailsDrawer
+              .set(false)
+          "
+        >
+
+          <i class="bi bi-x-lg"></i>
+
+        </button>
+
+      </div>
+
+      <!-- CONTENT -->
+
+      <div class="drawer-content">
+
+        <!-- TOP GRID -->
+
+        <div class="top-grid">
+
+          <div class="info-card">
+
+            <span>
+              CI Type
+            </span>
+
+            <p>
+              {{ ci.type }}
+            </p>
+
+          </div>
+
+          <div class="info-card">
+
+            <span>
+              Status
+            </span>
+
+            <p>
+              {{ ci.status }}
+            </p>
+
+          </div>
+
+          <div class="info-card">
+
+            <span>
+              Environment
+            </span>
+
+            <p>
+              {{ ci.environment }}
+            </p>
+
+          </div>
+
+          <div class="info-card">
+
+            <span>
+              Owner
+            </span>
+
+            <p>
+              {{ ci.owner }}
+            </p>
+
+          </div>
+
+        </div>
+
+        <!-- TECHNICAL DETAILS -->
+
+        <div class="info-card">
+
+          <span>
+            IP Address
+          </span>
+
+          <p>
+            {{ ci.ipAddress || '-' }}
+          </p>
+
+        </div>
+
+        <div class="info-card">
+
+          <span>
+            Operating System
+          </span>
+
+          <p>
+            {{ ci.operatingSystem || '-' }}
+          </p>
+
+        </div>
+
+        <div class="info-card">
+
+          <span>
+            Vendor
+          </span>
+
+          <p>
+            {{ ci.vendor || '-' }}
+          </p>
+
+        </div>
+
+        <!-- RELATIONSHIPS -->
+
+        <div class="info-card">
+
+          <span>
+            Relationships
+          </span>
+
+          <div class="tag-group">
+
+            @for(
+
+              item of
+              ci.relationships || [];
+
+              track item
+
+            ) {
+
+              <span class="tag">
+
+                {{ item }}
+
+              </span>
+
+            }
+
+          </div>
+
+        </div>
+
+        <!-- LINKED INCIDENTS -->
+
+        <div class="info-card">
+
+          <span>
+            Linked Incidents
+          </span>
+
+          <div class="tag-group">
+
+            @for(
+
+              item of
+              ci.linkedIncidents || [];
+
+              track item
+
+            ) {
+
+              <span class="incident-tag">
+
+                {{ item }}
+
+              </span>
+
+            }
+
+          </div>
+
+        </div>
+
+        <!-- LINKED PROBLEMS -->
+
+        <div class="info-card">
+
+          <span>
+            Linked Problems
+          </span>
+
+          <div class="tag-group">
+
+            @for(
+
+              item of
+              ci.linkedProblems || [];
+
+              track item
+
+            ) {
+
+              <span class="problem-tag">
+
+                {{ item }}
+
+              </span>
+
+            }
+
+          </div>
+
+        </div>
+
+        <!-- LINKED CHANGES -->
+
+        <div class="info-card">
+
+          <span>
+            Linked Changes
+          </span>
+
+          <div class="tag-group">
+
+            @for(
+
+              item of
+              ci.linkedChanges || [];
+
+              track item
+
+            ) {
+
+              <span class="change-tag">
+
+                {{ item }}
+
+              </span>
+
+            }
+
+          </div>
+
+        </div>
+
+      </div>
+
+    }
+
+  </div>
+
+</div>

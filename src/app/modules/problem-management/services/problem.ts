@@ -29,52 +29,74 @@ export class Problem {
     signal(false);
   showDeleteModal =
     signal(false);
+    
   problems =
     signal<ProblemModel[]>([
 
-      {
+   {
 
-        id: 1,
+  id: 1,
 
-        problemId:
-          'PRB001',
+  problemId: 'PRB001',
 
-        title:
-          'Email Server Failure',
+  title: 'Email Server Failure',
 
-        description:
-          'Recurring email outage issue',
+  description:
+    'Recurring email outage issue',
 
-        priority:
-          'High',
+  priority: 'High',
 
-        status:
-          'Root Cause Analysis',
+  status:
+    'Root Cause Analysis',
 
-        rootCause:
-          'SMTP overload issue',
+  assignedTo: 'Admin',
 
-        workaround:
-          'Restart mail service',
+  rootCause:
+    'SMTP overload issue',
 
-        permanentFix:
-          'Server scaling required',
+  workaround:
+    'Restart mail service',
 
-        linkedIncidents: [
+  permanentFix:
+    'Server scaling required',
 
-          'INC001',
+  linkedIncidents: [
+    'INC001',
+    'INC002'
+  ],
 
-          'INC002'
+  activities: [
 
-        ],
+    {
 
-        assignedTo:
-          'Admin',
+      user: 'Admin',
 
-        createdAt:
-          '2026-05-17'
+      action:
+        'Problem created',
 
-      }
+      createdAt:
+        '10:00 AM'
+
+    },
+
+    {
+
+      user: 'DBA Team',
+
+      action:
+        'Root cause identified',
+
+      createdAt:
+        '11:15 AM'
+
+    }
+
+  ],
+
+  createdAt:
+    '2026-05-17'
+
+}
 
     ]);
 

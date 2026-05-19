@@ -1,0 +1,180 @@
+<div class="approval-page">
+
+  <!-- HEADER -->
+
+  <div class="page-header">
+
+    <div>
+
+      <h2>
+        Change Approval Board
+      </h2>
+
+      <p>
+        CAB review and approval workflow
+      </p>
+
+    </div>
+
+  </div>
+
+  <!-- APPROVAL LIST -->
+
+  <div class="approval-list">
+
+    @for(
+
+      item of
+      changeService
+        .changes();
+
+      track item.id
+
+    ) {
+
+      <div class="approval-card">
+
+        <!-- TOP -->
+
+        <div class="approval-top">
+
+          <div>
+
+            <h3>
+              {{ item.title }}
+            </h3>
+
+            <p>
+              {{ item.changeId }}
+            </p>
+
+          </div>
+
+          <span
+            class="approval-status"
+
+            [class.pending]="
+              item.approvalStatus
+              === 'Pending'
+            "
+
+            [class.approved]="
+              item.approvalStatus
+              === 'Approved'
+            "
+
+            [class.rejected]="
+              item.approvalStatus
+              === 'Rejected'
+            "
+          >
+
+            {{ item.approvalStatus }}
+
+          </span>
+
+        </div>
+
+        <!-- DETAILS -->
+
+        <div class="details-grid">
+
+          <div>
+
+            <span>
+              Risk
+            </span>
+
+            <p>
+              {{ item.risk }}
+            </p>
+
+          </div>
+
+          <div>
+
+            <span>
+              Type
+            </span>
+
+            <p>
+              {{ item.type }}
+            </p>
+
+          </div>
+
+          <div>
+
+            <span>
+              Assigned To
+            </span>
+
+            <p>
+              {{ item.assignedTo }}
+            </p>
+
+          </div>
+
+          <div>
+
+            <span>
+              Window
+            </span>
+
+            <p>
+              {{ item.plannedStart }}
+            </p>
+
+          </div>
+
+        </div>
+
+        <!-- COMMENT -->
+
+        <textarea
+
+          rows="3"
+
+          [(ngModel)]="comment"
+
+          placeholder="Approval comments..."
+
+        ></textarea>
+
+        <!-- ACTIONS -->
+
+        <div class="approval-actions">
+
+          <button
+            class="reject-btn"
+
+            (click)="
+              rejectChange(item.id)
+            "
+          >
+
+            Reject
+
+          </button>
+
+          <button
+            class="approve-btn"
+
+            (click)="
+              approveChange(item.id)
+            "
+          >
+
+            Approve
+
+          </button>
+
+        </div>
+
+      </div>
+
+    }
+
+  </div>
+
+</div>

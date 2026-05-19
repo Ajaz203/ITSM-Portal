@@ -1,0 +1,24 @@
+<div class="filter-card">
+
+  <div class="search-box">
+
+    <i class="bi bi-search"></i>
+
+    <input
+
+      type="text"
+
+      placeholder="Search audit logs..."
+
+      [ngModel]="
+        auditLogs.search()
+      "
+
+      (ngModelChange)="
+        auditLogs.search.set($event)
+      "
+    />
+
+  </div>
+
+</div>

@@ -1,0 +1,234 @@
+<div class="modal-overlay">
+
+  <div class="modal-container">
+
+    <!-- HEADER -->
+
+    <div class="modal-header">
+
+      <div>
+
+        <h3>
+          Edit Change
+        </h3>
+
+        <p>
+          Update infrastructure
+          and deployment changes
+        </p>
+
+      </div>
+
+      <button
+        class="close-btn"
+        (click)="closeModal()"
+      >
+
+        <i class="bi bi-x-lg"></i>
+
+      </button>
+
+    </div>
+
+    <!-- FORM -->
+
+    <form
+      [formGroup]="form"
+    >
+
+      <div class="form-grid">
+
+        <!-- TITLE -->
+
+        <div class="form-group full-width">
+
+          <label>
+            Change Title
+          </label>
+
+          <input
+            type="text"
+            formControlName="title"
+          />
+
+        </div>
+
+        <!-- DESCRIPTION -->
+
+        <div class="form-group full-width">
+
+          <label>
+            Description
+          </label>
+
+          <textarea
+            rows="3"
+            formControlName="description"
+          ></textarea>
+
+        </div>
+
+        <!-- TYPE -->
+
+        <div class="form-group">
+
+          <label>
+            Change Type
+          </label>
+
+          <select
+            formControlName="type"
+          >
+
+            <option>
+              Normal
+            </option>
+
+            <option>
+              Emergency
+            </option>
+
+            <option>
+              Standard
+            </option>
+
+          </select>
+
+        </div>
+
+        <!-- RISK -->
+
+        <div class="form-group">
+
+          <label>
+            Risk
+          </label>
+
+          <select
+            formControlName="risk"
+          >
+
+            <option>
+              Low
+            </option>
+
+            <option>
+              Medium
+            </option>
+
+            <option>
+              High
+            </option>
+
+          </select>
+
+        </div>
+
+        <!-- ASSIGNED -->
+
+        <div class="form-group">
+
+          <label>
+            Assigned To
+          </label>
+
+          <input
+            type="text"
+            formControlName="assignedTo"
+          />
+
+        </div>
+
+        <!-- START -->
+
+        <div class="form-group">
+
+          <label>
+            Planned Start
+          </label>
+
+          <input
+            type="date"
+            formControlName="plannedStart"
+          />
+
+        </div>
+
+        <!-- END -->
+
+        <div class="form-group">
+
+          <label>
+            Planned End
+          </label>
+
+          <input
+            type="date"
+            formControlName="plannedEnd"
+          />
+
+        </div>
+
+        <!-- IMPLEMENTATION -->
+
+        <div class="form-group full-width">
+
+          <label>
+            Implementation Plan
+          </label>
+
+          <textarea
+            rows="3"
+            formControlName="implementationPlan"
+          ></textarea>
+
+        </div>
+
+        <!-- ROLLBACK -->
+
+        <div class="form-group full-width">
+
+          <label>
+            Rollback Plan
+          </label>
+
+          <textarea
+            rows="3"
+            formControlName="rollbackPlan"
+          ></textarea>
+
+        </div>
+
+      </div>
+
+      <!-- FOOTER -->
+
+      <div class="modal-footer">
+
+        <button
+          type="button"
+          class="cancel-btn"
+          (click)="closeModal()"
+        >
+
+          Cancel
+
+        </button>
+
+        <button
+          type="button"
+          class="submit-btn"
+          (click)="updateChange()"
+        >
+
+          Update Change
+
+        </button>
+
+      </div>
+
+    </form>
+
+  </div>
+
+</div>

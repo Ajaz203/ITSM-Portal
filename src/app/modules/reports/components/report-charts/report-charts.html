@@ -1,0 +1,113 @@
+<div class="charts-grid">
+
+  <!-- INCIDENT -->
+
+  <div class="chart-card">
+
+    <div class="chart-header">
+
+      <h3>
+        Incident Overview
+      </h3>
+
+      <p>
+        Open vs resolved incidents
+      </p>
+
+    </div>
+
+    <apx-chart
+
+      [series]="
+        incidentChart.series
+      "
+
+      [chart]="
+        incidentChart.chart
+      "
+
+      [labels]="
+        incidentChart.labels
+      "
+
+      [legend]="
+        incidentChart.legend
+      "
+
+    ></apx-chart>
+
+  </div>
+
+  <!-- CHANGE -->
+
+  <div class="chart-card">
+
+    <div class="chart-header">
+
+      <h3>
+        Change Analytics
+      </h3>
+
+      <p>
+        Governance insights
+      </p>
+
+    </div>
+
+    <apx-chart
+
+      [series]="
+        changeChart.series
+      "
+
+      [chart]="
+        changeChart.chart
+      "
+
+      [labels]="
+        changeChart.labels
+      "
+
+      [legend]="
+        changeChart.legend
+      "
+
+    ></apx-chart>
+
+  </div>
+
+  <!-- SLA -->
+
+  <div class="chart-card full-width">
+
+    <div class="chart-header">
+
+      <h3>
+        SLA Compliance
+      </h3>
+
+      <p>
+        Operational SLA health
+      </p>
+
+    </div>
+
+    <apx-chart
+
+      [series]="
+        slaChart.series
+      "
+
+      [chart]="
+        slaChart.chart
+      "
+
+      [labels]="
+        slaChart.labels
+      "
+
+    ></apx-chart>
+
+  </div>
+
+</div>

@@ -1,0 +1,148 @@
+<div class="analytics-page">
+
+  <!-- HEADER -->
+
+  <div class="page-header">
+
+    <div>
+
+      <h2>
+        Change Analytics
+      </h2>
+
+      <p>
+        Governance and change
+        performance insights
+      </p>
+
+    </div>
+
+  </div>
+
+  <!-- KPI GRID -->
+
+  <div class="kpi-grid">
+
+    <!-- TOTAL -->
+
+    <div class="kpi-card">
+
+      <div class="kpi-icon total">
+
+        <i class="bi bi-arrow-repeat"></i>
+
+      </div>
+
+      <div>
+
+        <span>
+          Total Changes
+        </span>
+
+        <h3>
+          {{ totalChanges() }}
+        </h3>
+
+      </div>
+
+    </div>
+
+    <!-- APPROVED -->
+
+    <div class="kpi-card">
+
+      <div class="kpi-icon approved">
+
+        <i class="bi bi-check-circle"></i>
+
+      </div>
+
+      <div>
+
+        <span>
+          Approved
+        </span>
+
+        <h3>
+          {{ approvedChanges() }}
+        </h3>
+
+      </div>
+
+    </div>
+
+    <!-- REJECTED -->
+
+    <div class="kpi-card">
+
+      <div class="kpi-icon rejected">
+
+        <i class="bi bi-x-circle"></i>
+
+      </div>
+
+      <div>
+
+        <span>
+          Rejected
+        </span>
+
+        <h3>
+          {{ rejectedChanges() }}
+        </h3>
+
+      </div>
+
+    </div>
+
+    <!-- EMERGENCY -->
+
+    <div class="kpi-card">
+
+      <div class="kpi-icon emergency">
+
+        <i class="bi bi-exclamation-triangle"></i>
+
+      </div>
+
+      <div>
+
+        <span>
+          Emergency
+        </span>
+
+        <h3>
+          {{ emergencyChanges() }}
+        </h3>
+
+      </div>
+
+    </div>
+
+    <!-- PENDING -->
+
+    <div class="kpi-card">
+
+      <div class="kpi-icon pending">
+
+        <i class="bi bi-clock-history"></i>
+
+      </div>
+
+      <div>
+
+        <span>
+          Pending Approval
+        </span>
+
+        <h3>
+          {{ pendingChanges() }}
+        </h3>
+
+      </div>
+
+    </div>
+
+  </div>
+
+</div>

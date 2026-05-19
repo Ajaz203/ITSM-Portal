@@ -61,35 +61,26 @@ export const sidebarMenu = [
       {
 
         title:
-          'Asset Management',
+          'Request Management',
 
         icon:
-          'bi bi-pc-display',
+          'bi bi-card-checklist',
 
         route:
-          '/assets-management',
+          '/request-management',
 
         roles: [
 
           'Admin',
 
-          'Agent'
+          'Agent',
+
+          'User'
 
         ]
 
       },
-      {
-        title: 'Vendors',
 
-        icon: 'bi bi-buildings',
-
-        route: '/vendors',
-
-        roles: [
-          'Admin'
-        ]
-
-      },
       {
 
         title:
@@ -135,25 +126,137 @@ export const sidebarMenu = [
       {
 
         title:
-          'Request Management',
+          'Approval Board',
 
         icon:
-          'bi bi-card-checklist',
+          'bi bi-check2-square',
 
         route:
-          '/request-management',
+          '/change-approval-board',
 
         roles: [
 
           'Admin',
 
-          'Agent',
-
-          'User'
+          'Manager'
 
         ]
 
-      }
+      },
+
+      {
+
+        title:
+          'Change Calendar',
+
+        icon:
+          'bi bi-calendar-event',
+
+        route:
+          '/change-calendar',
+
+        roles: [
+
+          'Admin',
+
+          'Manager'
+
+        ]
+
+      },
+      {
+
+        title:
+          'Change Analytics',
+
+        icon:
+          'bi bi-bar-chart-line',
+
+        route:
+          '/change-analytics',
+
+        roles: [
+
+          'Admin',
+
+          'Manager'
+
+        ]
+
+      },
+      {
+
+        title:
+          'Asset Management',
+
+        icon:
+          'bi bi-pc-display',
+
+        route:
+          '/assets-management',
+
+        roles: [
+
+          'Admin',
+
+          'Agent'
+
+        ]
+
+      },
+
+      {
+
+        title:
+          'CMDB',
+
+        icon:
+          'bi bi-diagram-2',
+
+        route:
+          '/cmdb',
+
+        roles: [
+
+          'Admin',
+
+          'Manager'
+
+        ]
+
+      },
+      {
+
+        title:
+          'Relationship Map',
+
+        icon:
+          'bi bi-diagram-3',
+
+        route:
+          '/relationship-map',
+
+        roles: [
+
+          'Admin',
+
+          'Manager'
+
+        ]
+
+      },
+      {
+        title: 'Vendors',
+
+        icon: 'bi bi-buildings',
+
+        route: '/vendors',
+
+        roles: [
+          'Admin'
+        ]
+
+      },
 
     ]
 
@@ -173,7 +276,7 @@ export const sidebarMenu = [
 
         icon: 'bi bi-bar-chart',
 
-        route: '/reports',
+        route: '/reports-dashboard',
 
         roles: [
 
@@ -184,7 +287,26 @@ export const sidebarMenu = [
         ]
 
       },
+      {
 
+        title:
+          'Export Center',
+
+        icon:
+          'bi bi-download',
+
+        route:
+          '/export-center',
+
+        roles: [
+
+          'Admin',
+
+          'Manager'
+
+        ]
+
+      },
       {
 
         title: 'Analytics',
@@ -212,7 +334,7 @@ export const sidebarMenu = [
           'bi bi-clock-history',
 
         route:
-          '/sla-monitoring',
+          '/sla-reports',
 
         roles: [
 
@@ -288,23 +410,7 @@ export const sidebarMenu = [
 
       },
 
-      {
 
-        title: 'Assets',
-
-        icon:
-          'bi bi-pc-display',
-
-        route:
-          '/assets',
-
-        roles: [
-
-          'Admin'
-
-        ]
-
-      },
 
       {
 

@@ -1,0 +1,95 @@
+<div class="export-page">
+
+  <!-- HEADER -->
+
+  <div class="page-header">
+
+    <div>
+
+      <h2>
+        Export Center
+      </h2>
+
+      <p>
+        Download operational reports
+      </p>
+
+    </div>
+
+  </div>
+
+  <!-- EXPORT GRID -->
+
+  <div class="export-grid">
+
+    <!-- INCIDENT -->
+
+    <div class="export-card">
+
+      <div class="export-icon incident">
+
+        <i class="bi bi-exclamation-circle"></i>
+
+      </div>
+
+      <h3>
+        Incident Reports
+      </h3>
+
+      <p>
+        Export incident management reports
+      </p>
+
+      <button
+        class="export-btn"
+
+        (click)="
+          exportIncidents()
+        "
+      >
+
+        <i class="bi bi-download"></i>
+
+        Export CSV
+
+      </button>
+
+    </div>
+
+    <!-- CHANGE -->
+
+    <div class="export-card">
+
+      <div class="export-icon change">
+
+        <i class="bi bi-arrow-repeat"></i>
+
+      </div>
+
+      <h3>
+        Change Reports
+      </h3>
+
+      <p>
+        Export governance and CAB reports
+      </p>
+
+      <button
+        class="export-btn"
+
+        (click)="
+          exportChanges()
+        "
+      >
+
+        <i class="bi bi-download"></i>
+
+        Export CSV
+
+      </button>
+
+    </div>
+
+  </div>
+
+</div>

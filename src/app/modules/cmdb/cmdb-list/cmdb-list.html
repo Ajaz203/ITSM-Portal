@@ -1,0 +1,273 @@
+<div class="page-container">
+
+  <div class="cmdb-page">
+
+    <!-- HEADER -->
+
+    <div class="page-header">
+
+      <div>
+
+        <h2>
+          CMDB
+        </h2>
+
+        <p>
+          Manage configuration
+          items and dependencies
+        </p>
+
+      </div>
+
+      <button
+
+        class="create-btn"
+
+        (click)="
+          cmdbService
+            .showCreateModal
+            .set(true)
+        "
+      >
+
+        <i class="bi bi-plus-lg"></i>
+
+        Add CI
+
+      </button>
+
+    </div>
+
+    <!-- SEARCH -->
+
+    <div class="search-box">
+
+      <i class="bi bi-search"></i>
+
+      <input
+
+        type="text"
+
+        placeholder="Search configuration items..."
+
+        [ngModel]="
+          cmdbService.search()
+        "
+
+        (ngModelChange)="
+          cmdbService
+            .search
+            .set($event)
+        "
+      >
+
+    </div>
+
+    <!-- TABLE -->
+
+    <div class="table-card">
+
+      <table class="table">
+
+        <thead>
+
+          <tr>
+
+            <th>
+              CI ID
+            </th>
+
+            <th>
+              Name
+            </th>
+
+            <th>
+              Type
+            </th>
+
+            <th>
+              Status
+            </th>
+
+            <th>
+              Environment
+            </th>
+
+            <th>
+              Owner
+            </th>
+
+            <th>
+              Vendor
+            </th>
+
+            <th>
+              Actions
+            </th>
+
+          </tr>
+
+        </thead>
+
+        <tbody>
+
+          @for(
+
+            item of
+            cmdbService
+              .filteredCIs();
+
+            track item.id
+
+          ) {
+
+            <tr
+              (click)="
+                cmdbService
+                  .openCIDetails(item)
+              "
+            >
+
+              <td>
+                {{ item.ciId }}
+              </td>
+
+              <td>
+                {{ item.name }}
+              </td>
+
+              <td>
+                {{ item.type }}
+              </td>
+
+              <td>
+
+                <span
+
+                  class="status-badge"
+
+                  [class.operational]="
+                    item.status ===
+                    'Operational'
+                  "
+
+                  [class.warning]="
+                    item.status ===
+                    'Warning'
+                  "
+
+                  [class.critical]="
+                    item.status ===
+                    'Critical'
+                  "
+
+                  [class.offline]="
+                    item.status ===
+                    'Offline'
+                  "
+                >
+
+                  {{ item.status }}
+
+                </span>
+
+              </td>
+
+              <td>
+                {{ item.environment }}
+              </td>
+
+              <td>
+                {{ item.owner }}
+              </td>
+
+              <td>
+                {{ item.vendor }}
+              </td>
+
+              <td class="action-cell">
+
+                <!-- EDIT -->
+
+                <button
+
+                  class="edit-btn"
+
+                  (click)="
+                    $event.stopPropagation();
+
+                    cmdbService
+                      .openEditModal(item)
+                  "
+                >
+
+                  <i class="bi bi-pencil-square"></i>
+
+                </button>
+
+                <!-- DELETE -->
+
+                <button
+
+                  class="delete-btn"
+
+                  (click)="
+                    $event.stopPropagation();
+
+                    cmdbService
+                      .openDeleteModal(item)
+                  "
+                >
+
+                  <i class="bi bi-trash"></i>
+
+                </button>
+
+              </td>
+
+            </tr>
+
+          }
+
+        </tbody>
+
+      </table>
+
+    </div>
+
+  </div>
+
+</div>
+
+@if(
+  cmdbService
+    .showCreateModal()
+) {
+
+  <app-create-ci />
+
+}
+@if(
+  cmdbService
+    .showDetailsDrawer()
+) {
+
+  <app-ci-details-drawer />
+
+}
+@if(
+  cmdbService
+    .showEditModal()
+) {
+
+  <app-edit-ci />
+
+}
+@if(
+  cmdbService
+    .showDeleteModal()
+) {
+
+  <app-delete-ci-modal />
+
+}

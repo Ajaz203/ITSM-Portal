@@ -1,0 +1,106 @@
+<div class="relationship-page">
+
+  <!-- HEADER -->
+
+  <div class="page-header">
+
+    <div>
+
+      <h2>
+        Relationship Map
+      </h2>
+
+      <p>
+        Infrastructure dependency
+        visualization
+      </p>
+
+    </div>
+
+  </div>
+
+  <!-- TOPOLOGY -->
+
+  <div class="topology-wrapper">
+
+    @for(
+
+      ci of
+      cmdbService.cis();
+
+      track ci.id
+
+    ) {
+
+      <div class="ci-card">
+
+        <!-- MAIN CI -->
+
+        <div class="main-ci">
+
+          <div class="ci-icon">
+
+            <i class="bi bi-diagram-3"></i>
+
+          </div>
+
+          <div>
+
+            <h3>
+              {{ ci.name }}
+            </h3>
+
+            <p>
+              {{ ci.type }}
+            </p>
+
+          </div>
+
+        </div>
+
+        <!-- RELATIONSHIPS -->
+
+        @if(
+          ci.relationships?.length
+        ) {
+
+          <div class="relationship-list">
+
+            @for(
+
+              item of
+              ci.relationships || [];
+
+              track item
+
+            ) {
+
+              <div class="relationship-item">
+
+                <div class="line"></div>
+
+                <div class="relationship-card">
+
+                  <i class="bi bi-arrow-down"></i>
+
+                  <span>
+                    {{ item }}
+                  </span>
+
+                </div>
+
+              </div>
+
+            }
+
+          </div>
+
+        }
+
+      </div>
+
+    }
+
+  </div>
+
+</div>

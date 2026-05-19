@@ -1,0 +1,133 @@
+<div class="table-card">
+
+  <table>
+
+    <thead>
+
+      <tr>
+
+        <th>
+          Module
+        </th>
+
+        <th>
+          Action
+        </th>
+
+        <th>
+          Performed By
+        </th>
+
+        <th>
+          Severity
+        </th>
+
+        <th>
+          Description
+        </th>
+
+        <th>
+          Created At
+        </th>
+
+      </tr>
+
+    </thead>
+
+    <tbody>
+
+      @for(
+
+        item of
+        auditLogs
+          .filteredLogs();
+
+        track item.id
+
+      ) {
+
+        <tr>
+
+          <!-- MODULE -->
+
+          <td>
+
+            <div class="module-badge">
+
+              {{ item.module }}
+
+            </div>
+
+          </td>
+
+          <!-- ACTION -->
+
+          <td>
+
+            {{ item.action }}
+
+          </td>
+
+          <!-- USER -->
+
+          <td>
+
+            {{ item.performedBy }}
+
+          </td>
+
+          <!-- SEVERITY -->
+
+          <td>
+
+            <span
+
+              class="severity-badge"
+
+              [class.low]="
+                item.severity
+                === 'Low'
+              "
+
+              [class.medium]="
+                item.severity
+                === 'Medium'
+              "
+
+              [class.high]="
+                item.severity
+                === 'High'
+              "
+            >
+
+              {{ item.severity }}
+
+            </span>
+
+          </td>
+
+          <!-- DESCRIPTION -->
+
+          <td>
+
+            {{ item.description }}
+
+          </td>
+
+          <!-- DATE -->
+
+          <td>
+
+            {{ item.createdAt }}
+
+          </td>
+
+        </tr>
+
+      }
+
+    </tbody>
+
+  </table>
+
+</div>

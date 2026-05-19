@@ -23,8 +23,17 @@ export interface Problem {
   permanentFix?: string;
 
   linkedIncidents?: string[];
-
+activities?: ProblemActivity[];
   assignedTo: string;
+
+  createdAt: string;
+
+}
+export interface ProblemActivity {
+
+  user: string;
+
+  action: string;
 
   createdAt: string;
 

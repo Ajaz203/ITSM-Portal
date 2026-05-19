@@ -1,0 +1,262 @@
+<div class="sla-page">
+
+  <!-- HEADER -->
+
+  <div class="page-header">
+
+    <div>
+
+      <h2>
+        SLA Reporting
+      </h2>
+
+      <p>
+        SLA compliance and breach analytics
+      </p>
+
+    </div>
+
+  </div>
+
+  <!-- KPI GRID -->
+
+  <div class="kpi-grid">
+
+    <!-- TOTAL -->
+
+    <div class="kpi-card primary">
+
+      <span>
+        Total SLA Tickets
+      </span>
+
+      <h3>
+
+        {{
+          reports
+            .totalSlaTickets()
+        }}
+
+      </h3>
+
+    </div>
+
+    <!-- HEALTHY -->
+
+    <div class="kpi-card success">
+
+      <span>
+        Healthy SLA
+      </span>
+
+      <h3>
+
+        {{
+          reports
+            .healthySla()
+        }}
+
+      </h3>
+
+    </div>
+
+    <!-- WARNING -->
+
+    <div class="kpi-card warning">
+
+      <span>
+        Warning SLA
+      </span>
+
+      <h3>
+
+        {{
+          reports
+            .warningSla()
+        }}
+
+      </h3>
+
+    </div>
+
+    <!-- BREACHED -->
+
+    <div class="kpi-card danger">
+
+      <span>
+        Breached SLA
+      </span>
+
+      <h3>
+
+        {{
+          reports
+            .breachedSlaTickets()
+        }}
+
+      </h3>
+
+    </div>
+
+    <!-- COMPLIANCE -->
+
+    <div class="kpi-card info">
+
+      <span>
+        SLA Compliance
+      </span>
+
+      <h3>
+
+        {{
+          compliance()
+        }}%
+
+      </h3>
+
+    </div>
+
+  </div>
+
+  <!-- CHART -->
+
+  <div class="chart-card">
+
+    <div class="chart-header">
+
+      <h3>
+        SLA Analytics
+      </h3>
+
+      <p>
+        Operational SLA distribution
+      </p>
+
+    </div>
+
+    <apx-chart
+
+      [series]="
+        slaChart.series
+      "
+
+      [chart]="
+        slaChart.chart
+      "
+
+      [labels]="
+        slaChart.labels
+      "
+
+      [legend]="
+        slaChart.legend
+      "
+
+    ></apx-chart>
+
+  </div>
+
+  <!-- TABLE -->
+
+  <div class="table-card">
+
+    <table>
+
+      <thead>
+
+        <tr>
+
+          <th>
+            Ticket
+          </th>
+
+          <th>
+            Priority
+          </th>
+
+          <th>
+            Assigned
+          </th>
+
+          <th>
+            SLA Hours
+          </th>
+
+          <th>
+            SLA Status
+          </th>
+
+        </tr>
+
+      </thead>
+
+      <tbody>
+
+        @for(
+
+          item of
+          reports
+            .incidentService
+            .incidents();
+
+          track item.id
+
+        ) {
+
+          <tr>
+
+            <td>
+              {{ item.ticketId }}
+            </td>
+
+            <td>
+              {{ item.priority }}
+            </td>
+
+            <td>
+              {{ item.assignedTo }}
+            </td>
+
+            <td>
+              {{ item.slaHours }}h
+            </td>
+
+            <td>
+
+              <span
+
+                class="sla-badge"
+
+                [class.healthy]="
+                  item.slaStatus
+                  === 'healthy'
+                "
+
+                [class.warning]="
+                  item.slaStatus
+                  === 'warning'
+                "
+
+                [class.breached]="
+                  item.slaStatus
+                  === 'breached'
+                "
+              >
+
+                {{ item.slaStatus }}
+
+              </span>
+
+            </td>
+
+          </tr>
+
+        }
+
+      </tbody>
+
+    </table>
+
+  </div>
+
+</div>

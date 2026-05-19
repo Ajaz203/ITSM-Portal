@@ -1,0 +1,141 @@
+.drawer-overlay {
+
+  position: fixed;
+
+  inset: 0;
+
+  background:
+    rgba(15,23,42,0.45);
+
+  display: flex;
+
+  justify-content: flex-end;
+
+  z-index: 999;
+
+}
+
+.drawer-container {
+
+  width: 520px;
+
+  height: 100vh;
+
+  background: white;
+
+  padding: 24px;
+
+  overflow-y: auto;
+
+}
+
+/* HEADER */
+
+.drawer-header {
+
+  display: flex;
+
+  align-items: flex-start;
+
+  justify-content: space-between;
+
+  margin-bottom: 24px;
+
+}
+
+.drawer-header h3 {
+
+  margin: 0;
+
+  font-size: 22px;
+
+  font-weight: 700;
+
+}
+
+.drawer-header p {
+
+  margin-top: 6px;
+
+  color: #64748b;
+
+}
+
+/* CLOSE */
+
+.close-btn {
+
+  width: 42px;
+
+  height: 42px;
+
+  border: none;
+
+  border-radius: 12px;
+
+  background: #f1f5f9;
+
+}
+
+/* CONTENT */
+
+.drawer-content {
+
+  display: flex;
+
+  flex-direction: column;
+
+  gap: 18px;
+
+}
+
+/* GRID */
+
+.top-grid {
+
+  display: grid;
+
+  grid-template-columns:
+    repeat(2, 1fr);
+
+  gap: 14px;
+
+}
+
+/* INFO CARD */
+
+.info-card {
+
+  background: #f8fafc;
+
+  border-radius: 18px;
+
+  padding: 18px;
+
+}
+
+.info-card span {
+
+  display: block;
+
+  font-size: 13px;
+
+  font-weight: 600;
+
+  color: #64748b;
+
+  margin-bottom: 10px;
+
+}
+
+.info-card p {
+
+  margin: 0;
+
+  font-size: 15px;
+
+  font-weight: 600;
+
+  color: #0f172a;
+
+}

@@ -44,6 +44,114 @@
 
       <div class="drawer-content">
 
+        <!-- STATUS + ASSIGN -->
+
+        <div class="top-grid">
+
+          <!-- STATUS -->
+
+          <div class="info-card">
+
+            <span>
+              Status
+            </span>
+
+            <select>
+
+              <option
+                [selected]="
+                  problem.status ===
+                  'Open'
+                "
+              >
+                Open
+              </option>
+
+              <option
+                [selected]="
+                  problem.status ===
+                  'Root Cause Analysis'
+                "
+              >
+                Root Cause Analysis
+              </option>
+
+              <option
+                [selected]="
+                  problem.status ===
+                  'Known Error'
+                "
+              >
+                Known Error
+              </option>
+
+              <option
+                [selected]="
+                  problem.status ===
+                  'Resolved'
+                "
+              >
+                Resolved
+              </option>
+
+            </select>
+
+          </div>
+
+          <!-- ASSIGNED -->
+
+          <div class="info-card">
+
+            <span>
+              Assigned To
+            </span>
+
+            <select>
+
+              <option
+                [selected]="
+                  problem.assignedTo ===
+                  'Backend Team'
+                "
+              >
+                Backend Team
+              </option>
+
+              <option
+                [selected]="
+                  problem.assignedTo ===
+                  'DBA Team'
+                "
+              >
+                DBA Team
+              </option>
+
+              <option
+                [selected]="
+                  problem.assignedTo ===
+                  'Infrastructure Team'
+                "
+              >
+                Infrastructure Team
+              </option>
+
+              <option
+                [selected]="
+                  problem.assignedTo ===
+                  'Security Team'
+                "
+              >
+                Security Team
+              </option>
+
+            </select>
+
+          </div>
+
+        </div>
+
+        <!-- DESCRIPTION -->
+
         <div class="info-card">
 
           <span>
@@ -56,22 +164,23 @@
 
         </div>
 
+        <!-- ROOT CAUSE -->
+
         <div class="info-card">
 
           <span>
             Root Cause
           </span>
 
-          <p>
+          <textarea rows="3">
 
-            {{
-              problem.rootCause
-              || '-'
-            }}
+{{ problem.rootCause || '' }}
 
-          </p>
+          </textarea>
 
         </div>
+
+        <!-- WORKAROUND -->
 
         <div class="info-card">
 
@@ -79,16 +188,15 @@
             Workaround
           </span>
 
-          <p>
+          <textarea rows="3">
 
-            {{
-              problem.workaround
-              || '-'
-            }}
+{{ problem.workaround || '' }}
 
-          </p>
+          </textarea>
 
         </div>
+
+        <!-- PERMANENT FIX -->
 
         <div class="info-card">
 
@@ -96,16 +204,15 @@
             Permanent Fix
           </span>
 
-          <p>
+          <textarea rows="3">
 
-            {{
-              problem.permanentFix
-              || '-'
-            }}
+{{ problem.permanentFix || '' }}
 
-          </p>
+          </textarea>
 
         </div>
+
+        <!-- INCIDENTS -->
 
         <div class="info-card">
 
@@ -113,15 +220,98 @@
             Linked Incidents
           </span>
 
-          <p>
+          <div class="incident-tags">
 
-            {{
+            @for(
+
+              incident of
               problem
-                .linkedIncidents
-                ?.join(', ')
-            }}
+                .linkedIncidents || [];
 
-          </p>
+              track incident
+
+            ) {
+
+              <span class="incident-tag">
+
+                {{ incident }}
+
+              </span>
+
+            }
+
+          </div>
+
+        </div>
+
+        <!-- ACTIONS -->
+
+        <div class="drawer-actions">
+
+          <button class="cancel-btn">
+
+            Cancel
+
+          </button>
+
+          <button class="save-btn">
+
+            Update Problem
+
+          </button>
+
+        </div>
+
+        <!-- ACTIVITY -->
+
+        <div class="activity-section">
+
+          <h4>
+            Activity Timeline
+          </h4>
+
+          <div class="timeline">
+
+            @for(
+
+              activity of
+              problem.activities || [];
+
+              track activity
+
+            ) {
+
+              <div class="timeline-item">
+
+                <div class="timeline-dot"></div>
+
+                <div class="timeline-content">
+
+                  <strong>
+
+                    {{ activity.user }}
+
+                  </strong>
+
+                  <p>
+
+                    {{ activity.action }}
+
+                  </p>
+
+                  <span>
+
+                    {{ activity.createdAt }}
+
+                  </span>
+
+                </div>
+
+              </div>
+
+            }
+
+          </div>
 
         </div>
 
