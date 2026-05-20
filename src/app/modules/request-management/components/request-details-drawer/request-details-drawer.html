@@ -1,0 +1,248 @@
+<div class="drawer-overlay">
+
+  <div class="drawer-container">
+
+    <!-- HEADER -->
+
+    <div class="drawer-header">
+
+      <div>
+
+        <h2>
+          Request Details
+        </h2>
+
+        <p>
+
+          {{
+
+            requestService
+              .selectedRequest()
+              ?.requestId
+
+          }}
+
+        </p>
+
+      </div>
+
+      <button
+
+        class="close-btn"
+
+        (click)="
+          closeDrawer()
+        "
+      >
+
+        <i class="bi bi-x-lg"></i>
+
+      </button>
+
+    </div>
+
+    <!-- BODY -->
+
+    @if(
+      requestService
+        .selectedRequest();
+      as request
+    ) {
+
+      <div class="drawer-body">
+
+        <!-- TITLE -->
+
+        <div class="detail-card">
+
+          <label>
+            Title
+          </label>
+
+          <h3>
+            {{ request.title }}
+          </h3>
+
+        </div>
+
+        <!-- DESCRIPTION -->
+
+        <div class="detail-card">
+
+          <label>
+            Description
+          </label>
+
+          <p>
+            {{ request.description }}
+          </p>
+
+        </div>
+
+        <!-- GRID -->
+
+        <div class="detail-grid">
+
+          <!-- CATEGORY -->
+
+          <div class="detail-card">
+
+            <label>
+              Category
+            </label>
+
+            <span>
+              {{ request.category }}
+            </span>
+
+          </div>
+
+          <!-- PRIORITY -->
+
+          <div class="detail-card">
+
+            <label>
+              Priority
+            </label>
+
+            <app-request-priority-badge
+
+              [priority]="
+                request.priority
+              "
+
+            />
+
+          </div>
+
+          <!-- STATUS -->
+
+          <div class="detail-card">
+
+            <label>
+              Status
+            </label>
+
+            <app-request-status-badge
+
+              [status]="
+                request.status
+              "
+
+            />
+
+          </div>
+
+          <!-- SLA -->
+
+          <div class="detail-card">
+
+            <label>
+              SLA
+            </label>
+
+            <div class="sla-badge">
+
+              <i class="bi bi-clock"></i>
+
+              {{ request.slaHours }}h
+
+            </div>
+
+          </div>
+
+          <!-- REQUESTED -->
+
+          <div class="detail-card">
+
+            <label>
+              Requested By
+            </label>
+
+            <span>
+              {{ request.requestedBy }}
+            </span>
+
+          </div>
+
+          <!-- ASSIGNED -->
+
+          <div class="detail-card">
+
+            <label>
+              Assigned To
+            </label>
+
+            <span>
+              {{ request.assignedTo }}
+            </span>
+
+          </div>
+
+          <!-- CREATED -->
+
+          <div class="detail-card">
+
+            <label>
+              Created At
+            </label>
+
+            <span>
+              {{ request.createdAt }}
+            </span>
+
+          </div>
+
+        </div>
+
+        <!-- APPROVAL -->
+
+        <div class="detail-card">
+
+          <label>
+            Approval Information
+          </label>
+
+          <div class="approval-box">
+
+            <p>
+
+              <strong>
+                Approved By:
+              </strong>
+
+              {{
+
+                request.approvalBy
+                || 'Pending'
+
+              }}
+
+            </p>
+
+            <p>
+
+              <strong>
+                Comment:
+              </strong>
+
+              {{
+
+                request.approvalComment
+                || 'No comments'
+
+              }}
+
+            </p>
+
+          </div>
+
+        </div>
+
+      </div>
+
+    }
+
+  </div>
+
+</div>

@@ -1,0 +1,20 @@
+<span
+
+  class="priority-badge"
+
+  [class.low]="
+    priority() === 'Low'
+  "
+
+  [class.medium]="
+    priority() === 'Medium'
+  "
+
+  [class.high]="
+    priority() === 'High'
+  "
+>
+
+  {{ priority() }}
+
+</span>

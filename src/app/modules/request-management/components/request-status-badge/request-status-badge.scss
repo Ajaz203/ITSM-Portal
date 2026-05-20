@@ -1,0 +1,69 @@
+.status-badge {
+
+  height: 34px;
+
+  padding: 0 14px;
+
+  border-radius: 999px;
+
+  display: inline-flex;
+
+  align-items: center;
+
+  justify-content: center;
+
+  font-size: 12px;
+
+  font-weight: 700;
+
+}
+
+/* PENDING */
+
+.pending {
+
+  background: #fef3c7;
+
+  color: #92400e;
+
+}
+
+/* APPROVED */
+
+.approved {
+
+  background: #dcfce7;
+
+  color: #166534;
+
+}
+
+/* REJECTED */
+
+.rejected {
+
+  background: #fee2e2;
+
+  color: #991b1b;
+
+}
+
+/* PROGRESS */
+
+.progress {
+
+  background: #dbeafe;
+
+  color: #1d4ed8;
+
+}
+
+/* COMPLETED */
+
+.completed {
+
+  background: #ede9fe;
+
+  color: #6d28d9;
+
+}

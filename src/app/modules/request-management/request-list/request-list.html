@@ -1,0 +1,204 @@
+<div class="page-container">
+
+  <div class="request-page">
+
+    <!-- HEADER -->
+
+    <div class="page-header">
+
+      <div>
+
+        <h2>
+          Request Management
+        </h2>
+
+        <p>
+          Manage service requests
+          and approvals
+        </p>
+
+      </div>
+
+      <button
+
+        class="create-btn"
+
+        (click)="
+          requestService
+            .showCreateModal
+            .set(true)
+        "
+      >
+
+        <i class="bi bi-plus-lg"></i>
+
+        Create Request
+
+      </button>
+
+    </div>
+
+    <!-- KPI GRID -->
+
+    <div class="kpi-grid">
+
+      <!-- TOTAL -->
+
+      <div class="kpi-card primary">
+
+        <span>
+          Total Requests
+        </span>
+
+        <h3>
+
+          {{
+
+            requestService
+              .requests()
+              .length
+
+          }}
+
+        </h3>
+
+      </div>
+
+      <!-- PENDING -->
+
+      <div class="kpi-card warning">
+
+        <span>
+          Pending Requests
+        </span>
+
+        <h3>
+
+          {{
+
+            requestService
+              .requests()
+              .filter(item =>
+
+                item.status
+                === 'Pending'
+
+              ).length
+
+          }}
+
+        </h3>
+
+      </div>
+
+      <!-- APPROVED -->
+
+      <div class="kpi-card success">
+
+        <span>
+          Approved Requests
+        </span>
+
+        <h3>
+
+          {{
+
+            requestService
+              .requests()
+              .filter(item =>
+
+                item.status
+                === 'Approved'
+
+              ).length
+
+          }}
+
+        </h3>
+
+      </div>
+
+      <!-- COMPLETED -->
+
+      <div class="kpi-card info">
+
+        <span>
+          Completed Requests
+        </span>
+
+        <h3>
+
+          {{
+
+            requestService
+              .requests()
+              .filter(item =>
+
+                item.status
+                === 'Completed'
+
+              ).length
+
+          }}
+
+        </h3>
+
+      </div>
+
+    </div>
+
+    <!-- FILTERS -->
+
+    <app-request-filters />
+
+    <!-- TABLE -->
+
+    <app-request-table />
+
+    <!-- CREATE -->
+
+    @if(
+      requestService
+        .showCreateModal()
+    ) {
+
+      <app-create-request />
+
+    }
+
+    <!-- EDIT -->
+
+    @if(
+      requestService
+        .showEditModal()
+    ) {
+
+      <app-edit-request />
+
+    }
+
+    <!-- DELETE -->
+
+    @if(
+      requestService
+        .showDeleteModal()
+    ) {
+
+      <app-delete-request-modal />
+
+    }
+
+    <!-- DRAWER -->
+
+    @if(
+      requestService
+        .showDetailsDrawer()
+    ) {
+
+      <app-request-details-drawer />
+
+    }
+
+  </div>
+
+</div>

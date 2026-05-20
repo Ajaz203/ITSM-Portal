@@ -1,0 +1,151 @@
+.modal-overlay {
+
+  position: fixed;
+
+  inset: 0;
+
+  background:
+    rgba(15,23,42,.5);
+
+  display: flex;
+
+  align-items: center;
+
+  justify-content: center;
+
+  z-index: 1000;
+
+}
+
+/* MODAL */
+
+.delete-modal {
+
+  width: 100%;
+
+  max-width: 460px;
+
+  background: white;
+
+  border-radius: 28px;
+
+  padding: 32px;
+
+  text-align: center;
+
+}
+
+/* ICON */
+
+.delete-icon {
+
+  width: 90px;
+
+  height: 90px;
+
+  margin: 0 auto 24px;
+
+  border-radius: 999px;
+
+  background: #fee2e2;
+
+  color: #dc2626;
+
+  display: flex;
+
+  align-items: center;
+
+  justify-content: center;
+
+  font-size: 38px;
+
+}
+
+/* TITLE */
+
+.delete-modal h2 {
+
+  margin: 0;
+
+  font-size: 28px;
+
+  font-weight: 700;
+
+}
+
+/* MESSAGE */
+
+.delete-modal p {
+
+  margin-top: 14px;
+
+  color: #64748b;
+
+  line-height: 1.6;
+
+}
+
+/* INFO */
+
+.request-info {
+
+  margin-top: 22px;
+
+  padding: 16px;
+
+  border-radius: 16px;
+
+  background: #f8fafc;
+
+  font-weight: 600;
+
+}
+
+/* ACTIONS */
+
+.modal-actions {
+
+  display: flex;
+
+  gap: 14px;
+
+  margin-top: 30px;
+
+}
+
+.modal-actions button {
+
+  flex: 1;
+
+  height: 50px;
+
+  border: none;
+
+  border-radius: 14px;
+
+  font-weight: 700;
+
+}
+
+/* CANCEL */
+
+.cancel-btn {
+
+  background: #e2e8f0;
+
+}
+
+/* DELETE */
+
+.delete-btn {
+
+  background:
+    linear-gradient(
+      135deg,
+      #dc2626,
+      #b91c1c
+    );
+
+  color: white;
+
+}

@@ -1,0 +1,185 @@
+.drawer-overlay {
+
+  position: fixed;
+
+  inset: 0;
+
+  background:
+    rgba(15,23,42,.4);
+
+  display: flex;
+
+  justify-content: flex-end;
+
+  z-index: 1000;
+
+}
+
+/* DRAWER */
+
+.drawer-container {
+
+  width: 100%;
+
+  max-width: 520px;
+
+  height: 106vh;
+
+  background: white;
+
+  overflow-y: auto;
+
+  padding: 28px;
+
+}
+
+/* HEADER */
+
+.drawer-header {
+
+  display: flex;
+
+  align-items: center;
+
+  justify-content: space-between;
+
+  margin-bottom: 28px;
+
+}
+
+.drawer-header h2 {
+
+  margin: 0;
+
+  font-size: 28px;
+
+  font-weight: 700;
+
+}
+
+.drawer-header p {
+
+  margin-top: 6px;
+
+  color: #64748b;
+
+}
+
+/* CLOSE */
+
+.close-btn {
+
+  width: 42px;
+
+  height: 42px;
+
+  border: none;
+
+  border-radius: 12px;
+
+  background: #f1f5f9;
+
+}
+
+/* BODY */
+
+.drawer-body {
+
+  display: flex;
+
+  flex-direction: column;
+
+  gap: 22px;
+
+}
+
+/* CARD */
+
+.detail-card {
+
+  background: #f8fafc;
+
+  border-radius: 20px;
+
+  padding: 22px;
+
+}
+
+.detail-card label {
+
+  display: block;
+
+  margin-bottom: 12px;
+
+  font-size: 13px;
+
+  font-weight: 700;
+
+  color: #64748b;
+
+}
+
+.detail-card h3 {
+
+  margin: 0;
+
+  font-size: 22px;
+
+}
+
+.detail-card p {
+
+  margin: 0;
+
+  line-height: 1.7;
+
+}
+
+/* GRID */
+
+.detail-grid {
+
+  display: grid;
+
+  grid-template-columns:
+    repeat(2, 1fr);
+
+  gap: 20px;
+
+}
+
+/* SLA */
+
+.sla-badge {
+
+  display: inline-flex;
+
+  align-items: center;
+
+  gap: 8px;
+
+  padding: 10px 16px;
+
+  border-radius: 999px;
+
+  background: #dbeafe;
+
+  color: #1d4ed8;
+
+  font-size: 13px;
+
+  font-weight: 700;
+
+}
+
+/* APPROVAL */
+
+.approval-box {
+
+  display: flex;
+
+  flex-direction: column;
+
+  gap: 12px;
+
+}

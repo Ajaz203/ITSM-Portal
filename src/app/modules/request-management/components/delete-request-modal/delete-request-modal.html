@@ -1,0 +1,86 @@
+<div class="modal-overlay">
+
+  <div class="delete-modal">
+
+    <!-- ICON -->
+
+    <div class="delete-icon">
+
+      <i class="bi bi-trash"></i>
+
+    </div>
+
+    <!-- TITLE -->
+
+    <h2>
+      Delete Request
+    </h2>
+
+    <!-- MESSAGE -->
+
+    <p>
+
+      Are you sure you want to
+      delete this request?
+
+    </p>
+
+    <!-- REQUEST -->
+
+    <div class="request-info">
+
+      {{
+
+        requestService
+          .selectedRequest()
+          ?.requestId
+
+      }}
+
+      -
+
+      {{
+
+        requestService
+          .selectedRequest()
+          ?.title
+
+      }}
+
+    </div>
+
+    <!-- ACTIONS -->
+
+    <div class="modal-actions">
+
+      <button
+
+        class="cancel-btn"
+
+        (click)="
+          closeModal()
+        "
+      >
+
+        Cancel
+
+      </button>
+
+      <button
+
+        class="delete-btn"
+
+        (click)="
+          deleteRequest()
+        "
+      >
+
+        Delete Request
+
+      </button>
+
+    </div>
+
+  </div>
+
+</div>

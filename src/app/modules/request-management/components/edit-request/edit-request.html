@@ -1,0 +1,223 @@
+<div class="modal-overlay">
+
+  <div class="modal-container">
+
+    <!-- HEADER -->
+
+    <div class="modal-header">
+
+      <h2>
+        Edit Request
+      </h2>
+
+      <button
+
+        class="close-btn"
+
+        (click)="
+          closeModal()
+        "
+      >
+
+        <i class="bi bi-x-lg"></i>
+
+      </button>
+
+    </div>
+
+    <!-- FORM -->
+
+    <form
+
+      [formGroup]="
+        requestForm
+      "
+
+      (ngSubmit)="
+        updateRequest()
+      "
+    >
+
+      <!-- TITLE -->
+
+      <div class="form-group">
+
+        <label>
+          Title
+        </label>
+
+        <input
+
+          type="text"
+
+          formControlName="title"
+        />
+
+      </div>
+
+      <!-- DESCRIPTION -->
+
+      <div class="form-group">
+
+        <label>
+          Description
+        </label>
+
+        <textarea
+
+          rows="4"
+
+          formControlName="description"
+        ></textarea>
+
+      </div>
+
+      <!-- CATEGORY -->
+
+      <div class="form-group">
+
+        <label>
+          Category
+        </label>
+
+        <select
+          formControlName="category"
+        >
+
+          <option value="Hardware">
+            Hardware
+          </option>
+
+          <option value="Software">
+            Software
+          </option>
+
+          <option value="Access">
+            Access
+          </option>
+
+          <option value="Network">
+            Network
+          </option>
+
+        </select>
+
+      </div>
+
+      <!-- PRIORITY -->
+
+      <div class="form-group">
+
+        <label>
+          Priority
+        </label>
+
+        <select
+          formControlName="priority"
+        >
+
+          <option value="Low">
+            Low
+          </option>
+
+          <option value="Medium">
+            Medium
+          </option>
+
+          <option value="High">
+            High
+          </option>
+
+        </select>
+
+      </div>
+
+      <!-- STATUS -->
+
+      <div class="form-group">
+
+        <label>
+          Status
+        </label>
+
+        <select
+          formControlName="status"
+        >
+
+          <option value="Pending">
+            Pending
+          </option>
+
+          <option value="Approved">
+            Approved
+          </option>
+
+          <option value="Rejected">
+            Rejected
+          </option>
+
+          <option value="In Progress">
+            In Progress
+          </option>
+
+          <option value="Completed">
+            Completed
+          </option>
+
+        </select>
+
+      </div>
+
+      <!-- ASSIGNED -->
+
+      <div class="form-group">
+
+        <label>
+          Assigned To
+        </label>
+
+        <input
+
+          type="text"
+
+          formControlName="assignedTo"
+        />
+
+      </div>
+
+      <!-- ACTIONS -->
+
+      <div class="modal-actions">
+
+        <button
+
+          type="button"
+
+          class="cancel-btn"
+
+          (click)="
+            closeModal()
+          "
+        >
+
+          Cancel
+
+        </button>
+
+        <button
+          type="submit"
+
+          class="submit-btn"
+        >
+
+          Update Request
+
+        </button>
+
+      </div>
+
+    </form>
+
+  </div>
+
+</div>

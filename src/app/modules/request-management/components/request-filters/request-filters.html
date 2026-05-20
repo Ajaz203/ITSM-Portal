@@ -1,0 +1,27 @@
+<div class="filter-card">
+
+  <div class="search-box">
+
+    <i class="bi bi-search"></i>
+
+    <input
+
+      type="text"
+
+      placeholder="Search requests..."
+
+      [ngModel]="
+        requestService
+          .search()
+      "
+
+      (ngModelChange)="
+        requestService
+          .search
+          .set($event)
+      "
+    />
+
+  </div>
+
+</div>

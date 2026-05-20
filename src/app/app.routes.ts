@@ -52,6 +52,22 @@ export const routes: Routes = [
       },
       {
 
+  path:
+    'request-management',
+
+  loadComponent: () =>
+
+    import(
+      './modules/request-management/request-list/request-list'
+    ).then(
+
+      m => m.RequestList
+
+    )
+
+},
+      {
+
         path:
           'change-management',
 

@@ -1,0 +1,28 @@
+<span
+
+  class="status-badge"
+
+  [class.pending]="
+    status() === 'Pending'
+  "
+
+  [class.approved]="
+    status() === 'Approved'
+  "
+
+  [class.rejected]="
+    status() === 'Rejected'
+  "
+
+  [class.progress]="
+    status() === 'In Progress'
+  "
+
+  [class.completed]="
+    status() === 'Completed'
+  "
+>
+
+  {{ status() }}
+
+</span>
