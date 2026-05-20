@@ -1,6 +1,6 @@
-<div class="modal-overlay">
+<div class="modal-overlay" (click)="closeModal()">
 
-  <div class="delete-modal">
+  <div class="delete-modal" (click)="$event.stopPropagation()">
 
     <!-- ICON -->
 
@@ -83,4 +83,4 @@
 
   </div>
 
-</div>
+</div> 

@@ -3,7 +3,7 @@ import {
   inject,
   signal
 } from '@angular/core';
-
+import {HostListener} from '@angular/core';
 import {
   CommonModule
 } from '@angular/common';
@@ -53,17 +53,34 @@ export class RequestTable {
       null
     );
 
-  toggleMenu(id: number) {
+toggleMenu(
 
-    this.activeMenu.update(
-      value =>
+  id: number,
 
-        value === id
-          ? null
-          : id
-    );
+  event: Event
 
-  }
+) {
+
+  event.stopPropagation();
+
+  this.activeMenu.set(
+
+    this.activeMenu() === id
+      ? null
+      : id
+
+  );
+
+}
+@HostListener(
+  'document:click'
+)
+
+closeDropdown() {
+
+  this.activeMenu.set(null);
+
+}
 /* APPROVE */
 
 approve(item: any) {

@@ -62,14 +62,14 @@
 
             ) {
 
-            <tr (click)="
-              requestService
-                .openDetails(item)
-            ">
+            <tr >
 
                 <!-- REQUEST ID -->
 
-                <td class="request-id">
+                <td class="request-id" (click)="
+              requestService
+                .openDetails(item)
+            ">
 
                     {{ item.requestId }}
 
@@ -155,9 +155,17 @@
 
                     <div class="action-wrapper">
 
-                        <button class="action-btn" (click)="
-                  toggleMenu(item.id)
-                ">
+                     <button
+
+  class="action-btn"
+
+  (click)="
+    toggleMenu(
+      item.id,
+      $event
+    )
+  "
+>
 
                             <i class="bi bi-three-dots-vertical"></i>
 
@@ -168,7 +176,12 @@
                         === item.id
                         ) {
 
-                        <div class="dropdown-menu">
+                     <div
+
+  class="dropdown-menu"
+
+  (click)="$event.stopPropagation()"
+>
 
                             <!-- VIEW -->
 

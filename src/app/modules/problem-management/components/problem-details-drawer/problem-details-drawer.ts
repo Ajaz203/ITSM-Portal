@@ -29,5 +29,11 @@ export class ProblemDetailsDrawer {
 
   problemService =
     inject(Problem);
+  closeDrawer() {
 
+    this.problemService
+      .showDetailsDrawer
+      .set(false);
+
+  }
 }

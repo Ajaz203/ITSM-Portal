@@ -152,20 +152,18 @@
 
     </div>
 
-    <!-- PROFILE -->
-
-<!-- PROFILE DROPDOWN -->
+  <!-- PROFILE WRAPPER -->
 
 <div class="profile-wrapper">
 
-  <!-- PROFILE -->
+  <!-- PROFILE CARD -->
 
   <div
+
     class="profile-card"
 
     (click)="
-      showProfileMenu =
-      !showProfileMenu
+      toggleProfileMenu($event)
     "
   >
 
@@ -222,33 +220,91 @@
 
   @if(showProfileMenu) {
 
-  <div class="profile-dropdown">
+  <div
 
-    <button>
+    class="profile-dropdown"
 
-      <i class="bi bi-person"></i>
+    (click)="$event.stopPropagation()"
+  >
 
-      My Profile
+    <!-- PROFILE -->
+
+    <button class="dropdown-item">
+
+      <div class="item-icon blue">
+
+        <i class="bi bi-person"></i>
+
+      </div>
+
+      <div class="item-content">
+
+        <h6>
+          My Profile
+        </h6>
+
+        <span>
+          View profile details
+        </span>
+
+      </div>
 
     </button>
 
-    <button>
+    <!-- SETTINGS -->
 
-      <i class="bi bi-gear"></i>
+    <button class="dropdown-item">
 
-      Settings
+      <div class="item-icon purple">
+
+        <i class="bi bi-gear"></i>
+
+      </div>
+
+      <div class="item-content">
+
+        <h6>
+          Settings
+        </h6>
+
+        <span>
+          Manage preferences
+        </span>
+
+      </div>
 
     </button>
+
+    <!-- DIVIDER -->
+
+    <div class="dropdown-divider"></div>
+
+    <!-- LOGOUT -->
 
     <button
-      class="logout-item"
+
+      class="dropdown-item logout-item"
 
       (click)="logout()"
     >
 
-      <i class="bi bi-box-arrow-right"></i>
+      <div class="item-icon red">
 
-      Logout
+        <i class="bi bi-box-arrow-right"></i>
+
+      </div>
+
+      <div class="item-content">
+
+        <h6>
+          Logout
+        </h6>
+
+        <span>
+          Sign out from account
+        </span>
+
+      </div>
 
     </button>
 

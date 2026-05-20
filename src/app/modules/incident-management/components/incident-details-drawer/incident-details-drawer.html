@@ -1,6 +1,6 @@
-<div class="drawer-overlay">
+<div class="drawer-overlay" (click)="closeDrawer()">
 
-    <div class="drawer-container">
+    <div class="drawer-container" (click)="$event.stopPropagation()">
 
         <!-- HEADER -->
 

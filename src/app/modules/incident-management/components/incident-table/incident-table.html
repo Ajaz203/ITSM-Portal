@@ -32,7 +32,7 @@
 
     </thead>
 
-    <tbody >
+    <tbody>
 
       @for(
       item of
@@ -40,12 +40,12 @@
       track item.id
       ) {
 
-      <tr class="ticket-id clickable" (click)="
+      <tr>
+
+        <td class="ticket-id" class="ticket-id clickable" (click)="
     incidentService
       .openIncidentDetails(item)
   ">
-
-        <td class="ticket-id"> 
 
           {{ item.ticketId }}
 
@@ -133,7 +133,12 @@
 
           <div class="action-wrapper">
 
-            <button class="action-btn" (click)="toggleMenu(item.id)">
+            <button class="action-btn" (click)="
+    toggleMenu(
+      item.id,
+      $event
+    )
+  ">
 
               <i class="bi bi-three-dots-vertical"></i>
 
@@ -141,7 +146,12 @@
 
             @if(activeMenu() === item.id) {
 
-            <div class="dropdown-menu">
+           <div
+
+  class="dropdown-menu"
+
+  (click)="$event.stopPropagation()"
+>
 
               <button (click)="
     incidentService

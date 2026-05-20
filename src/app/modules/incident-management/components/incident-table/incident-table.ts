@@ -5,7 +5,7 @@ import {
 } from '@angular/core';
 
 import { CommonModule } from '@angular/common';
-
+import {HostListener} from '@angular/core';
 import { IncidentService }
 from '../../services/incident.service';
 
@@ -43,18 +43,32 @@ auth =
     null
   );
 
-  toggleMenu(id: number) {
+toggleMenu(
 
-    if (this.activeMenu() === id) {
+  id: number,
 
-      this.activeMenu.set(null);
+  event: Event
 
-      return;
+) {
 
-    }
+  event.stopPropagation();
 
-    this.activeMenu.set(id);
+  this.activeMenu.set(
 
-  }
+    this.activeMenu() === id
+      ? null
+      : id
 
+  );
+
+}
+@HostListener(
+  'document:click'
+)
+
+closeDropdown() {
+
+  this.activeMenu.set(null);
+
+}
 }

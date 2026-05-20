@@ -1,7 +1,16 @@
-<div class="modal-overlay">
+<div
 
-    <div class="modal-container">
+  class="modal-overlay"
 
+  (click)="closeModal()"
+>
+
+  <div
+
+    class="modal-container"
+
+    (click)="$event.stopPropagation()"
+  >
         <!-- HEADER -->
 
         <div class="modal-header">

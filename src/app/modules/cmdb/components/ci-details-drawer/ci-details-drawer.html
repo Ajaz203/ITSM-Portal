@@ -1,6 +1,10 @@
-<div class="drawer-overlay">
+<div class="drawer-overlay" (click)="
+  cmdbService
+    .showDetailsDrawer
+    .set(false)
+">
 
-  <div class="drawer-container">
+  <div class="drawer-container" (click)="$event.stopPropagation()">
 
     @if(
       cmdbService
