@@ -13,6 +13,8 @@
 
   justify-content: center;
 
+  padding: 20px;
+
   z-index: 1000;
 
 }
@@ -23,13 +25,17 @@
 
   width: 100%;
 
-  max-width: 650px;
+  max-width: 600px;
+
+  max-height: 95vh;
+
+  overflow-y: auto;
 
   background: white;
 
-  border-radius: 24px;
+  border-radius: 22px;
 
-  padding: 28px;
+  padding: 22px;
 
 }
 
@@ -43,7 +49,7 @@
 
   justify-content: space-between;
 
-  margin-bottom: 24px;
+  margin-bottom: 18px;
 
 }
 
@@ -51,7 +57,7 @@
 
   margin: 0;
 
-  font-size: 24px;
+  font-size: 22px;
 
   font-weight: 700;
 
@@ -59,13 +65,13 @@
 
 .close-btn {
 
-  width: 42px;
+  width: 38px;
 
-  height: 42px;
+  height: 38px;
 
   border: none;
 
-  border-radius: 12px;
+  border-radius: 10px;
 
   background: #f1f5f9;
 
@@ -75,7 +81,7 @@
 
 .form-group {
 
-  margin-bottom: 20px;
+  margin-bottom: 16px;
 
 }
 
@@ -83,9 +89,9 @@
 
   display: block;
 
-  margin-bottom: 8px;
+  margin-bottom: 6px;
 
-  font-size: 14px;
+  font-size: 13px;
 
   font-weight: 600;
 
@@ -99,13 +105,23 @@
 
   border: 1px solid #cbd5e1;
 
-  border-radius: 14px;
+  border-radius: 12px;
 
-  padding: 14px;
+  padding: 12px;
 
   font-size: 14px;
 
   outline: none;
+
+}
+
+/* TEXTAREA */
+
+.form-group textarea {
+
+  resize: vertical;
+
+  min-height: 90px;
 
 }
 
@@ -117,21 +133,21 @@
 
   justify-content: flex-end;
 
-  gap: 14px;
+  gap: 12px;
 
-  margin-top: 28px;
+  margin-top: 20px;
 
 }
 
 .cancel-btn {
 
-  height: 46px;
+  height: 44px;
 
-  padding: 0 22px;
+  padding: 0 18px;
 
   border: none;
 
-  border-radius: 14px;
+  border-radius: 12px;
 
   background: #e2e8f0;
 
@@ -141,13 +157,13 @@
 
 .submit-btn {
 
-  height: 46px;
+  height: 44px;
 
-  padding: 0 24px;
+  padding: 0 20px;
 
   border: none;
 
-  border-radius: 14px;
+  border-radius: 12px;
 
   background:
     linear-gradient(
@@ -159,5 +175,72 @@
   color: white;
 
   font-weight: 600;
+
+}
+
+/* MOBILE */
+
+@media (max-width: 768px) {
+
+  .modal-container {
+
+    max-width: 100%;
+
+    border-radius: 18px;
+
+    padding: 18px;
+
+  }
+
+}
+
+/* CUSTOM SCROLLBAR */
+
+.modal-container::-webkit-scrollbar,
+select[multiple]::-webkit-scrollbar {
+
+  width: 8px;
+
+}
+
+/* REMOVE BUTTONS */
+
+.modal-container::-webkit-scrollbar-button,
+select[multiple]::-webkit-scrollbar-button {
+
+  display: none;
+
+  width: 0;
+
+  height: 0;
+
+}
+
+/* TRACK */
+
+.modal-container::-webkit-scrollbar-track,
+select[multiple]::-webkit-scrollbar-track {
+
+  background: transparent;
+
+}
+
+/* THUMB */
+
+.modal-container::-webkit-scrollbar-thumb,
+select[multiple]::-webkit-scrollbar-thumb {
+
+  background: #cbd5e1;
+
+  border-radius: 999px;
+
+}
+
+/* HOVER */
+
+.modal-container::-webkit-scrollbar-thumb:hover,
+select[multiple]::-webkit-scrollbar-thumb:hover {
+
+  background: #94a3b8;
 
 }
