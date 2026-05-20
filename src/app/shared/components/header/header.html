@@ -2,141 +2,115 @@
 
   <!-- LEFT -->
 
-<div class="left-section">
+  <div class="left-section">
 
-  <button
-    class="menu-btn"
-    (click)="layoutService.toggleSidebar()"
-  >
+    <button class="menu-btn" (click)="layoutService.toggleSidebar()">
 
-    <i class="bi bi-list"></i>
+      <i class="bi bi-list"></i>
 
-  </button>
+    </button>
 
-  <h3>
+    <h3>
       Dashboard
-  </h3>
+    </h3>
 
-</div>
+  </div>
 
   <!-- RIGHT -->
 
   <div class="right-section">
 
-  
+
 
     <div class="search-box">
 
       <i class="bi bi-search"></i>
 
-      <input
-        type="text"
-        placeholder="Search..."
-      />
+      <input type="text" placeholder="Search..." />
 
     </div>
 
-<!-- NOTIFICATIONS -->
+    <!-- NOTIFICATIONS -->
 
-<div class="notification-wrapper">
+    <div class="notification-wrapper">
 
-  <!-- BELL -->
+      <!-- BELL -->
 
-  <button
-
-    class="notification-btn"
-
-    (click)="
+      <button class="notification-btn" (click)="
       notification
         .toggleNotifications()
-    "
-  >
+    ">
 
-    <i class="bi bi-bell"></i>
+        <i class="bi bi-bell"></i>
 
-    @if(
-      notification
+        @if(
+        notification
         .unreadCount() > 0
-    ) {
+        ) {
 
-      <span class="notification-count">
+        <span class="notification-count">
 
-        {{
+          {{
           notification
-            .unreadCount()
-        }}
+          .unreadCount()
+          }}
 
-      </span>
+        </span>
 
-    }
+        }
 
-  </button>
+      </button>
 
-  <!-- DROPDOWN -->
+      <!-- DROPDOWN -->
 
-  @if(
-    notification
+      @if(
+      notification
       .showNotifications()
-  ) {
+      ) {
 
-    <div class="notification-dropdown">
+      <div class="notification-dropdown">
 
-      <!-- HEADER -->
+        <!-- HEADER -->
 
-      <div class="dropdown-header">
+        <div class="dropdown-header">
 
-        <h4>
-          Notifications
-        </h4>
+          <h4>
+            Notifications
+          </h4>
 
-      </div>
+        </div>
 
-      <!-- LIST -->
+        <!-- LIST -->
 
-      <div class="notification-list">
+        <div class="notification-list">
 
-        @for(
+          @for(
 
           item of
 
           notification
-            .notifications();
+          .notifications();
 
           track item.id
 
-        ) {
+          ) {
 
-          <div
-
-            class="notification-item"
-
-            [class.unread]="
+          <div class="notification-item" [class.unread]="
               !item.read
-            "
-
-            (click)="
+            " (click)="
               notification
                 .markAsRead(item.id)
-            "
-          >
+            ">
 
             <!-- ICON -->
 
-            <div
-              class="notification-icon"
-
-              [class.warning]="
+            <div class="notification-icon" [class.warning]="
                 item.type === 'warning'
-              "
-
-              [class.success]="
+              " [class.success]="
                 item.type === 'success'
-              "
-
-              [class.danger]="
+              " [class.danger]="
                 item.type === 'danger'
-              "
-            >
+              ">
 
               <i class="bi bi-bell"></i>
 
@@ -168,41 +142,121 @@
 
           </div>
 
-        }
+          }
+
+        </div>
 
       </div>
 
+      }
+
     </div>
+
+    <!-- PROFILE -->
+
+<!-- PROFILE DROPDOWN -->
+
+<div class="profile-wrapper">
+
+  <!-- PROFILE -->
+
+  <div
+    class="profile-card"
+
+    (click)="
+      showProfileMenu =
+      !showProfileMenu
+    "
+  >
+
+    <!-- IMAGE -->
+
+    <img
+
+      class="profile-image"
+
+      [src]="
+        auth.currentUser()
+          ?.image
+      "
+
+      alt="profile"
+
+    />
+
+    <!-- INFO -->
+
+    <div class="profile-info">
+
+      <h5>
+
+        {{
+
+          auth.currentUser()
+            ?.fullName
+
+        }}
+
+      </h5>
+
+      <p>
+
+        {{
+
+          auth.currentUser()
+            ?.role
+
+        }}
+
+      </p>
+
+    </div>
+
+    <!-- ICON -->
+
+    <i class="bi bi-chevron-down"></i>
+
+  </div>
+
+  <!-- DROPDOWN -->
+
+  @if(showProfileMenu) {
+
+  <div class="profile-dropdown">
+
+    <button>
+
+      <i class="bi bi-person"></i>
+
+      My Profile
+
+    </button>
+
+    <button>
+
+      <i class="bi bi-gear"></i>
+
+      Settings
+
+    </button>
+
+    <button
+      class="logout-item"
+
+      (click)="logout()"
+    >
+
+      <i class="bi bi-box-arrow-right"></i>
+
+      Logout
+
+    </button>
+
+  </div>
 
   }
 
 </div>
-
-    <!-- PROFILE -->
-
-    <div class="profile">
-
-      <div class="avatar">
-        A
-      </div>
-
-      <div>
-
-        <h5>Admin User</h5>
-
-        <p>Super Admin</p>
-
-      </div>
-
-    </div>
- <button
-  class="logout-btn"
-  (click)="logout()"
->
-
-  Logout
-
-</button>
   </div>
 
 </div>

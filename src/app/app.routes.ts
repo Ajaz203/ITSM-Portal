@@ -52,20 +52,20 @@ export const routes: Routes = [
       },
       {
 
-  path:
-    'request-management',
+        path:
+          'request-management',
 
-  loadComponent: () =>
+        loadComponent: () =>
 
-    import(
-      './modules/request-management/request-list/request-list'
-    ).then(
+          import(
+            './modules/request-management/request-list/request-list'
+          ).then(
 
-      m => m.RequestList
+            m => m.RequestList
 
-    )
+          )
 
-},
+      },
       {
 
         path:
@@ -231,20 +231,20 @@ export const routes: Routes = [
       },
       {
 
-  path:
-    'audit-logs',
+        path:
+          'audit-logs',
 
-  loadComponent: () =>
+        loadComponent: () =>
 
-    import(
-      './modules/audit-logs/audit-logs-dashboard/audit-logs-dashboard'
-    ).then(
+          import(
+            './modules/audit-logs/audit-logs-dashboard/audit-logs-dashboard'
+          ).then(
 
-      m => m.AuditLogsDashboard
+            m => m.AuditLogsDashboard
 
-    )
+          )
 
-}
+      }
 
     ]
   }

@@ -1,60 +1,112 @@
 import {
   Injectable,
-  inject
+  signal
 } from '@angular/core';
 
-import {
-  ToastrService
-} from 'ngx-toastr';
+export interface ToastMessage {
+
+  message: string;
+
+  type:
+    'success'
+    | 'error'
+    | 'warning'
+    | 'info';
+
+}
 
 @Injectable({
   providedIn: 'root'
 })
+
 export class ToastService {
 
-  toastr =
-    inject(ToastrService);
+  /* TOAST STATE */
 
-  // SUCCESS
+  toast =
+    signal<ToastMessage | null>(
+      null
+    );
 
-  success(message: string) {
+  /* MAIN METHOD */
 
-    this.toastr.success(
+  show(
+
+    message: string,
+
+    type:
+      'success'
+      | 'error'
+      | 'warning'
+      | 'info' = 'info'
+
+  ) {
+
+    this.toast.set({
+
       message,
-      'Success'
+      type
+
+    });
+
+    /* AUTO HIDE */
+
+    setTimeout(() => {
+
+      this.toast.set(null);
+
+    }, 3000);
+
+  }
+
+  /* SUCCESS */
+
+  success(
+    message: string
+  ) {
+
+    this.show(
+      message,
+      'success'
     );
 
   }
 
-  // ERROR
+  /* ERROR */
 
-  error(message: string) {
+  error(
+    message: string
+  ) {
 
-    this.toastr.error(
+    this.show(
       message,
-      'Error'
+      'error'
     );
 
   }
 
-  // WARNING
+  /* WARNING */
 
-  warning(message: string) {
+  warning(
+    message: string
+  ) {
 
-    this.toastr.warning(
+    this.show(
       message,
-      'Warning'
+      'warning'
     );
 
   }
 
-  // INFO
+  /* INFO */
 
-  info(message: string) {
+  info(
+    message: string
+  ) {
 
-    this.toastr.info(
+    this.show(
       message,
-      'Info'
+      'info'
     );
 
   }

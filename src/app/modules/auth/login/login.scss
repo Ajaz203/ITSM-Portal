@@ -113,7 +113,50 @@ label {
 .login-btn:hover {
   background: #00345e;
 }
+/* BUTTON LOADER */
 
+.login-btn {
+
+  display: flex;
+
+  align-items: center;
+
+  justify-content: center;
+
+  gap: 10px;
+
+}
+
+/* SPINNER */
+
+.btn-loader {
+
+  width: 18px;
+
+  height: 18px;
+
+  border-radius: 50%;
+
+  border: 2px solid rgba(255,255,255,.4);
+
+  border-top:
+    2px solid white;
+
+  animation:
+    spin .7s linear infinite;
+
+}
+
+@keyframes spin {
+
+  to {
+
+    transform:
+      rotate(360deg);
+
+  }
+
+}
 @media(max-width: 992px) {
 
   .login-left {

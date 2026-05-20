@@ -1,61 +1,98 @@
-import { Component, computed } from '@angular/core';
-import { CommonModule } from '@angular/common';
-import { RouterModule } from '@angular/router';
+import {
+  Component,
+  computed
+} from '@angular/core';
 
-import { sidebarMenu } from '../../../core/constants/sidebar-menu';
-import { Layout } from '../../../core/services/layout';
-import {Auth} from '../../../core/services/auth';
+import {
+  CommonModule
+} from '@angular/common';
+
+import {
+  RouterModule
+} from '@angular/router';
+
+import {
+  sidebarMenu
+} from '../../../core/constants/sidebar-menu';
+
+import {
+  Layout
+} from '../../../core/services/layout';
+
+import {
+  Auth
+} from '../../../core/services/auth';
+
 @Component({
-  selector: 'app-sidebar',
+  selector:
+    'app-sidebar',
+
   standalone: true,
+
   imports: [
+
     CommonModule,
     RouterModule
+
   ],
-  templateUrl: './sidebar.html',
-  styleUrl: './sidebar.scss',
+
+  templateUrl:
+    './sidebar.html',
+
+  styleUrls: [
+    './sidebar.scss'
+  ]
+
 })
+
 export class Sidebar {
 
- 
-
   constructor(
+
     public layoutService: Layout,
+
     public auth: Auth
+
   ) {}
+
+  /* DYNAMIC SIDEBAR */
 
   menus = computed(() => {
 
-  const role =
+    const modules =
 
-    this.auth
-      .currentUser()
-      ?.role || '';
+      this.auth
+        .currentUser()
+        ?.modules || {};
 
-  return sidebarMenu
-    .map(section => ({
+    return sidebarMenu
 
-      ...section,
+      .map(section => ({
 
-      menus:
-        section.menus.filter(
+        ...section,
 
-          menu =>
+        menus:
 
-            menu.roles.includes(
-              role
-            )
+          section.menus.filter(
 
-        )
+            (menu: any) =>
 
-    }))
-    .filter(
+              modules[
+                menu.permission
+              ] === true
 
-      section =>
-        section.menus.length > 0
+          )
 
-    );
+      }))
 
-});
+      .filter(
+
+        section =>
+
+          section.menus.length > 0
+
+      );
+
+  });
+
 }
-

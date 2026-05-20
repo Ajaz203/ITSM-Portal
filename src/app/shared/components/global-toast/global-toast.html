@@ -1,0 +1,57 @@
+@if(
+  toastService.toast();
+  as toast
+) {
+
+<div
+
+  class="toast-container"
+
+  [class.success]="
+    toast.type === 'success'
+  "
+
+  [class.error]="
+    toast.type === 'error'
+  "
+
+  [class.warning]="
+    toast.type === 'warning'
+  "
+
+  [class.info]="
+    toast.type === 'info'
+  "
+>
+
+  <div class="toast-content">
+
+    <i
+      class="bi"
+
+      [class.bi-check-circle]="
+        toast.type === 'success'
+      "
+
+      [class.bi-x-circle]="
+        toast.type === 'error'
+      "
+
+      [class.bi-exclamation-circle]="
+        toast.type === 'warning'
+      "
+
+      [class.bi-info-circle]="
+        toast.type === 'info'
+      "
+    ></i>
+
+    <span>
+      {{ toast.message }}
+    </span>
+
+  </div>
+
+</div>
+
+}

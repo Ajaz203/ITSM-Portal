@@ -62,14 +62,14 @@
 
             ) {
 
-            <tr>
-
-                <!-- REQUEST ID -->
-
-                <td class="request-id" (click)="
+            <tr (click)="
               requestService
                 .openDetails(item)
             ">
+
+                <!-- REQUEST ID -->
+
+                <td class="request-id">
 
                     {{ item.requestId }}
 

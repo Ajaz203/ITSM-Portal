@@ -1,8 +1,9 @@
 export const sidebarMenu = [
 
-  // MAIN
+  /* MAIN */
 
   {
+
     section: 'MAIN',
 
     menus: [
@@ -15,15 +16,8 @@ export const sidebarMenu = [
 
         route: '/dashboard',
 
-        roles: [
-
-          'Admin',
-
-          'Agent',
-
-          'User'
-
-        ]
+        permission:
+          'Dashboard'
 
       }
 
@@ -31,10 +25,12 @@ export const sidebarMenu = [
 
   },
 
-  // SERVICE MANAGEMENT
+  /* SERVICE MANAGEMENT */
 
   {
-    section: 'SERVICE MANAGEMENT',
+
+    section:
+      'SERVICE MANAGEMENT',
 
     menus: [
 
@@ -49,15 +45,11 @@ export const sidebarMenu = [
         route:
           '/incident-management',
 
-        roles: [
-
-          'Admin',
-
-          'Agent'
-
-        ]
+        permission:
+          'Tickets'
 
       },
+
       {
 
         title:
@@ -69,15 +61,8 @@ export const sidebarMenu = [
         route:
           '/request-management',
 
-        roles: [
-
-          'Admin',
-
-          'Agent',
-
-          'User'
-
-        ]
+        permission:
+          'Dashboard'
 
       },
 
@@ -92,13 +77,8 @@ export const sidebarMenu = [
         route:
           '/problem-management',
 
-        roles: [
-
-          'Admin',
-
-          'Agent'
-
-        ]
+        permission:
+          'Dashboard'
 
       },
 
@@ -113,13 +93,8 @@ export const sidebarMenu = [
         route:
           '/change-management',
 
-        roles: [
-
-          'Admin',
-
-          'Manager'
-
-        ]
+        permission:
+          'Dashboard'
 
       },
 
@@ -134,13 +109,8 @@ export const sidebarMenu = [
         route:
           '/change-approval-board',
 
-        roles: [
-
-          'Admin',
-
-          'Manager'
-
-        ]
+        permission:
+          'Dashboard'
 
       },
 
@@ -155,15 +125,11 @@ export const sidebarMenu = [
         route:
           '/change-calendar',
 
-        roles: [
-
-          'Admin',
-
-          'Manager'
-
-        ]
+        permission:
+          'Dashboard'
 
       },
+
       {
 
         title:
@@ -175,15 +141,11 @@ export const sidebarMenu = [
         route:
           '/change-analytics',
 
-        roles: [
-
-          'Admin',
-
-          'Manager'
-
-        ]
+        permission:
+          'Dashboard'
 
       },
+
       {
 
         title:
@@ -195,13 +157,8 @@ export const sidebarMenu = [
         route:
           '/assets-management',
 
-        roles: [
-
-          'Admin',
-
-          'Agent'
-
-        ]
+        permission:
+          'assetTracking'
 
       },
 
@@ -216,15 +173,11 @@ export const sidebarMenu = [
         route:
           '/cmdb',
 
-        roles: [
-
-          'Admin',
-
-          'Manager'
-
-        ]
+        permission:
+          'Dashboard'
 
       },
+
       {
 
         title:
@@ -236,35 +189,35 @@ export const sidebarMenu = [
         route:
           '/relationship-map',
 
-        roles: [
-
-          'Admin',
-
-          'Manager'
-
-        ]
+        permission:
+          'Dashboard'
 
       },
+
       {
-        title: 'Vendors',
 
-        icon: 'bi bi-buildings',
+        title:
+          'Vendors',
 
-        route: '/vendors',
+        icon:
+          'bi bi-buildings',
 
-        roles: [
-          'Admin'
-        ]
+        route:
+          '/vendors',
 
-      },
+        permission:
+          'Dashboard'
+
+      }
 
     ]
 
   },
 
-  // REPORTS
+  /* REPORTS */
 
   {
+
     section:
       'REPORTS & ANALYTICS',
 
@@ -272,56 +225,41 @@ export const sidebarMenu = [
 
       {
 
-        title: 'Reports',
+        title:
+          'Reports',
 
-        icon: 'bi bi-bar-chart',
+        icon:
+          'bi bi-bar-chart',
 
-        route: '/reports-dashboard',
+        route:
+          '/reports-dashboard',
 
-        roles: [
-
-          'Admin',
-
-          'Manager'
-
-        ]
+        permission:
+          'Dashboard'
 
       },
+
+      {
+        title: 'Export center',
+
+        icon: 'bi bi-file-earmark-arrow-up',
+        route: '/export-center',
+        permission: 'Dashboard'
+      },
+
       {
 
         title:
-          'Export Center',
+          'Analytics',
 
         icon:
-          'bi bi-download',
+          'bi bi-pie-chart',
 
         route:
-          '/export-center',
+          '/analytics',
 
-        roles: [
-
-          'Admin',
-
-          'Manager'
-
-        ]
-
-      },
-      {
-
-        title: 'Analytics',
-
-        icon: 'bi bi-pie-chart',
-
-        route: '/analytics',
-
-        roles: [
-
-          'Admin',
-
-          'Manager'
-
-        ]
+        permission:
+          'Dashboard'
 
       },
 
@@ -336,19 +274,15 @@ export const sidebarMenu = [
         route:
           '/sla-reports',
 
-        roles: [
-
-          'Admin',
-
-          'Manager'
-
-        ]
+        permission:
+          'Dashboard'
 
       },
 
       {
 
-        title: 'Audit Logs',
+        title:
+          'Audit Logs',
 
         icon:
           'bi bi-journal-text',
@@ -356,11 +290,8 @@ export const sidebarMenu = [
         route:
           '/audit-logs',
 
-        roles: [
-
-          'Admin'
-
-        ]
+        permission:
+          'Dashboard'
 
       }
 
@@ -368,26 +299,28 @@ export const sidebarMenu = [
 
   },
 
-  // ADMIN
+  /* ADMINISTRATION */
 
   {
-    section: 'ADMINISTRATION',
+
+    section:
+      'ADMINISTRATION',
 
     menus: [
 
       {
 
-        title: 'Users',
+        title:
+          'Users',
 
-        icon: 'bi bi-people',
+        icon:
+          'bi bi-people',
 
-        route: '/users',
+        route:
+          '/users',
 
-        roles: [
-
-          'Admin'
-
-        ]
+        permission:
+          'Dashboard'
 
       },
 
@@ -402,29 +335,24 @@ export const sidebarMenu = [
         route:
           '/departments',
 
-        roles: [
-
-          'Admin'
-
-        ]
+        permission:
+          'Dashboard'
 
       },
 
-
-
       {
 
-        title: 'Settings',
+        title:
+          'Settings',
 
-        icon: 'bi bi-gear',
+        icon:
+          'bi bi-gear',
 
-        route: '/settings',
+        route:
+          '/settings',
 
-        roles: [
-
-          'Admin'
-
-        ]
+        permission:
+          'Dashboard'
 
       }
 

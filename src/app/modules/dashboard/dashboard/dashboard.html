@@ -1,367 +1,405 @@
-<div class="dashboard-wrapper">
+@if(loading()) {
 
-  <!-- TOP BAR -->
+<div class="dashboard-skeleton">
 
-  <div class="top-section">
+  <!-- TOP -->
 
-    <div>
-      <h2>Welcome back, Admin! 👋</h2>
-      <p>
-        Here's what's happening with your IT services today.
-      </p>
-    </div>
-
-    <div class="top-actions">
-
-      <button class="date-btn">
-        <i class="bi bi-calendar3"></i>
-        May 1, 2024 - May 31, 2024
-      </button>
-
-      <button class="create-btn">
-        <i class="bi bi-plus-lg"></i>
-        Create Ticket
-      </button>
-
-    </div>
-
-  </div>
+  <div class="skeleton-top"></div>
 
   <!-- STATS -->
 
-  <div class="stats-grid">
+  <div class="skeleton-stats">
 
-    <div class="stat-card blue-card">
+    @for(item of [1,2,3,4]; track item) {
 
-      <div class="stat-icon blue">
-        <i class="bi bi-ticket"></i>
-      </div>
+    <div class="skeleton-card"></div>
 
-      <div>
-        <h3>
+    }
 
-          {{
-          analytics
-          .totalIncidents()
-          }}
+  </div>
 
-        </h3>
-        <p>Total Tickets</p>
-        <span class="growth positive">
-          ↑ 12% from last month
-        </span>
-      </div>
+  <!-- CHARTS -->
 
+  <div class="skeleton-charts">
+
+    <div class="skeleton-chart large"></div>
+
+    <div class="skeleton-chart large"></div>
+
+    <div class="skeleton-chart small"></div>
+
+  </div>
+
+  <!-- TABLE -->
+
+  <div class="skeleton-table">
+
+    @for(row of [1,2,3,4,5]; track row) {
+
+    <div class="skeleton-row"></div>
+
+    }
+
+  </div>
+
+</div>
+
+}
+
+@else {
+
+<!-- TOP BAR -->
+
+<div class="top-section">
+
+  <div>
+    <h2>Welcome back, Admin! 👋</h2>
+    <p>
+      Here's what's happening with your IT services today.
+    </p>
+  </div>
+
+  <div class="top-actions">
+
+    <button class="date-btn">
+      <i class="bi bi-calendar3"></i>
+      May 1, 2024 - May 31, 2024
+    </button>
+
+    <button class="create-btn">
+      <i class="bi bi-plus-lg"></i>
+      Create Ticket
+    </button>
+
+  </div>
+
+</div>
+
+<!-- STATS -->
+
+<div class="stats-grid">
+
+  <div class="stat-card blue-card">
+
+    <div class="stat-icon blue">
+      <i class="bi bi-ticket"></i>
     </div>
 
-    <div class="stat-card red-card">
+    <div>
+      <h3>
 
-      <div class="stat-icon red">
-        <i class="bi bi-exclamation-circle"></i>
-      </div>
+        {{
+        analytics
+        .totalIncidents()
+        }}
 
-      <div>
-        <h3>
-
-          {{
-          analytics
-          .openIncidents()
-          }}
-
-        </h3>
-        <p>Open Incidents</p>
-        <span class="growth positive">
-          ↑ 8% from last month
-        </span>
-      </div>
-
-    </div>
-
-    <div class="stat-card green-card">
-
-      <div class="stat-icon green">
-        <i class="bi bi-check-circle"></i>
-      </div>
-
-      <div>
-        <h3>
-
-          {{
-          analytics
-          .resolvedIncidents()
-          }}
-
-        </h3>
-        <p>Resolved</p>
-        <span class="growth positive">
-          ↑ 15% from last month
-        </span>
-      </div>
-
-    </div>
-
-    <div class="stat-card yellow-card">
-
-      <div class="stat-icon yellow">
-        <i class="bi bi-clock-history"></i>
-      </div>
-
-      <div>
-        <h3>
-
-          {{
-          analytics
-          .slaBreaches()
-          }}
-
-        </h3>
-        <p>SLA Breached</p>
-        <span class="growth negative">
-          ↓ 5% from last month
-        </span>
-      </div>
-
+      </h3>
+      <p>Total Tickets</p>
+      <span class="growth positive">
+        ↑ 12% from last month
+      </span>
     </div>
 
   </div>
 
-  <!-- CHART GRID -->
+  <div class="stat-card red-card">
 
-  <div class="chart-grid">
+    <div class="stat-icon red">
+      <i class="bi bi-exclamation-circle"></i>
+    </div>
 
-    <!-- DONUT -->
+    <div>
+      <h3>
 
-    <div class="chart-card">
+        {{
+        analytics
+        .openIncidents()
+        }}
 
-      <div class="card-header">
-        <h4>Tickets Overview</h4>
+      </h3>
+      <p>Open Incidents</p>
+      <span class="growth positive">
+        ↑ 8% from last month
+      </span>
+    </div>
 
-        <button>
-          This Month
-        </button>
-      </div>
+  </div>
 
-      <apx-chart [series]="
+  <div class="stat-card green-card">
+
+    <div class="stat-icon green">
+      <i class="bi bi-check-circle"></i>
+    </div>
+
+    <div>
+      <h3>
+
+        {{
+        analytics
+        .resolvedIncidents()
+        }}
+
+      </h3>
+      <p>Resolved</p>
+      <span class="growth positive">
+        ↑ 15% from last month
+      </span>
+    </div>
+
+  </div>
+
+  <div class="stat-card yellow-card">
+
+    <div class="stat-icon yellow">
+      <i class="bi bi-clock-history"></i>
+    </div>
+
+    <div>
+      <h3>
+
+        {{
+        analytics
+        .slaBreaches()
+        }}
+
+      </h3>
+      <p>SLA Breached</p>
+      <span class="growth negative">
+        ↓ 5% from last month
+      </span>
+    </div>
+
+  </div>
+
+</div>
+
+<!-- CHART GRID -->
+
+<div class="chart-grid">
+
+  <!-- DONUT -->
+
+  <div class="chart-card">
+
+    <div class="card-header">
+      <h4>Tickets Overview</h4>
+
+      <button>
+        This Month
+      </button>
+    </div>
+
+    <apx-chart [series]="
     priorityChart.series
   " [chart]="
     priorityChart.chart
   " [labels]="
     priorityChart.labels
   ">
-      </apx-chart>
+    </apx-chart>
 
+  </div>
+
+  <!-- TREND -->
+
+  <div class="chart-card">
+
+    <div class="card-header">
+      <h4>Tickets Trend</h4>
+
+      <button>
+        This Month
+      </button>
     </div>
 
-    <!-- TREND -->
-
-    <div class="chart-card">
-
-      <div class="card-header">
-        <h4>Tickets Trend</h4>
-
-        <button>
-          This Month
-        </button>
-      </div>
-
-      <apx-chart [series]="
+    <apx-chart [series]="
     statusChart.series
   " [chart]="
     statusChart.chart
   " [xaxis]="
     statusChart.xaxis
   ">
-      </apx-chart>
+    </apx-chart>
 
+  </div>
+
+  <!-- SLA -->
+
+  <div class="chart-card small-card">
+
+    <div class="card-header">
+      <h4>SLA Breach Summary</h4>
+      <a>View All</a>
     </div>
 
-    <!-- SLA -->
-
-    <div class="chart-card small-card">
-
-      <div class="card-header">
-        <h4>SLA Breach Summary</h4>
-        <a>View All</a>
+    <div class="sla-item">
+      <div>
+        <h5>INC001234</h5>
+        <p>Email Server Down</p>
       </div>
 
-      <div class="sla-item">
-        <div>
-          <h5>INC001234</h5>
-          <p>Email Server Down</p>
-        </div>
+      <span class="sla red-sla">
+        2h 32m
+      </span>
+    </div>
 
-        <span class="sla red-sla">
-          2h 32m
-        </span>
+    <div class="sla-item">
+      <div>
+        <h5>INC001235</h5>
+        <p>VPN Connection Issue</p>
       </div>
 
-      <div class="sla-item">
-        <div>
-          <h5>INC001235</h5>
-          <p>VPN Connection Issue</p>
-        </div>
+      <span class="sla orange-sla">
+        1h 15m
+      </span>
+    </div>
 
-        <span class="sla orange-sla">
-          1h 15m
-        </span>
+    <div class="sla-item">
+      <div>
+        <h5>INC001236</h5>
+        <p>Database Performance</p>
       </div>
 
-      <div class="sla-item">
-        <div>
-          <h5>INC001236</h5>
-          <p>Database Performance</p>
-        </div>
-
-        <span class="sla yellow-sla">
-          45m
-        </span>
-      </div>
-
+      <span class="sla yellow-sla">
+        45m
+      </span>
     </div>
 
   </div>
 
-  <!-- BOTTOM GRID -->
+</div>
 
-  <div class="bottom-grid">
+<!-- BOTTOM GRID -->
 
-    <!-- TABLE -->
+<div class="bottom-grid">
 
-    <div class="table-card">
+  <!-- TABLE -->
 
-      <div class="card-header">
-        <h4>Recent Incidents</h4>
-        <a>View All</a>
-      </div>
+  <div class="table-card">
 
-      <table class="table align-middle">
-
-        <thead>
-          <tr>
-            <th>Ticket ID</th>
-            <th>Title</th>
-            <th>Priority</th>
-            <th>Status</th>
-            <th>Created On</th>
-          </tr>
-        </thead>
-
-        <tbody>
-
-          <tr>
-            <td>INC001234</td>
-            <td>Email Server Down</td>
-            <td>
-              <span class="badge critical">
-                Critical
-              </span>
-            </td>
-            <td>
-              <span class="badge open">
-                Open
-              </span>
-            </td>
-            <td>May 31, 2024</td>
-          </tr>
-
-          <tr>
-            <td>INC001235</td>
-            <td>VPN Connection Issue</td>
-            <td>
-              <span class="badge medium">
-                Medium
-              </span>
-            </td>
-            <td>
-              <span class="badge progress">
-                In Progress
-              </span>
-            </td>
-            <td>May 30, 2024</td>
-          </tr>
-
-          <tr>
-            <td>INC001236</td>
-            <td>Database Performance</td>
-            <td>
-              <span class="badge high">
-                High
-              </span>
-            </td>
-            <td>
-              <span class="badge resolved">
-                Resolved
-              </span>
-            </td>
-            <td>May 29, 2024</td>
-          </tr>
-
-        </tbody>
-
-      </table>
-
+    <div class="card-header">
+      <h4>Recent Incidents</h4>
+      <a>View All</a>
     </div>
 
-    <!-- RIGHT WIDGETS -->
+    <table class="table align-middle">
 
-    <div class="right-widgets">
+      <thead>
+        <tr>
+          <th>Ticket ID</th>
+          <th>Title</th>
+          <th>Priority</th>
+          <th>Status</th>
+          <th>Created On</th>
+        </tr>
+      </thead>
 
-      <div class="chart-card">
+      <tbody>
 
-  <div class="card-header">
+        <tr>
+          <td>INC001234</td>
+          <td>Email Server Down</td>
+          <td>
+            <span class="badge critical">
+              Critical
+            </span>
+          </td>
+          <td>
+            <span class="badge open">
+              Open
+            </span>
+          </td>
+          <td>May 31, 2024</td>
+        </tr>
 
-    <h4>
-      Assets by Category
-    </h4>
+        <tr>
+          <td>INC001235</td>
+          <td>VPN Connection Issue</td>
+          <td>
+            <span class="badge medium">
+              Medium
+            </span>
+          </td>
+          <td>
+            <span class="badge progress">
+              In Progress
+            </span>
+          </td>
+          <td>May 30, 2024</td>
+        </tr>
+
+        <tr>
+          <td>INC001236</td>
+          <td>Database Performance</td>
+          <td>
+            <span class="badge high">
+              High
+            </span>
+          </td>
+          <td>
+            <span class="badge resolved">
+              Resolved
+            </span>
+          </td>
+          <td>May 29, 2024</td>
+        </tr>
+
+      </tbody>
+
+    </table>
 
   </div>
 
-  <apx-chart
+  <!-- RIGHT WIDGETS -->
 
-    [series]="
+  <div class="right-widgets">
+
+    <div class="chart-card">
+
+      <div class="card-header">
+
+        <h4>
+          Assets by Category
+        </h4>
+
+      </div>
+
+      <apx-chart [series]="
       assetChart.series
-    "
-
-    [chart]="
+    " [chart]="
       assetChart.chart
-    "
-
-    [labels]="
+    " [labels]="
       assetChart.labels
-    "
+    "></apx-chart>
 
-  ></apx-chart>
+    </div>
 
-</div>
+    <div class="chart-card">
 
-      <div class="chart-card">
+      <div class="card-header">
+        <h4>Quick Actions</h4>
+      </div>
 
-        <div class="card-header">
-          <h4>Quick Actions</h4>
+      <div class="quick-actions">
+
+        <div class="quick-card blue-bg">
+          <i class="bi bi-ticket"></i>
+          <p>Create Ticket</p>
         </div>
 
-        <div class="quick-actions">
+        <div class="quick-card green-bg">
+          <i class="bi bi-list-task"></i>
+          <p>My Tickets</p>
+        </div>
 
-          <div class="quick-card blue-bg">
-            <i class="bi bi-ticket"></i>
-            <p>Create Ticket</p>
-          </div>
+        <div class="quick-card purple-bg">
+          <i class="bi bi-bar-chart"></i>
+          <p>Reports</p>
+        </div>
 
-          <div class="quick-card green-bg">
-            <i class="bi bi-list-task"></i>
-            <p>My Tickets</p>
-          </div>
-
-          <div class="quick-card purple-bg">
-            <i class="bi bi-bar-chart"></i>
-            <p>Reports</p>
-          </div>
-
-          <div class="quick-card yellow-bg">
-            <i class="bi bi-clock-history"></i>
-            <p>SLA Monitor</p>
-          </div>
-
+        <div class="quick-card yellow-bg">
+          <i class="bi bi-clock-history"></i>
+          <p>SLA Monitor</p>
         </div>
 
       </div>
@@ -371,3 +409,6 @@
   </div>
 
 </div>
+
+
+}

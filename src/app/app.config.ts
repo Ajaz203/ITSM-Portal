@@ -25,6 +25,11 @@ import {
   authInterceptor
 } from './core/interceptors/auth-interceptor';
 
+import {
+  jwtInterceptor
+} from './core/interceptors/jwt.interceptor';
+import { loadingInterceptor } from './core/interceptors/loading-interceptor';
+
 export const appConfig: ApplicationConfig = {
 
   providers: [
@@ -34,7 +39,9 @@ export const appConfig: ApplicationConfig = {
     provideHttpClient(
 
       withInterceptors([
-        authInterceptor
+            jwtInterceptor,
+        authInterceptor,
+          loadingInterceptor
       ])
 
     ),

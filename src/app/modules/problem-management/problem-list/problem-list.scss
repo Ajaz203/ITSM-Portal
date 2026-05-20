@@ -207,7 +207,7 @@
   color: #0f172a;
 
   white-space: nowrap;
-
+cursor: pointer;
 }
 
 .table tbody tr {
@@ -221,7 +221,15 @@
   background: #f8fafc;
 
 }
+.problem-id {
 
+  color: #2563eb !important;
+
+  font-weight: 700;
+
+  cursor: pointer;
+
+}
 /* STATUS BADGE */
 
 .status-badge {

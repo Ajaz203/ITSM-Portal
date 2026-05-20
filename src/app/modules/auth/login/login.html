@@ -90,16 +90,32 @@
     </small>
 
   </div>
+<button
 
-  <button
-    type="button"
-    class="login-btn"
-    (click)="submit()"
-  >
+  type="button"
+
+  class="login-btn"
+
+  [disabled]="loading"
+
+  (click)="submit()"
+>
+
+  @if(loading) {
+
+    <span class="btn-loader"></span>
+
+    Logging in...
+
+  }
+
+  @else {
 
     Login
 
-  </button>
+  }
+
+</button>
 
 </form>
 

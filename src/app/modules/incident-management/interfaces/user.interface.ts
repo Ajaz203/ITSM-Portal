@@ -1,11 +1,47 @@
 export interface User {
 
-  name: string;
+  /* PROFILE */
 
-  email: string;
+  firstName?: string;
 
-  role: string;
+  lastName?: string;
 
-  token: string;
+  fullName?: string;
+
+  email?: string;
+
+  image?: string;
+
+  /* ACCESS */
+
+  role?: string;
+
+  groupNames?: string[];
+
+  modules?: {
+
+    [key: string]: boolean;
+
+  };
+
+  permissions?: {
+
+    [key: string]: boolean;
+
+  };
+
+  tabs?: {
+
+    [key: string]: boolean;
+
+  };
+
+  /* IDS */
+
+  employeeId?: number;
+
+  organisationId?: number;
+
+  token?: string;
 
 }

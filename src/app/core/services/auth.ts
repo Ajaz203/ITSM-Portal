@@ -8,15 +8,20 @@ import {
   Router
 } from '@angular/router';
 
+import {
+  HttpClient
+} from '@angular/common/http';
 
 import { Storage }
 from './storage';
 
-import { User } from '../../modules/incident-management/interfaces/user.interface';
+import { User }
+from '../../modules/incident-management/interfaces/user.interface';
 
 @Injectable({
   providedIn: 'root',
 })
+
 export class Auth {
 
   router =
@@ -25,70 +30,161 @@ export class Auth {
   storage =
     inject(Storage);
 
+  http =
+    inject(HttpClient);
 
+  /* API URL */
 
-  // USER STATE
+  apiUrl =
+    'https://api.hr.timesofpeople.com/';
+
+  /* USER STATE */
 
   currentUser =
     signal<User | null>(null);
 
-  // MOCK LOGIN
+  /* LOGIN API */
 
   login(payload: any) {
 
-    // MOCK JWT TOKEN
+    return this.http.post(
 
-    const token = btoa(
+      this.apiUrl + 'login',
 
-      JSON.stringify({
+      payload,
 
-        name: 'Admin User',
-
-        email:
-          payload.email,
-
-        role: 'Admin',
-
-      })
+      {
+        observe: 'response'
+      }
 
     );
-
-    // USER
-
-    const user: User = {
-
-      name: 'Admin User',
-
-      email: payload.email,
-
-      role: 'Admin',
-
-      token
-
-    };
-
-    // SAVE
-
-    this.storage.setToken(token);
-
-    localStorage.setItem(
-      'itsm-user',
-      JSON.stringify(user)
-    );
-
-    // UPDATE SIGNAL
-
-    this.currentUser.set(user);
-
-    // REDIRECT
-
-    this.router.navigate([
-      '/dashboard'
-    ]);
 
   }
+/* GET USER DETAILS */
 
-  // AUTO LOGIN
+getUserDetails() {
+
+  return this.http.post(
+
+    this.apiUrl +
+
+    'getUserDetails',
+
+    this.getCommonPayload(
+      'Dashboard'
+    )
+
+  );
+
+}
+
+
+/* SAVE USER */
+
+saveUser(
+  body: any,
+
+  token: string
+) {
+
+const user: User = {
+
+  firstName:
+    body?.firstName,
+
+  lastName:
+    body?.lastName,
+
+  fullName:
+
+    `${body?.firstName || ''}
+
+     ${body?.lastName || ''}`,
+
+  email:
+    body?.officialEmail,
+
+  role:
+
+    body?.groupNames?.[0]
+
+    || 'User',
+
+  image:
+    body?.image,
+
+  employeeId:
+    body?.employeeId,
+
+  organisationId:
+    body?.organisationId,
+
+  groupNames:
+    body?.groupNames,
+
+  modules:
+    body?.modules,
+
+  permissions:
+    body?.permissions,
+
+  tabs:
+    body?.tabs,
+
+  token
+
+};
+  /* SAVE TOKEN */
+
+  this.storage.setToken(
+    token
+  );
+
+  /* SAVE USER */
+
+  localStorage.setItem(
+
+    'itsm-user',
+
+    JSON.stringify(user)
+
+  );
+
+  /* SAVE IDS */
+
+  localStorage.setItem(
+
+    'userId',
+
+    String(
+      body?.employeeId
+    )
+
+  );
+
+  localStorage.setItem(
+
+    'organisationId',
+
+    String(
+      body?.organisationId
+    )
+
+  );
+
+  /* UPDATE SIGNAL */
+
+  this.currentUser.set(user);
+
+  /* REDIRECT */
+
+  this.router.navigate([
+    '/dashboard'
+  ]);
+
+}
+
+  /* AUTO LOGIN */
 
   loadUser() {
 
@@ -106,7 +202,7 @@ export class Auth {
 
   }
 
-  // LOGOUT
+  /* LOGOUT */
 
   logout() {
 
@@ -124,7 +220,7 @@ export class Auth {
 
   }
 
-  // LOGIN CHECK
+  /* LOGIN CHECK */
 
   isLoggedIn(): boolean {
 
@@ -132,16 +228,44 @@ export class Auth {
       .getToken();
 
   }
+/* COMMON PAYLOAD */
 
-  // RBAC
+getCommonPayload(
+  permissionName: string
+) {
+
+  const userId =
+
+    localStorage.getItem(
+      'userId'
+    ) || '';
+
+  return {
+
+    userId,
+
+    type:
+      'employee',
+
+    employeeIdMiddleware:
+      userId,
+
+    permissionName
+
+  };
+
+}
+
+
+  /* RBAC */
 
   canEdit() {
 
     return [
 
       'Admin',
-
-      'Agent'
+      'Agent',
+      'Employee'
 
     ].includes(
 
@@ -155,7 +279,7 @@ export class Auth {
   canDelete() {
 
     return this.currentUser()
-      ?.role === 'Admin';
+      ?.role === 'Admin' || this.currentUser()?.role === 'Employee';
 
   }
 
@@ -164,10 +288,8 @@ export class Auth {
     return [
 
       'Admin',
-
       'Agent',
-
-      'User'
+       'Employee'
 
     ].includes(
 

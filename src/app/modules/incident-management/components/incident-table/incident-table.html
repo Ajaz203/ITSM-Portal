@@ -16,8 +16,8 @@
 
         <th>Status</th>
         <th>
-  Approval
-</th>
+          Approval
+        </th>
         <th>
           Affected Asset
         </th>
@@ -32,7 +32,7 @@
 
     </thead>
 
-    <tbody>
+    <tbody >
 
       @for(
       item of
@@ -40,12 +40,12 @@
       track item.id
       ) {
 
-      <tr>
-
-        <td class="ticket-id clickable" (click)="
+      <tr class="ticket-id clickable" (click)="
     incidentService
       .openIncidentDetails(item)
   ">
+
+        <td class="ticket-id"> 
 
           {{ item.ticketId }}
 
@@ -76,36 +76,27 @@
         </td>
         <td>
 
-  <div
-
-    class="approval-badge"
-
-    [class.approved]="
+          <div class="approval-badge" [class.approved]="
       item.approval?.status
       === 'Approved'
-    "
-
-    [class.rejected]="
+    " [class.rejected]="
       item.approval?.status
       === 'Rejected'
-    "
-
-    [class.pending]="
+    " [class.pending]="
       item.approval?.status
       === 'Pending'
-    "
-  >
+    ">
 
-    {{
+            {{
 
-      item.approval?.status
-      || 'Pending'
+            item.approval?.status
+            || 'Pending'
 
-    }}
+            }}
 
-  </div>
+          </div>
 
-</td>
+        </td>
         <td>
 
           {{ item.assetName || '-' }}

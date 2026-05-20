@@ -59,6 +59,7 @@
   border-bottom:
     1px solid #f1f5f9;
   white-space: nowrap;
+  cursor: pointer;
 }
 .table td:nth-child(2) {
 
@@ -81,9 +82,9 @@
 
 .ticket-id {
 
-    color: #2563eb;
+    color: #2563eb !important;
 
-    font-weight: 600;
+    font-weight: 700 !important;
 
 }
 

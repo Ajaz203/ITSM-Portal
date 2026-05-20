@@ -1,132 +1,167 @@
-import { Component } from '@angular/core';
-import { ApiService } from '../../../core/services/api';
 import {
-  inject
+  Component,
+  inject,
+  OnInit,
+  signal
 } from '@angular/core';
+
+import {
+  CommonModule
+} from '@angular/common';
 
 import {
   NgApexchartsModule
 } from 'ng-apexcharts';
 
-import { Analytics }
-from '../../../core/services/analytics';
+import {
+  Analytics
+} from '../../../core/services/analytics';
+
 @Component({
-  selector: 'app-dashboard',
-  imports: [NgApexchartsModule],
-  templateUrl: './dashboard.html',
-  styleUrl: './dashboard.scss',
-})
-export class Dashboard {
-  constructor(
-  private apiService: ApiService
-) {
 
-  this.apiService
-    .get('test')
-    .subscribe({
-      next: (res) => {
-        console.log(res);
-      }
-    });
+  selector:
+    'app-dashboard',
 
-}
-analytics =
-  inject(Analytics);
-  priorityChart = {
+  standalone: true,
 
-  series:
-    this.analytics
-      .priorityData(),
+  imports: [
 
-  chart: {
-
-  type: 'donut' as const,
-
-    height: 320
-
-  },
-
-  labels: [
-
-    'Low',
-
-    'Medium',
-
-    'High',
-
-    'Critical'
-
-  ]
-
-};
-
-statusChart = {
-
-  series: [
-
-    {
-
-      name: 'Incidents',
-
-      data:
-        this.analytics
-          .statusData()
-
-    }
+    CommonModule,
+    NgApexchartsModule
 
   ],
 
-  chart: {
+  templateUrl:
+    './dashboard.html',
 
-   type: 'bar' as const,
+  styleUrls: [
+    './dashboard.scss'
+  ]
 
-    height: 320
+})
 
-  },
+export class Dashboard
+implements OnInit {
 
-  xaxis: {
+  /* LOADING */
 
-    categories: [
+ loading =
+  signal(true);
 
-      'Open',
+  /* SERVICES */
 
-      'In Progress',
+  analytics =
+    inject(Analytics);
 
-      'Resolved',
+  /* INIT */
 
-      'Closed'
+  ngOnInit(): void {
 
-    ]
+    setTimeout(() => {
+
+      this.loading.set(false);
+
+      console.log(
+        'Dashboard Loaded'
+      );
+
+    }, 2000);
 
   }
 
-};
-assetChart = {
+  /* PRIORITY CHART */
 
-  series:
-    this.analytics
-      .assetCategoryData(),
+  priorityChart = {
 
-  chart: {
+    series:
+      this.analytics
+        .priorityData(),
 
-    type: 'donut' as const,
+    chart: {
 
-    height: 320
+      type: 'donut' as const,
 
-  },
+      height: 320
 
-  labels: [
+    },
 
-    'Laptop',
+    labels: [
 
-    'Desktop',
+      'Low',
+      'Medium',
+      'High',
+      'Critical'
 
-    'Server',
+    ]
 
-    'Network Device'
+  };
 
-  ]
+  /* STATUS CHART */
 
-};
+  statusChart = {
+
+    series: [
+
+      {
+
+        name: 'Incidents',
+
+        data:
+          this.analytics
+            .statusData()
+
+      }
+
+    ],
+
+    chart: {
+
+      type: 'bar' as const,
+
+      height: 320
+
+    },
+
+    xaxis: {
+
+      categories: [
+
+        'Open',
+        'In Progress',
+        'Resolved',
+        'Closed'
+
+      ]
+
+    }
+
+  };
+
+  /* ASSET CHART */
+
+  assetChart = {
+
+    series:
+      this.analytics
+        .assetCategoryData(),
+
+    chart: {
+
+      type: 'donut' as const,
+
+      height: 320
+
+    },
+
+    labels: [
+
+      'Laptop',
+      'Desktop',
+      'Server',
+      'Network Device'
+
+    ]
+
+  };
 
 }
